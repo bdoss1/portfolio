@@ -166,3 +166,8 @@
         </section>
     </div> <!-- cont end -->
 @endsection
+
+
+@section('after.script')
+    <script src="{{ asset('js/main.js') }}"></script>
+@endsection

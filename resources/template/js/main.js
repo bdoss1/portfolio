@@ -1,11 +1,11 @@
 $(document).ready(function () {
-
     // HOME PAGE HEIGHT
-    jQuery(window).load(function () {
+    $(window).load(function () {
+
         // will first fade out the loading animation
-        jQuery(".loader").fadeOut();
+        $(".loader").fadeOut();
         // will fade out the whole DIV that covers the website.
-        jQuery(".preloader").delay(1000).fadeOut("slow");
+        $(".preloader").delay(1000).fadeOut("slow");
     });
 
 
@@ -14,7 +14,7 @@ $(document).ready(function () {
         function fullhome() {
             var hometext = $('.home, .portfolio-hero')
 //            var homett = $('.hero-title').offset();
-//            $('.social').css('margin-top', homett.top)            
+//            $('.social').css('margin-top', homett.top)
             hometext.css({
                 "height": $(window).height() + "px"
             });
@@ -90,7 +90,7 @@ $(document).ready(function () {
     //  });
 
 
-// PORTFOLIO CONTENT  
+// PORTFOLIO CONTENT
     $('#grid-container').cubeportfolio({
         layoutMode: 'grid',
         filters: '.portfolio-filter',

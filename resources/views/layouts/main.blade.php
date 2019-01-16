@@ -11,10 +11,10 @@
     <meta name="description" content="Gorge Portfolio Template">
     <meta name="keywords" content="personal, portfolio">
 
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
     <!-- Google Web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
 </head>
 <body>
 <div id="app">
@@ -29,7 +29,7 @@
 
     <!-- HEADER -->
     <header>
-        <img src="images/logo2.png" alt="Профессиональная разработка сайтов - yarmat.su">
+        <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
         <div class="nav-icon">
             <span></span>
             <span></span>
@@ -78,7 +78,7 @@
         <div class="cont">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12 copyright">
-                    <img src="images/logo2.png" alt="">
+                    <img src="{{ asset('images/logo2.png') }}" alt="">
                     <p>© 2018 Gorge Creative Agency</p>
                 </div>
                 <div class="col-md-4 d-sm-none d-md-block">

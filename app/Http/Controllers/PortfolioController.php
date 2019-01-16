@@ -12,8 +12,9 @@ class PortfolioController extends Controller
         return view('portfolio.index');
     }
 
-    public function show(Portfolio $item)
+    public function show($slug)
     {
+        $item = Portfolio::whereSlug($slug)->with(['media', 'categories'])->firstOrFail();
         return view('portfolio.show')->with(compact('item'));
     }
 

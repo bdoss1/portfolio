@@ -11,11 +11,10 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('../template/js/jquery-2.1.4.min');
     require('../template/cubeportfolio/js/jquery.cubeportfolio.min.js');
-    require('../template/js/typed.js',);
-    require('../template/js/particles.js',);
-    require('../template/js/app.js',);
-    require('../template/js/jquery.hover3d.js',);
-    require('../template/js/main.js',);
+    require('../template/js/typed.js');
+    require('../template/js/particles.js');
+    require('../template/js/jquery.hover3d.js');
+    require('../template/js/owl.carousel.min.js');
 
     // require('bootstrap');
 } catch (e) {}

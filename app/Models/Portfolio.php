@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasSeoTrait;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -42,6 +43,9 @@ use Spatie\Sluggable\SlugOptions;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio disableCache()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio withCacheCooldownSeconds($seconds)
  */
 class Portfolio extends Model implements HasMedia
 {
@@ -49,6 +53,7 @@ class Portfolio extends Model implements HasMedia
     use HasSlug;
     use HasMediaTrait;
     use HasSeoTrait;
+    use Cachable;
 
     public $translatable = ['title', 'description'];
 
@@ -72,11 +77,27 @@ class Portfolio extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('small')
-            ->crop(Manipulations::CROP_CENTER, '70', '70');
+            ->width(400)
+            ->quality(85);
+
+        $this->addMediaConversion('big')
+            ->width(1400)
+            ->quality(90);
     }
+
 
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoriable');
     }
 }
