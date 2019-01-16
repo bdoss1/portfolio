@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.20 on 2019-01-15 12:29:13.
+ * Generated for Laravel 5.7.20 on 2019-01-16 08:10:22.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13390,6 +13390,59 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace App\Facades {
+
+    /**
+     *
+     *
+     */
+    class Locale
+    {
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function getDefaultLocale()
+        {
+            return \App\Services\LocaleService::getDefaultLocale();
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function getLocales()
+        {
+            return \App\Services\LocaleService::getLocales();
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function current()
+        {
+            return \App\Services\LocaleService::current();
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function getCurrentLocale()
+        {
+            return \App\Services\LocaleService::getCurrentLocale();
+        }
+
+    }
+
+}
+
 namespace Barryvdh\Debugbar { 
 
     /**
@@ -16371,6 +16424,10 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class CustomLocale extends \App\Facades\Locale
+    {
+    }
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
  
