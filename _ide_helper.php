@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.20 on 2019-01-16 09:34:28.
+ * Generated for Laravel 5.7.20 on 2019-01-17 13:09:11.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3077,6 +3077,19 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Cache\Repository::macroCall($method, $parameters);
         }
+
+        /**
+         * Get a lock instance.
+         *
+         * @param string $name
+         * @param int $seconds
+         * @return \Illuminate\Contracts\Cache\Lock
+         * @static
+         */
+        public static function lock($name, $seconds = 0)
+        {
+            return \Illuminate\Cache\RedisStore::lock($name, $seconds);
+        }
         
         /**
          * Remove all items from the cache.
@@ -3086,29 +3099,41 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function flush()
         {
-            return \Illuminate\Cache\FileStore::flush();
+            return \Illuminate\Cache\RedisStore::flush();
         }
         
         /**
-         * Get the Filesystem instance.
+         * Get the Redis connection instance.
          *
-         * @return \Illuminate\Filesystem\Filesystem 
+         * @return \Predis\ClientInterface 
          * @static 
-         */ 
-        public static function getFilesystem()
+         */
+        public static function connection()
         {
-            return \Illuminate\Cache\FileStore::getFilesystem();
+            return \Illuminate\Cache\RedisStore::connection();
         }
         
         /**
-         * Get the working directory of the cache.
+         * Set the connection name to be used.
          *
-         * @return string 
-         * @static 
-         */ 
-        public static function getDirectory()
+         * @param string $connection
+         * @return void
+         * @static
+         */
+        public static function setConnection($connection)
         {
-            return \Illuminate\Cache\FileStore::getDirectory();
+            \Illuminate\Cache\RedisStore::setConnection($connection);
+        }
+
+        /**
+         * Get the Redis database instance.
+         *
+         * @return \Illuminate\Contracts\Redis\Factory 
+         * @static 
+         */
+        public static function getRedis()
+        {
+            return \Illuminate\Cache\RedisStore::getRedis();
         }
         
         /**
@@ -3119,7 +3144,19 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getPrefix()
         {
-            return \Illuminate\Cache\FileStore::getPrefix();
+            return \Illuminate\Cache\RedisStore::getPrefix();
+        }
+
+        /**
+         * Set the cache key prefix.
+         *
+         * @param string $prefix
+         * @return void
+         * @static
+         */
+        public static function setPrefix($prefix)
+        {
+            \Illuminate\Cache\RedisStore::setPrefix($prefix);
         }
          
     }
@@ -7517,6 +7554,73 @@ namespace Illuminate\Support\Facades {
             return \Illuminate\Routing\Redirector::hasMacro($name);
         }
          
+    }
+
+    /**
+     *
+     *
+     */
+    class Redis
+    {
+
+        /**
+         * Get a Redis connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection
+         * @static
+         */
+        public static function connection($name = null)
+        {
+            return \Illuminate\Redis\RedisManager::connection($name);
+        }
+
+        /**
+         * Resolve the given connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection
+         * @throws \InvalidArgumentException
+         * @static
+         */
+        public static function resolve($name = null)
+        {
+            return \Illuminate\Redis\RedisManager::resolve($name);
+        }
+
+        /**
+         * Return all of the created connections.
+         *
+         * @return array
+         * @static
+         */
+        public static function connections()
+        {
+            return \Illuminate\Redis\RedisManager::connections();
+        }
+
+        /**
+         * Enable the firing of Redis command events.
+         *
+         * @return void
+         * @static
+         */
+        public static function enableEvents()
+        {
+            \Illuminate\Redis\RedisManager::enableEvents();
+        }
+
+        /**
+         * Disable the firing of Redis command events.
+         *
+         * @return void
+         * @static
+         */
+        public static function disableEvents()
+        {
+            \Illuminate\Redis\RedisManager::disableEvents();
+        }
+
     }
 
     /**
@@ -13402,7 +13506,7 @@ namespace App\Facades {
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function getDefaultLocale()
         {
@@ -13412,7 +13516,7 @@ namespace App\Facades {
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function getLocales()
         {
@@ -13422,7 +13526,7 @@ namespace App\Facades {
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function current()
         {
@@ -13432,7 +13536,7 @@ namespace App\Facades {
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function getCurrentLocale()
         {
@@ -13995,22 +14099,22 @@ namespace Barryvdh\Debugbar {
  
 }
 
-namespace Intervention\Image\Facades {
+namespace Intervention\Image\Facades { 
 
     /**
-     *
+     * 
      *
      */
     class Image
     {
-
+        
         /**
          * Overrides configuration settings
          *
          * @param array $config
          * @return self
          * @static
-         */
+         */ 
         public static function configure($config = array())
         {
             return \Intervention\Image\ImageManager::configure($config);
@@ -14022,7 +14126,7 @@ namespace Intervention\Image\Facades {
          * @param mixed $data
          * @return \Intervention\Image\Image
          * @static
-         */
+         */ 
         public static function make($data)
         {
             return \Intervention\Image\ImageManager::make($data);
@@ -14036,7 +14140,7 @@ namespace Intervention\Image\Facades {
          * @param mixed $background
          * @return \Intervention\Image\Image
          * @static
-         */
+         */ 
         public static function canvas($width, $height, $background = null)
         {
             return \Intervention\Image\ImageManager::canvas($width, $height, $background);
@@ -14051,11 +14155,24 @@ namespace Intervention\Image\Facades {
          * @param boolean $returnObj
          * @return \Image
          * @static
-         */
+         */ 
         public static function cache($callback, $lifetime = null, $returnObj = false)
         {
             return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
         }
+
+    }
+
+}
+
+namespace Jenssegers\Date {
+
+    /**
+     *
+     *
+     */
+    class Date
+    {
 
     }
 
@@ -16473,6 +16590,10 @@ namespace  {
 
     class Redirect extends \Illuminate\Support\Facades\Redirect {}
 
+    class Redis extends \Illuminate\Support\Facades\Redis
+    {
+    }
+
     class Request extends \Illuminate\Support\Facades\Request {}
 
     class Response extends \Illuminate\Support\Facades\Response {}
@@ -16498,6 +16619,10 @@ namespace  {
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Image extends \Intervention\Image\Facades\Image
+    {
+    }
+
+    class Date extends \Jenssegers\Date\Date
     {
     }
  

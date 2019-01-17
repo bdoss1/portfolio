@@ -11,3 +11,5 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
 Route::get('portfolio/{slug}', 'PortfolioController@show')->name('portfolio.show');
 Route::post('portfolio/load/{page}', 'PortfolioController@load')->name('portfolio.load');
+
+Route::get('portfolio/category/{slug}', 'CategoryController@showPortfolio')->name('category.show_portfolio');

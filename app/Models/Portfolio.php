@@ -70,8 +70,8 @@ class Portfolio extends Model implements HasMedia
 
     public function registerMediaCollections()
     {
-        $this->addMediaCollection('preview')->singleFile();
-        $this->addMediaCollection('images');
+        $this->addMediaCollection('preview')->singleFile()->useDisk('portfolio_images');
+        $this->addMediaCollection('images')->useDisk('portfolio_images');
     }
 
     public function registerMediaConversions(Media $media = null)

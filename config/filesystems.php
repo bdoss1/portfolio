@@ -55,6 +55,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'portfolio_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/portfolio/images'),
+            'url' => env('APP_URL').'/storage/portfolio/images',
+            'visibility' => 'public',
+        ],
+
+        'portfolio_html' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/portfolio/html'),
+            'url' => env('APP_URL').'/storage/portfolio/html',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

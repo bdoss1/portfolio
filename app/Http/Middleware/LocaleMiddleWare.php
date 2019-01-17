@@ -16,6 +16,7 @@ class LocaleMiddleWare
     public function handle($request, Closure $next)
     {
         \App::setLocale(\CustomLocale::getCurrentLocale());
+        \Date::setLocale(\CustomLocale::getCurrentLocale());
         return $next($request);
     }
 }
