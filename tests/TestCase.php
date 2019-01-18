@@ -18,6 +18,17 @@ abstract class TestCase extends BaseTestCase
         $this->artisan('db:seed');
     }
 
+    protected function ajaxPost($uri, array $data = [])
+    {
+        return $this->post($uri, $data, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+    }
+
+
+    protected function ajaxGet($uri, array $data = [])
+    {
+        return $this->get($uri, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+    }
+
     public function auth($role = User::ROLE_ADMIN)
     {
         $user = User::whereHas('roles', function ($query) use ($role) {

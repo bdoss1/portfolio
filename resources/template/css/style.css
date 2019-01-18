@@ -1058,8 +1058,17 @@ footer .getintouch strong {
     letter-spacing: -2px;
 }
 
+.titlebar .page-title_small {
+    font-size: 60px;
+}
+
 .titlebar .page-title span {
     font-size: 120px;
+    font-weight: 900;
+}
+
+.titlebar .page-title_small span {
+    font-size: 80px;
     font-weight: 900;
 }
 

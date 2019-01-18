@@ -51,7 +51,7 @@ class PortfolioController extends Controller
 
     public function load(Request $request)
     {
-        if (!$request->ajax()) abort(404);
+        if (!$request->ajax()) abort(405);
 
         $items = $this->portfolioService->itemsQuery($request->get('page'))->get();
 

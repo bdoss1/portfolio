@@ -37,7 +37,7 @@ class PortfolioController extends Controller
 
     public function load(Request $request, $slug)
     {
-        if (!$request->ajax()) abort(404);
+        if (!$request->ajax()) abort(405);
 
         $category = Category::whereSlug($slug)->firstOrFail();
 

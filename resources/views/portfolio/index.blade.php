@@ -2,7 +2,11 @@
 
 @section('content')
     <section class="titlebar">
-        <h1 class="page-title"><span>@lang('custom.portfolio')</span></h1>
+        @isset($category)
+            <h1 class="page-title page-title_small"><span>@lang('custom.portfolio')</span> {{ $category->title }}</h1>
+        @else
+            <h1 class="page-title "><span>@lang('custom.portfolio')</span></h1>
+        @endisset
         <div id="particles-js"></div>
     </section>
 
