@@ -1,59 +1,47 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Category;
 
-use App\Entities\Seo;
 use App\Models\Category;
-use App\Models\Portfolio;
 use App\Services\Portfolio\PortfolioService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PortfolioController extends Controller
 {
-
     protected $portfolioService;
 
-    public function __construct(PortfolioService $service)
+    public function __construct(PortfolioService $portfolioService)
     {
-        $this->portfolioService = $service;
+        $this->portfolioService = $portfolioService;
     }
 
-    public function index(Seo $seo)
+    public function show($slug)
     {
-        $items = $this->portfolioService->itemsQuery()->get();
+        $category = Category::whereSlug($slug)->with(['seo'])->firstOrFail();
 
-        $seo->title = __('custom.portfolio');
+        $seo = $category->seo;
+
+        $items = $this->portfolioService->itemsWhereHasCategoryQuery($category->id)->get();
 
         $moreCountItems = ($items->count() === $this->portfolioService::ITEM_LIMIT)
-            ? ($this->portfolioService->moreCountItemsQuery(1)->get())->count()
+            ? ($this->portfolioService->moreCountItemsWhereHasCategoryQuery($category->id)->get())->count()
             : 0;
 
         $isButtonVisible = $moreCountItems != 0;
 
         $categories = Category::whereHas('portfolios')->get(['title', 'slug']);
 
-        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo'));
+        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'category', 'seo'));
     }
 
-    public function show($slug)
-    {
-        $item = Portfolio::whereSlug($slug)->with(['media', 'categories', 'seo'])->firstOrFail();
-
-        $next = Portfolio::where('id', '>', $item->id)->first(['slug', 'title']);
-
-        $seo = $item->seo;
-
-        if (!$next) {
-            $next = Portfolio::first(['slug', 'title']);
-        }
-        return view('portfolio.show')->with(compact('item', 'next', 'seo'));
-    }
-
-    public function load(Request $request)
+    public function load(Request $request, $slug)
     {
         if (!$request->ajax()) abort(404);
 
-        $items = $this->portfolioService->itemsQuery($request->get('page'))->get();
+        $category = Category::whereSlug($slug)->firstOrFail();
+
+        $items = $this->portfolioService->itemsWhereHasCategoryQuery($category->id, $request->get('page'))->get();
 
         $renderedItems = null;
 
@@ -64,7 +52,7 @@ class PortfolioController extends Controller
         }
 
         $moreCountItems = ($items->count() == $this->portfolioService::ITEM_LIMIT)
-            ? ($this->portfolioService->moreCountItemsQuery($request->get('page'))->get())->count()
+            ? ($this->portfolioService->moreCountItemsWhereHasCategoryQuery($category->id, $request->get('page'))->get())->count()
             : 0;
 
         $isButtonVisible = $moreCountItems != 0;
@@ -79,6 +67,4 @@ class PortfolioController extends Controller
             ]
         ]);
     }
-
-
 }

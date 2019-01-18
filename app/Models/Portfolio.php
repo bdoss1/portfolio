@@ -46,6 +46,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio disableCache()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio withCacheCooldownSeconds($seconds)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
  */
 class Portfolio extends Model implements HasMedia
 {

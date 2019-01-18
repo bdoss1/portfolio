@@ -24,129 +24,17 @@
 
     <div class="cont">
         <section id="portfolio" class="portfolio">
-            <div class="portfolio-filter row">
-                <div data-filter=".digital" class="cbp-filter-item">Digital Works</div>
-                <div data-filter=".photography" class="cbp-filter-item">Photography</div>
-                <div data-filter=".branding" class="cbp-filter-item">Branding</div>
-                <div data-filter="*" class="cbp-filter-item cbp-filter-item-active">All Works</div>
-            </div>
             <div id="grid-container">
-                <!-- Item -->
-                <div class="cbp-item photography">
-                    <a href="portfolio/work-1.html">
-                        <figure class="fig">
-                            <img src="images/work-1.jpg" alt="">
-                            <figcaption>
-                                <h3>Cosplay</h3>
-                                <p>Photography</p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item digital">
-                    <a href="portfolio/work-2.html">
-                        <figure class="fig">
-                            <img src="images/work-2.jpg" alt="">
-                            <figcaption>
-                                <h3>Metra Park</h3>
-                                <p>Branding </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item digital">
-                    <a href="portfolio/work-3.html">
-                        <figure class="fig">
-                            <img src="images/work-3.jpg" alt="">
-                            <figcaption>
-                                <h3>Socialmedia</h3>
-                                <p>Digital </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item branding">
-                    <a href="portfolio/work-5.html">
-                        <figure class="fig">
-                            <img src="images/work-4.jpg" alt="">
-                            <figcaption>
-                                <h3>Vrai Vodka</h3>
-                                <p>Branding </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item digital">
-                    <a href="portfolio/work-4.html">
-                        <figure class="fig">
-                            <img src="images/work-5.jpg" alt="">
-                            <figcaption>
-                                <h3>Smart Wallet</h3>
-                                <p>Digital </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item branding">
-                    <a href="portfolio/work-6.html">
-                        <figure class="fig">
-                            <img src="images/work-6.jpg" alt="">
-                            <figcaption>
-                                <h3>Motorcycles</h3>
-                                <p>Branding </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item branding">
-                    <a href="portfolio/work-8.html">
-                        <figure class="fig">
-                            <img src="images/work-7.jpg" alt="">
-                            <figcaption>
-                                <h3>Racquel Natasha</h3>
-                                <p>Branding </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item branding">
-                    <a href="portfolio/work-7.html">
-                        <figure class="fig">
-                            <img src="images/work-8.jpg" alt="">
-                            <figcaption>
-                                <h3>Swacket</h3>
-                                <p>Branding </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <!-- Item -->
-                <div class="cbp-item branding">
-                    <a href="portfolio/work-9.html">
-                        <figure class="fig">
-                            <img src="images/work-9.jpg" alt="">
-                            <figcaption>
-                                <h3>The Gang</h3>
-                                <p>Branding </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
+                @foreach($portfolioItems as $portfolioItem)
+                    @include('portfolio._item', ['item' => $portfolioItem])
+                @endforeach
             </div>
             <!-- load more button -->
             <div id="port-loadMore" class="cbp-l-loadMore-button top_120 bottom_90">
-                <a href="port.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
-                        <span class="cbp-l-loadMore-defaultText">Load More (<span
-                                    class="cbp-l-loadMore-loadItems">2</span>)</span>
-                    <span class="cbp-l-loadMore-loadingText">Loading...</span>
-                    <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
+                <a href="{{ route('portfolio.index') }}" class="cbp-l-loadMore-link site-btn" rel="nofollow">
+                        <span class="cbp-l-loadMore-defaultText">@lang('custom.all_works') (<span
+                                    class="cbp-l-loadMore-loadItems">{{ $portfolioItemsCount }}</span>)</span>
+
                 </a>
             </div>
         </section>

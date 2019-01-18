@@ -6,10 +6,10 @@
  * Time: 15:23
  */
 
-namespace App\Services;
+namespace App\Services\Portfolio;
 
 
-class PortfolioHtmlService
+class HtmlService
 {
     public static function get($dir = null)
     {

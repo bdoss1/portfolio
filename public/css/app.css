@@ -61,21 +61,6 @@ input.inp:focus, textarea.form-message:focus {
 /* Css Styles                        */
 /*---------------------------------- */
 
-/**
-	Gorge - Portfolio Template 
-	Author : Tavonline
-	Copyright 2018
-
-/* Table of Content
-==================================================
-	
-	1. Body and Core Css
-	2. Home Page
-     2.1 Portfolio Section
-     2.2 Twitter Section
-
-
-
 /*------------------------ 1 Body and Core Css ------------------------*/
 
 body {
@@ -2052,5 +2037,74 @@ textarea.form-message {
 
 
 
+@charset "UTF-8";
 
+.cbp-item figure figcaption {
+  position: absolute;
+  padding-top: 0;
+  width: 95%;
+  margin: 10px 0 0 0;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+.cbp-item figure:hover figcaption h3,
+.cbp-item figure:hover figcaption p {
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+  opacity: 1;
+}
+
+.breadcrumbs ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.breadcrumbs li {
+  float: left;
+}
+
+.breadcrumbs li:before {
+  float: left;
+  margin: -2px 2.5px 0;
+  content: "\2192";
+}
+
+.breadcrumbs li:first-child:before {
+  display: none;
+}
+
+.breadcrumbs li a {
+  color: #979797;
+}
+
+.categories-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.categories-menu li {
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 15px;
+}
+
+.categories-menu a {
+  color: #000;
+}
+
+.categories-menu li.exact-active a,
+.categories-menu a:hover {
+  color: #ea0026;
+}
+
+.full-menu .full-inner nav ul li.exact-active a {
+  color: #ea0026;
+}
 

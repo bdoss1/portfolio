@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 class PortfolioSeeder extends Seeder
 {
 
-    const ITEMS_LIMIT = 21;
+    const ITEMS_LIMIT = 101;
 
     public function run()
     {

@@ -4,7 +4,10 @@
     <div class="cont">
         <section class="portfolio-single type-3 top_90 row">
             <div class="col-md-8 offset-md-2 text-center">
-                <h1 class="title bottom_45 top_120">{{ $item->title }}</h1>
+                <div class="breadcrumbs top_15 bottom_15">
+                    {{ Breadcrumbs::render('portfolio.show', $item) }}
+                </div>
+                <h1 class="title bottom_45 top_45">{{ $item->title }}</h1>
                 <p class="bottom_30">{!! $item->description  !!}</p>
                 <ul style="text-align: left; margin-bottom: 30px;" class="information">
                     <li><span>@lang('custom.date'):</span> {{ \Date::parse($item->published_at)->format('j F Y') }}</li>
@@ -15,13 +18,13 @@
                     <li><span>@lang('custom.categories'):</span>
                         @foreach($item->categories as $category)
                             <a target="_blank"
-                               href="{{ route('category.show_portfolio', $category->slug) }}">{{ $category->title }}</a>
+                               href="{{ route('portfolio.category.show', $category->slug) }}">{{ $category->title }}</a>
                         @endforeach
                     </li>
                 </ul>
 
                 @php
-                    $htmlItems = \App\Services\PortfolioHtmlService::get($item->dir_path);
+                    $htmlItems = \App\Services\Portfolio\HtmlService::get($item->dir_path);
                 @endphp
                 @if($htmlItems)
                     <ul style="text-align: left; display: block;" class="information">

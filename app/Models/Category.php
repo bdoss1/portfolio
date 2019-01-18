@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\HasSeoTrait;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -24,11 +26,18 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereTitle($value)
  * @mixin \Eloquent
+ * @property-read mixed $translations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Portfolio[] $portfolios
+ * @property-read \App\Models\Seo $seo
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category disableCache()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category withCacheCooldownSeconds($seconds)
  */
 class Category extends Model
 {
     use HasTranslations;
     use HasSlug;
+    use Cachable;
+    use HasSeoTrait;
 
     public $translatable = ['title'];
 

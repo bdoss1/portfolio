@@ -26,10 +26,8 @@ $(document).ready(function() {
 
     $('#grid-container').cubeportfolio({
         layoutMode: 'grid',
-        filters: '.portfolio-filter',
         gridAdjustment: 'responsive',
         animationType: 'skew',
-        defaultFilter: '*',
         gapVertical: 30,
         gapHorizontal: 30,
         singlePageAnimation: 'fade',
@@ -51,29 +49,7 @@ $(document).ready(function() {
                 caption: '',
                 gapHorizontal: 50,
             }
-        }],
-        singlePageCallback: function (url, element) {
-            var t = this;
-            $.ajax({
-                url: url,
-                type: 'GET',
-                dataType: 'html',
-                timeout: 30000
-            })
-                .done(function (result) {
-                    t.updateSinglePage(result);
-                })
-                .fail(function () {
-                    t.updateSinglePage('AJAX Error! Please refresh the page!');
-                });
-        },
-        plugins: {
-            loadMore: {
-                element: '#port-loadMore',
-                action: 'click',
-                loadItems: 3,
-            }
-        }
+        }]
     });
 
 });

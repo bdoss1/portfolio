@@ -5,5 +5,12 @@ return [
     'categories' => 'Categories',
     'next' => 'next',
     'date' => 'Date',
-    'html' => 'Html'
+    'html' => 'Html',
+    'portfolio' => 'Portfolio',
+    'home' => 'Home',
+    'blog' => 'Blog',
+    'about' => 'About me',
+    'contact' => 'Contact',
+    'all_works' => 'All works',
+    'load_more' => 'Load More'
 ];

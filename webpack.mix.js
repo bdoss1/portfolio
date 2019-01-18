@@ -4,6 +4,7 @@ const publicDir = 'public';
 mix.setPublicPath(publicDir + '/');
 
 mix.js('resources/js/app.js', 'js')
+    .js('resources/js/portfolio.js', 'js')
     .sass('resources/sass/app.scss', 'css');
 
 mix.version();

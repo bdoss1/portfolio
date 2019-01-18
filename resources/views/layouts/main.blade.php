@@ -7,10 +7,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Gorge Portfolio Template</title>
-    <meta name="description" content="Gorge Portfolio Template">
-    <meta name="keywords" content="personal, portfolio">
-
+    @isset($seo)
+        <title>{{ $seo->title ?? config('app.name', 'Portfolio') }}</title>
+        @if(!empty($seo->description))
+            <meta name="description" content="{{ $seo->description }}">
+        @endif
+        @if(!empty($seo->keywords))
+            <meta name="keywords" content="{{ $seo->keywords }}">
+        @endif
+    @else
+        <title>{{ config('app.name', 'Portfolio') }}</title>
+    @endisset
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
     <!-- Google Web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
@@ -29,7 +36,13 @@
 
     <!-- HEADER -->
     <header>
-        <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
+        @if(is_home())
+            <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
+        @else
+            <a href="{{ route('index') }}">
+                <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
+            </a>
+        @endif
         <div class="nav-icon">
             <span></span>
             <span></span>
@@ -42,12 +55,15 @@
     <div class="full-menu">
         <div class="full-inner row">
             <nav class="col-md-8">
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="about.html">Обо мне</a></li>
-                    <li><a href="news.html">Блог</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
-                </ul>
+                {{
+                    \Menu::new()
+                        ->route('index', __('custom.home'))
+                        ->route('about', __('custom.about'))
+                        ->route('portfolio.index', __('custom.portfolio'))
+                        ->route('blog.index', __('custom.blog'))
+                        ->route('contact', __('custom.contact'))
+                        ->setActiveFromRequest()
+                 }}
             </nav>
             <div class="col-md-4 full-contact">
                 <ul>
@@ -78,7 +94,14 @@
         <div class="cont">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12 copyright">
-                    <img src="{{ asset('images/logo2.png') }}" alt="">
+                    @if(is_home())
+                        <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
+                    @else
+                        <a href="{{ route('index') }}">
+                            <img src="{{ asset('images/logo2.png') }}"
+                                 alt="Профессиональная разработка сайтов - yarmat.su">
+                        </a>
+                    @endif
                     <p>© 2018 Gorge Creative Agency</p>
                 </div>
                 <div class="col-md-4 d-sm-none d-md-block">

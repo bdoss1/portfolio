@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.20 on 2019-01-17 13:09:11.
+ * Generated for Laravel 5.7.20 on 2019-01-18 11:46:48.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3085,7 +3085,7 @@ namespace Illuminate\Support\Facades {
          * @param int $seconds
          * @return \Illuminate\Contracts\Cache\Lock
          * @static
-         */
+         */ 
         public static function lock($name, $seconds = 0)
         {
             return \Illuminate\Cache\RedisStore::lock($name, $seconds);
@@ -3106,8 +3106,8 @@ namespace Illuminate\Support\Facades {
          * Get the Redis connection instance.
          *
          * @return \Predis\ClientInterface 
-         * @static 
-         */
+         * @static
+         */ 
         public static function connection()
         {
             return \Illuminate\Cache\RedisStore::connection();
@@ -3119,7 +3119,7 @@ namespace Illuminate\Support\Facades {
          * @param string $connection
          * @return void
          * @static
-         */
+         */ 
         public static function setConnection($connection)
         {
             \Illuminate\Cache\RedisStore::setConnection($connection);
@@ -3129,8 +3129,8 @@ namespace Illuminate\Support\Facades {
          * Get the Redis database instance.
          *
          * @return \Illuminate\Contracts\Redis\Factory 
-         * @static 
-         */
+         * @static
+         */ 
         public static function getRedis()
         {
             return \Illuminate\Cache\RedisStore::getRedis();
@@ -3153,7 +3153,7 @@ namespace Illuminate\Support\Facades {
          * @param string $prefix
          * @return void
          * @static
-         */
+         */ 
         public static function setPrefix($prefix)
         {
             \Illuminate\Cache\RedisStore::setPrefix($prefix);
@@ -7557,19 +7557,19 @@ namespace Illuminate\Support\Facades {
     }
 
     /**
-     *
+     * 
      *
      */
     class Redis
     {
-
+        
         /**
          * Get a Redis connection by name.
          *
          * @param string|null $name
          * @return \Illuminate\Redis\Connections\Connection
          * @static
-         */
+         */ 
         public static function connection($name = null)
         {
             return \Illuminate\Redis\RedisManager::connection($name);
@@ -7579,10 +7579,10 @@ namespace Illuminate\Support\Facades {
          * Resolve the given connection by name.
          *
          * @param string|null $name
-         * @return \Illuminate\Redis\Connections\Connection
+         * @return \Illuminate\Redis\Connections\Connection 
          * @throws \InvalidArgumentException
          * @static
-         */
+         */ 
         public static function resolve($name = null)
         {
             return \Illuminate\Redis\RedisManager::resolve($name);
@@ -7593,7 +7593,7 @@ namespace Illuminate\Support\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function connections()
         {
             return \Illuminate\Redis\RedisManager::connections();
@@ -7604,7 +7604,7 @@ namespace Illuminate\Support\Facades {
          *
          * @return void
          * @static
-         */
+         */ 
         public static function enableEvents()
         {
             \Illuminate\Redis\RedisManager::enableEvents();
@@ -7615,7 +7615,7 @@ namespace Illuminate\Support\Facades {
          *
          * @return void
          * @static
-         */
+         */ 
         public static function disableEvents()
         {
             \Illuminate\Redis\RedisManager::disableEvents();
@@ -14099,6 +14099,226 @@ namespace Barryvdh\Debugbar {
  
 }
 
+namespace DaveJamesMiller\Breadcrumbs\Facades {
+
+    /**
+     * Breadcrumbs facade - allows easy access to the Manager instance.
+     *
+     * @see BreadcrumbsManager
+     */
+    class Breadcrumbs
+    {
+
+        /**
+         * Register a breadcrumb-generating callback for a page.
+         *
+         * @param string $name The name of the page.
+         * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
+         *     accept additional parameters.
+         * @return void
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+         *     used.
+         * @static
+         */
+        public static function for($name, $callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::for($name, $callback);
+        }
+
+        /**
+         * Register a breadcrumb-generating callback for a page.
+         *
+         * For backwards-compatibility with v5.0.0 and below.
+         *
+         * @see self::for()
+         * @param string $name The name of the page.
+         * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
+         *     accept additional parameters.
+         * @return void
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+         *     used.
+         * @static
+         */
+        public static function register($name, $callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::register($name, $callback);
+        }
+
+        /**
+         * Register a closure to call before generating breadcrumbs for the current page.
+         *
+         * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
+         *
+         * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
+         * @return void
+         * @static
+         */
+        public static function before($callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::before($callback);
+        }
+
+        /**
+         * Register a closure to call after generating breadcrumbs for the current page.
+         *
+         * For example, this can be used to append the current page number when using pagination.
+         *
+         * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
+         * @return void
+         * @static
+         */
+        public static function after($callback)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::after($callback);
+        }
+
+        /**
+         * Check if a breadcrumb with the given name exists.
+         *
+         * If no name is given, defaults to the current route name.
+         *
+         * @param string|null $name The page name.
+         * @return bool Whether there is a registered callback with that name.
+         * @static
+         */
+        public static function exists($name = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::exists($name);
+        }
+
+        /**
+         * Generate a set of breadcrumbs for a page.
+         *
+         * @param string|null $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return \Illuminate\Support\Collection The generated breadcrumbs.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
+         *     doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
+         *     are) not registered.
+         * @static
+         */
+        public static function generate($name = null, $params = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::generate($name, $params);
+        }
+
+        /**
+         * Render breadcrumbs for a page with the specified view.
+         *
+         * @param string $view The name of the view to render.
+         * @param string|null $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return \Illuminate\Support\HtmlString The generated HTML.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @static
+         */
+        public static function view($view, $name = null, $params = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::view($view, $name, $params);
+        }
+
+        /**
+         * Render breadcrumbs for a page with the default view.
+         *
+         * @param string|null $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return \Illuminate\Support\HtmlString The generated HTML.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @static
+         */
+        public static function render($name = null, $params = null)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::render($name, $params);
+        }
+
+        /**
+         * Get the last breadcrumb for the current page.
+         *
+         * Optionally pass a
+         *
+         * @return \stdClass|null The breadcrumb for the current page.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
+         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @static
+         */
+        public static function current()
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::current();
+        }
+
+        /**
+         * Set the current route name and parameters to use when calling render() or generate() with no parameters.
+         *
+         * @param string $name The name of the current page.
+         * @param mixed $params The parameters to pass to the closure for the current page.
+         * @return void
+         * @static
+         */
+        public static function setCurrentRoute($name, $params = null)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::setCurrentRoute($name, $params);
+        }
+
+        /**
+         * Clear the previously set route name and parameters to use when calling render() or generate() with no parameters.
+         *
+         * Next time it will revert to the default behaviour of using the current route from Laravel.
+         *
+         * @return void
+         * @static
+         */
+        public static function clearCurrentRoute()
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::clearCurrentRoute();
+        }
+
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void
+         * @static
+         */
+        public static function macro($name, $macro)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::macro($name, $macro);
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void
+         * @throws \ReflectionException
+         * @static
+         */
+        public static function mixin($mixin)
+        {
+            \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::mixin($mixin);
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool
+         * @static
+         */
+        public static function hasMacro($name)
+        {
+            return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
+        }
+
+    }
+
+}
+
 namespace Intervention\Image\Facades { 
 
     /**
@@ -14113,7 +14333,7 @@ namespace Intervention\Image\Facades {
          *
          * @param array $config
          * @return self
-         * @static
+         * @static 
          */ 
         public static function configure($config = array())
         {
@@ -14125,7 +14345,7 @@ namespace Intervention\Image\Facades {
          *
          * @param mixed $data
          * @return \Intervention\Image\Image
-         * @static
+         * @static 
          */ 
         public static function make($data)
         {
@@ -14139,7 +14359,7 @@ namespace Intervention\Image\Facades {
          * @param int $height
          * @param mixed $background
          * @return \Intervention\Image\Image
-         * @static
+         * @static 
          */ 
         public static function canvas($width, $height, $background = null)
         {
@@ -14154,7 +14374,7 @@ namespace Intervention\Image\Facades {
          * @param int $lifetime
          * @param boolean $returnObj
          * @return \Image
-         * @static
+         * @static 
          */ 
         public static function cache($callback, $lifetime = null, $returnObj = false)
         {
@@ -14165,15 +14385,1008 @@ namespace Intervention\Image\Facades {
 
 }
 
-namespace Jenssegers\Date {
+namespace Jenssegers\Date { 
 
     /**
-     *
+     * 
      *
      */
     class Date
     {
 
+    }
+
+}
+
+namespace Spatie\Menu\Laravel\Facades {
+
+    /**
+     *
+     *
+     */
+    class Menu
+    {
+
+        /**
+         * Set all relevant children active based on the current request's URL.
+         *
+         * /, /about, /contact => request to /about will set the about link active.
+         *
+         * /en, /en/about, /en/contact => request to /en won't set /en active if the
+         *                                request root is set to /en.
+         *
+         * @param string $requestRoot If the link's URL is an exact match with the
+         *                            request root, the link won't be set active.
+         *                            This behavior is to avoid having home links
+         *                            active on every request.
+         * @return $this
+         * @static
+         */
+        public static function setActiveFromRequest($requestRoot = '/')
+        {
+            return \Spatie\Menu\Laravel\Menu::setActiveFromRequest($requestRoot);
+        }
+
+        /**
+         *
+         *
+         * @param string $path
+         * @param string $text
+         * @param mixed $parameters
+         * @param bool|null $secure
+         * @return $this
+         * @static
+         */
+        public static function url($path, $text, $parameters = array(), $secure = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::url($path, $text, $parameters, $secure);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $action
+         * @param string $text
+         * @param mixed $parameters
+         * @param bool $absolute
+         * @return $this
+         * @static
+         */
+        public static function action($action, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::action($action, $text, $parameters, $absolute);
+        }
+
+        /**
+         *
+         *
+         * @param string $name
+         * @param string $text
+         * @param mixed $parameters
+         * @param bool $absolute
+         * @return $this
+         * @static
+         */
+        public static function route($name, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::route($name, $text, $parameters, $absolute);
+        }
+
+        /**
+         *
+         *
+         * @param string $name
+         * @param array $data
+         * @return $this
+         * @static
+         */
+        public static function view($name, $data = array())
+        {
+            return \Spatie\Menu\Laravel\Menu::view($name, $data);
+        }
+
+        /**
+         *
+         *
+         * @param bool $condition
+         * @param string $path
+         * @param string $text
+         * @param array $parameters
+         * @param bool|null $secure
+         * @return $this
+         * @static
+         */
+        public static function urlIf($condition, $path, $text, $parameters = array(), $secure = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::urlIf($condition, $path, $text, $parameters, $secure);
+        }
+
+        /**
+         *
+         *
+         * @param bool $condition
+         * @param string|array $action
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this
+         * @static
+         */
+        public static function actionIf($condition, $action, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::actionIf($condition, $action, $text, $parameters, $absolute);
+        }
+
+        /**
+         *
+         *
+         * @param bool $condition
+         * @param string $name
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this
+         * @static
+         */
+        public static function routeIf($condition, $name, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::routeIf($condition, $name, $text, $parameters, $absolute);
+        }
+
+        /**
+         *
+         *
+         * @param $condition
+         * @param string $name
+         * @param array $data
+         * @return $this
+         * @static
+         */
+        public static function viewIf($condition, $name, $data = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::viewIf($condition, $name, $data);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param \Spatie\Menu\Item $item
+         * @return $this
+         * @static
+         */
+        public static function addIfCan($authorization, $item)
+        {
+            return \Spatie\Menu\Laravel\Menu::addIfCan($authorization, $item);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param string $url
+         * @param string $text
+         * @return $this
+         * @static
+         */
+        public static function linkIfCan($authorization, $url, $text)
+        {
+            return \Spatie\Menu\Laravel\Menu::linkIfCan($authorization, $url, $text);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param string $html
+         * @return \Spatie\Menu\Laravel\Menu
+         * @static
+         */
+        public static function htmlIfCan($authorization, $html)
+        {
+            return \Spatie\Menu\Laravel\Menu::htmlIfCan($authorization, $html);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
+         * @param callable|\Spatie\Menu\Menu|null $menu
+         * @return $this
+         * @static
+         */
+        public static function submenuIfCan($authorization, $header, $menu = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::submenuIfCan($authorization, $header, $menu);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param string $path
+         * @param string $text
+         * @param array $parameters
+         * @param bool|null $secure
+         * @return $this
+         * @static
+         */
+        public static function urlIfCan($authorization, $path, $text, $parameters = array(), $secure = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::urlIfCan($authorization, $path, $text, $parameters, $secure);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param string|array $action
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this
+         * @static
+         */
+        public static function actionIfCan($authorization, $action, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::actionIfCan($authorization, $action, $text, $parameters, $absolute);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $authorization
+         * @param string $name
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this
+         * @static
+         */
+        public static function routeIfCan($authorization, $name, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::routeIfCan($authorization, $name, $text, $parameters, $absolute);
+        }
+
+        /**
+         *
+         *
+         * @param $authorization
+         * @param string $name
+         * @param array $data
+         * @return $this
+         * @internal param $condition
+         * @static
+         */
+        public static function viewIfCan($authorization, $name, $data = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::viewIfCan($authorization, $name, $data);
+        }
+
+        /**
+         *
+         *
+         * @return string
+         * @static
+         */
+        public static function toHtml()
+        {
+            return \Spatie\Menu\Laravel\Menu::toHtml();
+        }
+
+        /**
+         * Create a new menu, optionally prefilled with items.
+         *
+         * @param array $items
+         * @return static
+         * @static
+         */
+        public static function new($items = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::new($items);
+        }
+
+        /**
+         * Build a new menu from an array. The callback receives a menu instance as
+         * the accumulator, the array item as the second parameter, and the item's
+         * key as the third.
+         *
+         * @param array|\Iterator $items
+         * @param callable $callback
+         * @param \Spatie\Menu\Menu|null $initial
+         * @return static
+         * @static
+         */
+        public static function build($items, $callback, $initial = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::build($items, $callback, $initial);
+        }
+
+        /**
+         * Fill a menu from an array. The callback receives a menu instance as
+         * the accumulator, the array item as the second parameter, and the item's
+         * key as the third.
+         *
+         * @param array|\Iterator $items
+         * @param callable $callback
+         * @return static
+         * @static
+         */
+        public static function fill($items, $callback)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::fill($items, $callback);
+        }
+
+        /**
+         * Add an item to the menu. This also applies all registered filters to the
+         * item.
+         *
+         * @param \Spatie\Menu\Item $item
+         * @return $this
+         * @static
+         */
+        public static function add($item)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::add($item);
+        }
+
+        /**
+         * Add an item to the menu if a (non-strict) condition is met.
+         *
+         * @param bool $condition
+         * @param \Spatie\Menu\Item $item
+         * @return $this
+         * @static
+         */
+        public static function addIf($condition, $item)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addIf($condition, $item);
+        }
+
+        /**
+         * Shortcut function to add a plain link to the menu.
+         *
+         * @param string $url
+         * @param string $text
+         * @return $this
+         * @static
+         */
+        public static function link($url, $text)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::link($url, $text);
+        }
+
+        /**
+         * Shortcut function to add an empty item to the menu.
+         *
+         * @return $this
+         * @static
+         */
+        public static function empty()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::empty();
+        }
+
+        /**
+         * Add a link to the menu if a (non-strict) condition is met.
+         *
+         * @param bool $condition
+         * @param string $url
+         * @param string $text
+         * @return $this
+         * @static
+         */
+        public static function linkIf($condition, $url, $text)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::linkIf($condition, $url, $text);
+        }
+
+        /**
+         * Shortcut function to add raw html to the menu.
+         *
+         * @param string $html
+         * @param array $parentAttributes
+         * @return $this
+         * @static
+         */
+        public static function html($html, $parentAttributes = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::html($html, $parentAttributes);
+        }
+
+        /**
+         * Add a chunk of html if a (non-strict) condition is met.
+         *
+         * @param bool $condition
+         * @param string $html
+         * @param array $parentAttributes
+         * @return $this
+         * @static
+         */
+        public static function htmlIf($condition, $html, $parentAttributes = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::htmlIf($condition, $html, $parentAttributes);
+        }
+
+        /**
+         *
+         *
+         * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
+         * @param callable|\Spatie\Menu\Menu|null $menu
+         * @return $this
+         * @static
+         */
+        public static function submenu($header, $menu = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::submenu($header, $menu);
+        }
+
+        /**
+         *
+         *
+         * @param bool $condition
+         * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
+         * @param callable|\Spatie\Menu\Menu|null $menu
+         * @return $this
+         * @static
+         */
+        public static function submenuIf($condition, $header, $menu = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::submenuIf($condition, $header, $menu);
+        }
+
+        /**
+         * Iterate over all the items and apply a callback. If you typehint the
+         * item parameter in the callable, it wil only be applied to items of that
+         * type.
+         *
+         * @param callable $callable
+         * @return $this
+         * @static
+         */
+        public static function each($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::each($callable);
+        }
+
+        /**
+         * Register a filter to the menu. When an item is added, all filters will be
+         * applied to the item. If you typehint the item parameter in the callable, it
+         * will only be applied to items of that type.
+         *
+         * @param callable $callable
+         * @return $this
+         * @static
+         */
+        public static function registerFilter($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::registerFilter($callable);
+        }
+
+        /**
+         * Apply a callable to all existing items, and register it as a filter so it
+         * will get applied to all new items too. If you typehint the item parameter
+         * in the callable, it wil only be applied to items of that type.
+         *
+         * @param callable $callable
+         * @return $this
+         * @static
+         */
+        public static function applyToAll($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::applyToAll($callable);
+        }
+
+        /**
+         * Wrap the entire menu in an html element. This is another level of
+         * wrapping above the `wrapperTag`.
+         *
+         * @param string $element
+         * @param array $attributes
+         * @return $this
+         * @static
+         */
+        public static function wrap($element, $attributes = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::wrap($element, $attributes);
+        }
+
+        /**
+         * Determine whether the menu is active.
+         *
+         * @return bool
+         * @static
+         */
+        public static function isActive()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::isActive();
+        }
+
+        /**
+         * A menu can be active but not exact-active.
+         *
+         * @return bool
+         * @static
+         */
+        public static function isExactActive()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::isExactActive();
+        }
+
+        /**
+         * Set multiple items in the menu as active based on a callable that filters
+         * through items. If you typehint the item parameter in the callable, it will
+         * only be applied to items of that type.
+         *
+         * @param callable|string $urlOrCallable
+         * @param string $root
+         * @return $this
+         * @static
+         */
+        public static function setActive($urlOrCallable, $root = '/')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActive($urlOrCallable, $root);
+        }
+
+        /**
+         * Set the class name that will be used on exact-active items for this menu.
+         *
+         * @param string $class
+         * @return $this
+         * @static
+         */
+        public static function setExactActiveClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setExactActiveClass($class);
+        }
+
+        /**
+         * Set all relevant children active based on the current request's URL.
+         *
+         * /, /about, /contact => request to /about will set the about link active.
+         *
+         * /en, /en/about, /en/contact => request to /en won't set /en active if the
+         *                                request root is set to /en.
+         *
+         * @param string $url The current request url.
+         * @param string $root If the link's URL is an exact match with the request
+         *                     root, the link won't be set active. This behavior is
+         *                     to avoid having home links active on every request.
+         * @return $this
+         * @static
+         */
+        public static function setActiveFromUrl($url, $root = '/')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveFromUrl($url, $root);
+        }
+
+        /**
+         *
+         *
+         * @param callable $callable
+         * @return $this
+         * @static
+         */
+        public static function setActiveFromCallable($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveFromCallable($callable);
+        }
+
+        /**
+         * Set the class name that will be used on active items for this menu.
+         *
+         * @param string $class
+         * @return $this
+         * @static
+         */
+        public static function setActiveClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveClass($class);
+        }
+
+        /**
+         * Add a class to all items in the menu.
+         *
+         * @param string $class
+         * @return $this
+         * @static
+         */
+        public static function addItemClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addItemClass($class);
+        }
+
+        /**
+         * Set an attribute on all items in the menu.
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this
+         * @static
+         */
+        public static function setItemAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setItemAttribute($attribute, $value);
+        }
+
+        /**
+         * Add a parent class to all items in the menu.
+         *
+         * @param string $class
+         * @return $this
+         * @static
+         */
+        public static function addItemParentClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addItemParentClass($class);
+        }
+
+        /**
+         * Add a parent attribute to all items in the menu.
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this
+         * @static
+         */
+        public static function setItemParentAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setItemParentAttribute($attribute, $value);
+        }
+
+        /**
+         * Set tag for items wrapper.
+         *
+         * @param string|null $wrapperTagName
+         * @return $this
+         * @static
+         */
+        public static function setWrapperTag($wrapperTagName = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setWrapperTag($wrapperTagName);
+        }
+
+        /**
+         * Set tag for items wrapper.
+         *
+         * @param string|null $wrapperTagName
+         * @return $this
+         * @static
+         */
+        public static function withoutWrapperTag()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::withoutWrapperTag();
+        }
+
+        /**
+         * Set the parent tag name.
+         *
+         * @param string|null $parentTagName
+         * @return $this
+         * @static
+         */
+        public static function setParentTag($parentTagName = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setParentTag($parentTagName);
+        }
+
+        /**
+         * Render items without a parent tag.
+         *
+         * @return $this
+         * @static
+         */
+        public static function withoutParentTag()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::withoutParentTag();
+        }
+
+        /**
+         * Set whether active class should (also) be on link.
+         *
+         * @param $activeClassOnLink
+         * @return $this
+         * @static
+         */
+        public static function setActiveClassOnLink($activeClassOnLink = true)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveClassOnLink($activeClassOnLink);
+        }
+
+        /**
+         * Set whether active class should (also) be on parent.
+         *
+         * @param $activeClassOnParent
+         * @return $this
+         * @static
+         */
+        public static function setActiveClassOnParent($activeClassOnParent = true)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveClassOnParent($activeClassOnParent);
+        }
+
+        /**
+         *
+         *
+         * @param bool $condition
+         * @param callable $callable
+         * @return $this
+         * @static
+         */
+        public static function if($condition, $callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::if($condition, $callable);
+        }
+
+        /**
+         * Create a empty blueprint of the menu (copies `filters` and `activeClass`).
+         *
+         * @return static
+         * @static
+         */
+        public static function blueprint()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::blueprint();
+        }
+
+        /**
+         * Render the menu.
+         *
+         * @return string
+         * @static
+         */
+        public static function render()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::render();
+        }
+
+        /**
+         * The amount of items in the menu.
+         *
+         * @return int
+         * @static
+         */
+        public static function count()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::count();
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function getIterator()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::getIterator();
+        }
+
+        /**
+         *
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this
+         * @static
+         */
+        public static function setAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setAttribute($attribute, $value);
+        }
+
+        /**
+         *
+         *
+         * @param array $attributes
+         * @return $this
+         * @static
+         */
+        public static function setAttributes($attributes)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setAttributes($attributes);
+        }
+
+        /**
+         *
+         *
+         * @param string $class
+         * @return $this
+         * @static
+         */
+        public static function addClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addClass($class);
+        }
+
+        /**
+         * Return an array of attributes to apply on the parent. This generally means
+         * the attributes that should be applied on the <li> tag.
+         *
+         * @return array
+         * @static
+         */
+        public static function parentAttributes()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::parentAttributes();
+        }
+
+        /**
+         *
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this
+         * @static
+         */
+        public static function setParentAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setParentAttribute($attribute, $value);
+        }
+
+        /**
+         *
+         *
+         * @param array $attributes
+         * @return $this
+         * @static
+         */
+        public static function setParentAttributes($attributes)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setParentAttributes($attributes);
+        }
+
+        /**
+         *
+         *
+         * @param string $class
+         * @return $this
+         * @static
+         */
+        public static function addParentClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addParentClass($class);
+        }
+
+        /**
+         * Prepend the anchor with a string of html on render.
+         *
+         * @param string $prepend
+         * @return $this
+         * @static
+         */
+        public static function prepend($prepend)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::prepend($prepend);
+        }
+
+        /**
+         * Prepend the text with a string of html on render if a certain condition is
+         * met.
+         *
+         * @param bool $condition
+         * @param string $prepend
+         * @return $this
+         * @static
+         */
+        public static function prependIf($condition, $prepend)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::prependIf($condition, $prepend);
+        }
+
+        /**
+         * Append a text of html to the menu on render.
+         *
+         * @param string $append
+         * @return $this
+         * @static
+         */
+        public static function append($append)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::append($append);
+        }
+
+        /**
+         * Append the text with a string of html on render if a certain condition is
+         * met.
+         *
+         * @param bool $condition
+         * @param string $append
+         * @return static
+         * @static
+         */
+        public static function appendIf($condition, $append)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::appendIf($condition, $append);
+        }
+
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void
+         * @static
+         */
+        public static function macro($name, $macro)
+        {
+            \Spatie\Menu\Laravel\Menu::macro($name, $macro);
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void
+         * @throws \ReflectionException
+         * @static
+         */
+        public static function mixin($mixin)
+        {
+            \Spatie\Menu\Laravel\Menu::mixin($mixin);
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool
+         * @static
+         */
+        public static function hasMacro($name)
+        {
+            return \Spatie\Menu\Laravel\Menu::hasMacro($name);
+        }
+         
     }
 
 }
@@ -16618,11 +17831,19 @@ namespace  {
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
+    class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs
+    {
+    }
+
     class Image extends \Intervention\Image\Facades\Image
     {
     }
 
     class Date extends \Jenssegers\Date\Date
+    {
+    }
+
+    class Menu extends \Spatie\Menu\Laravel\Facades\Menu
     {
     }
  
