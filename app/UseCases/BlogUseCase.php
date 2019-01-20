@@ -6,22 +6,24 @@
  * Time: 12:31
  */
 
-namespace App\Services\Portfolio;
+namespace App\UseCases;
 
 
-use App\Models\Portfolio;
+use App\Models\Blog;
 
-class PortfolioService
+class BlogUseCase
 {
     const ITEM_LIMIT = 9;
 
     public function itemsQuery($page = 1)
     {
         $skip = ($page - 1) * self::ITEM_LIMIT;
-        $query = Portfolio::with(['media', 'categories' => function ($query) {
-            $query->select(['title']);
+        $query = Blog::with(['media', 'categories' => function ($query) {
+            $query->select(['title', 'slug']);
+        }, 'user' => function ($query) {
+            $query->select(['name', 'id']);
         }])->orderBy('published_at', 'desc')
-            ->select(['id', 'title', 'slug'])
+            ->select(['id', 'title', 'description', 'slug', 'user_id'])
             ->take(self::ITEM_LIMIT)
             ->skip($skip);
 
@@ -39,7 +41,7 @@ class PortfolioService
     public function moreCountItemsQuery($page = 1)
     {
         $skip = $page * self::ITEM_LIMIT;
-        $query = Portfolio::skip($skip)->select(['id'])->take(self::ITEM_LIMIT);
+        $query = Blog::skip($skip)->select(['id'])->take(self::ITEM_LIMIT);
         return $query;
     }
 

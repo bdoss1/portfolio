@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\HasSeoTrait;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
+use Yarmat\Seo\Traits\HasSeoTrait;
+use Yarmat\Seo\Contracts\SeoContract;
 
 /**
  * App\Models\Category
@@ -31,8 +32,9 @@ use Spatie\Translatable\HasTranslations;
  * @property-read \App\Models\Seo $seo
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category disableCache()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category withCacheCooldownSeconds($seconds)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Blog[] $blogs
  */
-class Category extends Model
+class Category extends Model implements SeoContract
 {
     use HasTranslations;
     use HasSlug;
@@ -53,5 +55,10 @@ class Category extends Model
     public function portfolios()
     {
         return $this->morphedByMany(Portfolio::class, 'categoriable');
+    }
+
+    public function blogs()
+    {
+        return $this->morphedByMany(Blog::class, 'categoriable');
     }
 }

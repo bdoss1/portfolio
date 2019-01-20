@@ -23,15 +23,12 @@
                     </li>
                 </ul>
 
-                @php
-                    $htmlItems = \App\Services\Portfolio\HtmlService::get($item->dir_path);
-                @endphp
                 @if($htmlItems)
                     <ul style="text-align: left; display: block;" class="information">
                         <li>
                             <span>@lang('custom.html'): </span>
                             @foreach($htmlItems as $html)
-                                <a target="_blank" href="{{ $html['path'] }}">{{ $html['name'] }}</a>
+                                <a target="_blank" href="{{ $html->url }}">{{ $html->title }}</a>
                             @endforeach
                         </li>
                     </ul>

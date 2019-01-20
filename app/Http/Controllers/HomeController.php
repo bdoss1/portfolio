@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
-use App\Services\Portfolio\PortfolioService;
+use App\UseCases\PortfolioUseCase;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(PortfolioService $portfolioService)
+    public function index(PortfolioUseCase $portfolioUseCase)
     {
-        $portfolioItems = $portfolioService->itemsQuery()->get();
+        $portfolioItems = $portfolioUseCase->itemsQuery()->get();
         $portfolioItemsCount = Portfolio::count();
         return view('index')->with(compact('portfolioItems', 'portfolioItemsCount'));
     }

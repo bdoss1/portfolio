@@ -34,3 +34,21 @@ Breadcrumbs::for('portfolio.category.show', function ($trail, $category) {
     $trail->parent('portfolio.index');
     $trail->push($category->title, route('portfolio.category.show', $category->slug));
 });
+
+// Home > Blog
+Breadcrumbs::for('blog.index', function ($trail) {
+    $trail->parent('index');
+    $trail->push(__('custom.blog'), route('blog.index'));
+});
+
+// Home > Blog > [Item]
+Breadcrumbs::for('blog.show', function ($trail, $item) {
+    $trail->parent('blog.index');
+    $trail->push($item->title, route('blog.show', $item->slug));
+});
+
+// Home > Blog > [Category]
+Breadcrumbs::for('blog.category.show', function ($trail, $category) {
+    $trail->parent('blog.index');
+    $trail->push($category->title, route('blog.category.show', $category->slug));
+});

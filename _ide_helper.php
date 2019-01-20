@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.20 on 2019-01-18 11:46:48.
+ * Generated for Laravel 5.7.21 on 2019-01-19 10:29:26.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3084,7 +3084,7 @@ namespace Illuminate\Support\Facades {
          * @param string $name
          * @param int $seconds
          * @return \Illuminate\Contracts\Cache\Lock
-         * @static
+         * @static 
          */ 
         public static function lock($name, $seconds = 0)
         {
@@ -3105,8 +3105,8 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the Redis connection instance.
          *
-         * @return \Predis\ClientInterface 
-         * @static
+         * @return \Predis\ClientInterface
+         * @static 
          */ 
         public static function connection()
         {
@@ -3118,7 +3118,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $connection
          * @return void
-         * @static
+         * @static 
          */ 
         public static function setConnection($connection)
         {
@@ -3128,8 +3128,8 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the Redis database instance.
          *
-         * @return \Illuminate\Contracts\Redis\Factory 
-         * @static
+         * @return \Illuminate\Contracts\Redis\Factory
+         * @static 
          */ 
         public static function getRedis()
         {
@@ -3152,7 +3152,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $prefix
          * @return void
-         * @static
+         * @static 
          */ 
         public static function setPrefix($prefix)
         {
@@ -7568,7 +7568,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string|null $name
          * @return \Illuminate\Redis\Connections\Connection
-         * @static
+         * @static 
          */ 
         public static function connection($name = null)
         {
@@ -7581,7 +7581,7 @@ namespace Illuminate\Support\Facades {
          * @param string|null $name
          * @return \Illuminate\Redis\Connections\Connection 
          * @throws \InvalidArgumentException
-         * @static
+         * @static 
          */ 
         public static function resolve($name = null)
         {
@@ -7592,7 +7592,7 @@ namespace Illuminate\Support\Facades {
          * Return all of the created connections.
          *
          * @return array
-         * @static
+         * @static 
          */ 
         public static function connections()
         {
@@ -7603,7 +7603,7 @@ namespace Illuminate\Support\Facades {
          * Enable the firing of Redis command events.
          *
          * @return void
-         * @static
+         * @static 
          */ 
         public static function enableEvents()
         {
@@ -7614,7 +7614,7 @@ namespace Illuminate\Support\Facades {
          * Disable the firing of Redis command events.
          *
          * @return void
-         * @static
+         * @static 
          */ 
         public static function disableEvents()
         {
@@ -9527,7 +9527,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $key
          * @param mixed $default
-         * @return \Illuminate\Http\UploadedFile|array|null 
+         * @return \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]|array|null 
          * @static 
          */ 
         public static function file($key = null, $default = null)
@@ -12238,7 +12238,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $name
          * @param array $parameters
-         * @param \DateTimeInterface|int $expiration
+         * @param \DateTimeInterface|\DateInterval|int $expiration
          * @param bool $absolute
          * @return string 
          * @static 
@@ -12252,7 +12252,7 @@ namespace Illuminate\Support\Facades {
          * Create a temporary signed route URL for a named route.
          *
          * @param string $name
-         * @param \DateTimeInterface|int $expiration
+         * @param \DateTimeInterface|\DateInterval|int $expiration
          * @param array $parameters
          * @param bool $absolute
          * @return string 
@@ -14099,7 +14099,7 @@ namespace Barryvdh\Debugbar {
  
 }
 
-namespace DaveJamesMiller\Breadcrumbs\Facades {
+namespace DaveJamesMiller\Breadcrumbs\Facades { 
 
     /**
      * Breadcrumbs facade - allows easy access to the Manager instance.
@@ -14108,18 +14108,18 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
      */
     class Breadcrumbs
     {
-
+        
         /**
          * Register a breadcrumb-generating callback for a page.
          *
          * @param string $name The name of the page.
          * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
          *     accept additional parameters.
-         * @return void
+         * @return void 
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
          *     used.
          * @static
-         */
+         */ 
         public static function for($name, $callback)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::for($name, $callback);
@@ -14127,18 +14127,18 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
 
         /**
          * Register a breadcrumb-generating callback for a page.
-         *
+         * 
          * For backwards-compatibility with v5.0.0 and below.
          *
          * @see self::for()
          * @param string $name The name of the page.
          * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
          *     accept additional parameters.
-         * @return void
+         * @return void 
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
          *     used.
          * @static
-         */
+         */ 
         public static function register($name, $callback)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::register($name, $callback);
@@ -14146,13 +14146,13 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
 
         /**
          * Register a closure to call before generating breadcrumbs for the current page.
-         *
+         * 
          * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
          *
          * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
          * @return void
          * @static
-         */
+         */ 
         public static function before($callback)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::before($callback);
@@ -14160,13 +14160,13 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
 
         /**
          * Register a closure to call after generating breadcrumbs for the current page.
-         *
+         * 
          * For example, this can be used to append the current page number when using pagination.
          *
          * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
          * @return void
          * @static
-         */
+         */ 
         public static function after($callback)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::after($callback);
@@ -14174,13 +14174,13 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
 
         /**
          * Check if a breadcrumb with the given name exists.
-         *
+         * 
          * If no name is given, defaults to the current route name.
          *
          * @param string|null $name The page name.
          * @return bool Whether there is a registered callback with that name.
          * @static
-         */
+         */ 
         public static function exists($name = null)
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::exists($name);
@@ -14197,7 +14197,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
          *     are) not registered.
          * @static
-         */
+         */ 
         public static function generate($name = null, $params = null)
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::generate($name, $params);
@@ -14214,7 +14214,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
          * @static
-         */
+         */ 
         public static function view($view, $name = null, $params = null)
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::view($view, $name, $params);
@@ -14230,7 +14230,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
          * @static
-         */
+         */ 
         public static function render($name = null, $params = null)
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::render($name, $params);
@@ -14238,14 +14238,14 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
 
         /**
          * Get the last breadcrumb for the current page.
-         *
+         * 
          * Optionally pass a
          *
          * @return \stdClass|null The breadcrumb for the current page.
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
          * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
          * @static
-         */
+         */ 
         public static function current()
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::current();
@@ -14258,7 +14258,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * @param mixed $params The parameters to pass to the closure for the current page.
          * @return void
          * @static
-         */
+         */ 
         public static function setCurrentRoute($name, $params = null)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::setCurrentRoute($name, $params);
@@ -14266,12 +14266,12 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
 
         /**
          * Clear the previously set route name and parameters to use when calling render() or generate() with no parameters.
-         *
+         * 
          * Next time it will revert to the default behaviour of using the current route from Laravel.
          *
          * @return void
          * @static
-         */
+         */ 
         public static function clearCurrentRoute()
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::clearCurrentRoute();
@@ -14284,7 +14284,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * @param object|callable $macro
          * @return void
          * @static
-         */
+         */ 
         public static function macro($name, $macro)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::macro($name, $macro);
@@ -14294,10 +14294,10 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * Mix another object into the class.
          *
          * @param object $mixin
-         * @return void
+         * @return void 
          * @throws \ReflectionException
          * @static
-         */
+         */ 
         public static function mixin($mixin)
         {
             \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::mixin($mixin);
@@ -14309,7 +14309,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * @param string $name
          * @return bool
          * @static
-         */
+         */ 
         public static function hasMacro($name)
         {
             return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
@@ -14332,7 +14332,7 @@ namespace Intervention\Image\Facades {
          * Overrides configuration settings
          *
          * @param array $config
-         * @return self
+         * @return self 
          * @static 
          */ 
         public static function configure($config = array())
@@ -14344,7 +14344,7 @@ namespace Intervention\Image\Facades {
          * Initiates an Image instance from different input types
          *
          * @param mixed $data
-         * @return \Intervention\Image\Image
+         * @return \Intervention\Image\Image 
          * @static 
          */ 
         public static function make($data)
@@ -14358,7 +14358,7 @@ namespace Intervention\Image\Facades {
          * @param int $width
          * @param int $height
          * @param mixed $background
-         * @return \Intervention\Image\Image
+         * @return \Intervention\Image\Image 
          * @static 
          */ 
         public static function canvas($width, $height, $background = null)
@@ -14373,7 +14373,7 @@ namespace Intervention\Image\Facades {
          * @param \Closure $callback
          * @param int $lifetime
          * @param boolean $returnObj
-         * @return \Image
+         * @return \Image 
          * @static 
          */ 
         public static function cache($callback, $lifetime = null, $returnObj = false)
@@ -14393,25 +14393,25 @@ namespace Jenssegers\Date {
      */
     class Date
     {
-
+         
     }
 
 }
 
-namespace Spatie\Menu\Laravel\Facades {
+namespace Spatie\Menu\Laravel\Facades { 
 
     /**
-     *
+     * 
      *
      */
     class Menu
     {
-
+        
         /**
          * Set all relevant children active based on the current request's URL.
-         *
+         * 
          * /, /about, /contact => request to /about will set the about link active.
-         *
+         * 
          * /en, /en/about, /en/contact => request to /en won't set /en active if the
          *                                request root is set to /en.
          *
@@ -14421,14 +14421,14 @@ namespace Spatie\Menu\Laravel\Facades {
          *                            active on every request.
          * @return $this
          * @static
-         */
+         */ 
         public static function setActiveFromRequest($requestRoot = '/')
         {
             return \Spatie\Menu\Laravel\Menu::setActiveFromRequest($requestRoot);
         }
 
         /**
-         *
+         * 
          *
          * @param string $path
          * @param string $text
@@ -14436,14 +14436,14 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool|null $secure
          * @return $this
          * @static
-         */
+         */ 
         public static function url($path, $text, $parameters = array(), $secure = null)
         {
             return \Spatie\Menu\Laravel\Menu::url($path, $text, $parameters, $secure);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $action
          * @param string $text
@@ -14451,14 +14451,14 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $absolute
          * @return $this
          * @static
-         */
+         */ 
         public static function action($action, $text, $parameters = array(), $absolute = true)
         {
             return \Spatie\Menu\Laravel\Menu::action($action, $text, $parameters, $absolute);
         }
 
         /**
-         *
+         * 
          *
          * @param string $name
          * @param string $text
@@ -14466,27 +14466,27 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $absolute
          * @return $this
          * @static
-         */
+         */ 
         public static function route($name, $text, $parameters = array(), $absolute = true)
         {
             return \Spatie\Menu\Laravel\Menu::route($name, $text, $parameters, $absolute);
         }
 
         /**
-         *
+         * 
          *
          * @param string $name
          * @param array $data
          * @return $this
          * @static
-         */
+         */ 
         public static function view($name, $data = array())
         {
             return \Spatie\Menu\Laravel\Menu::view($name, $data);
         }
 
         /**
-         *
+         * 
          *
          * @param bool $condition
          * @param string $path
@@ -14495,14 +14495,14 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool|null $secure
          * @return $this
          * @static
-         */
+         */ 
         public static function urlIf($condition, $path, $text, $parameters = array(), $secure = null)
         {
             return \Spatie\Menu\Laravel\Menu::urlIf($condition, $path, $text, $parameters, $secure);
         }
 
         /**
-         *
+         * 
          *
          * @param bool $condition
          * @param string|array $action
@@ -14511,14 +14511,14 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $absolute
          * @return $this
          * @static
-         */
+         */ 
         public static function actionIf($condition, $action, $text, $parameters = array(), $absolute = true)
         {
             return \Spatie\Menu\Laravel\Menu::actionIf($condition, $action, $text, $parameters, $absolute);
         }
 
         /**
-         *
+         * 
          *
          * @param bool $condition
          * @param string $name
@@ -14527,82 +14527,82 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $absolute
          * @return $this
          * @static
-         */
+         */ 
         public static function routeIf($condition, $name, $text, $parameters = array(), $absolute = true)
         {
             return \Spatie\Menu\Laravel\Menu::routeIf($condition, $name, $text, $parameters, $absolute);
         }
 
         /**
-         *
+         * 
          *
          * @param $condition
          * @param string $name
          * @param array $data
          * @return $this
          * @static
-         */
+         */ 
         public static function viewIf($condition, $name, $data = null)
         {
             return \Spatie\Menu\Laravel\Menu::viewIf($condition, $name, $data);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param \Spatie\Menu\Item $item
          * @return $this
          * @static
-         */
+         */ 
         public static function addIfCan($authorization, $item)
         {
             return \Spatie\Menu\Laravel\Menu::addIfCan($authorization, $item);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param string $url
          * @param string $text
          * @return $this
          * @static
-         */
+         */ 
         public static function linkIfCan($authorization, $url, $text)
         {
             return \Spatie\Menu\Laravel\Menu::linkIfCan($authorization, $url, $text);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param string $html
          * @return \Spatie\Menu\Laravel\Menu
          * @static
-         */
+         */ 
         public static function htmlIfCan($authorization, $html)
         {
             return \Spatie\Menu\Laravel\Menu::htmlIfCan($authorization, $html);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
          * @param callable|\Spatie\Menu\Menu|null $menu
          * @return $this
          * @static
-         */
+         */ 
         public static function submenuIfCan($authorization, $header, $menu = null)
         {
             return \Spatie\Menu\Laravel\Menu::submenuIfCan($authorization, $header, $menu);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param string $path
@@ -14611,14 +14611,14 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool|null $secure
          * @return $this
          * @static
-         */
+         */ 
         public static function urlIfCan($authorization, $path, $text, $parameters = array(), $secure = null)
         {
             return \Spatie\Menu\Laravel\Menu::urlIfCan($authorization, $path, $text, $parameters, $secure);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param string|array $action
@@ -14627,14 +14627,14 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $absolute
          * @return $this
          * @static
-         */
+         */ 
         public static function actionIfCan($authorization, $action, $text, $parameters = array(), $absolute = true)
         {
             return \Spatie\Menu\Laravel\Menu::actionIfCan($authorization, $action, $text, $parameters, $absolute);
         }
 
         /**
-         *
+         * 
          *
          * @param string|array $authorization
          * @param string $name
@@ -14643,33 +14643,33 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $absolute
          * @return $this
          * @static
-         */
+         */ 
         public static function routeIfCan($authorization, $name, $text, $parameters = array(), $absolute = true)
         {
             return \Spatie\Menu\Laravel\Menu::routeIfCan($authorization, $name, $text, $parameters, $absolute);
         }
 
         /**
-         *
+         * 
          *
          * @param $authorization
          * @param string $name
          * @param array $data
-         * @return $this
+         * @return $this 
          * @internal param $condition
          * @static
-         */
+         */ 
         public static function viewIfCan($authorization, $name, $data = null)
         {
             return \Spatie\Menu\Laravel\Menu::viewIfCan($authorization, $name, $data);
         }
 
         /**
-         *
+         * 
          *
          * @return string
          * @static
-         */
+         */ 
         public static function toHtml()
         {
             return \Spatie\Menu\Laravel\Menu::toHtml();
@@ -14681,7 +14681,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param array $items
          * @return static
          * @static
-         */
+         */ 
         public static function new($items = array())
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14698,7 +14698,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param \Spatie\Menu\Menu|null $initial
          * @return static
          * @static
-         */
+         */ 
         public static function build($items, $callback, $initial = null)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14714,7 +14714,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param callable $callback
          * @return static
          * @static
-         */
+         */ 
         public static function fill($items, $callback)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14728,7 +14728,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param \Spatie\Menu\Item $item
          * @return $this
          * @static
-         */
+         */ 
         public static function add($item)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14742,7 +14742,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param \Spatie\Menu\Item $item
          * @return $this
          * @static
-         */
+         */ 
         public static function addIf($condition, $item)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14756,7 +14756,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @return $this
          * @static
-         */
+         */ 
         public static function link($url, $text)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14768,7 +14768,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return $this
          * @static
-         */
+         */ 
         public static function empty()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14783,7 +14783,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @return $this
          * @static
-         */
+         */ 
         public static function linkIf($condition, $url, $text)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14797,7 +14797,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param array $parentAttributes
          * @return $this
          * @static
-         */
+         */ 
         public static function html($html, $parentAttributes = array())
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14812,7 +14812,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param array $parentAttributes
          * @return $this
          * @static
-         */
+         */ 
         public static function htmlIf($condition, $html, $parentAttributes = array())
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14820,13 +14820,13 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
          * @param callable|\Spatie\Menu\Menu|null $menu
          * @return $this
          * @static
-         */
+         */ 
         public static function submenu($header, $menu = null)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14834,14 +14834,14 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param bool $condition
          * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
          * @param callable|\Spatie\Menu\Menu|null $menu
          * @return $this
          * @static
-         */
+         */ 
         public static function submenuIf($condition, $header, $menu = null)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14856,7 +14856,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param callable $callable
          * @return $this
          * @static
-         */
+         */ 
         public static function each($callable)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14871,7 +14871,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param callable $callable
          * @return $this
          * @static
-         */
+         */ 
         public static function registerFilter($callable)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14886,7 +14886,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param callable $callable
          * @return $this
          * @static
-         */
+         */ 
         public static function applyToAll($callable)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14901,7 +14901,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param array $attributes
          * @return $this
          * @static
-         */
+         */ 
         public static function wrap($element, $attributes = array())
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14913,7 +14913,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return bool
          * @static
-         */
+         */ 
         public static function isActive()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14925,7 +14925,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return bool
          * @static
-         */
+         */ 
         public static function isExactActive()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14941,7 +14941,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $root
          * @return $this
          * @static
-         */
+         */ 
         public static function setActive($urlOrCallable, $root = '/')
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14954,7 +14954,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $class
          * @return $this
          * @static
-         */
+         */ 
         public static function setExactActiveClass($class)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14963,9 +14963,9 @@ namespace Spatie\Menu\Laravel\Facades {
 
         /**
          * Set all relevant children active based on the current request's URL.
-         *
+         * 
          * /, /about, /contact => request to /about will set the about link active.
-         *
+         * 
          * /en, /en/about, /en/contact => request to /en won't set /en active if the
          *                                request root is set to /en.
          *
@@ -14975,7 +14975,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *                     to avoid having home links active on every request.
          * @return $this
          * @static
-         */
+         */ 
         public static function setActiveFromUrl($url, $root = '/')
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -14983,12 +14983,12 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param callable $callable
          * @return $this
          * @static
-         */
+         */ 
         public static function setActiveFromCallable($callable)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15001,7 +15001,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $class
          * @return $this
          * @static
-         */
+         */ 
         public static function setActiveClass($class)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15014,7 +15014,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $class
          * @return $this
          * @static
-         */
+         */ 
         public static function addItemClass($class)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15028,7 +15028,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $value
          * @return $this
          * @static
-         */
+         */ 
         public static function setItemAttribute($attribute, $value = '')
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15041,7 +15041,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $class
          * @return $this
          * @static
-         */
+         */ 
         public static function addItemParentClass($class)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15055,7 +15055,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $value
          * @return $this
          * @static
-         */
+         */ 
         public static function setItemParentAttribute($attribute, $value = '')
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15068,7 +15068,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string|null $wrapperTagName
          * @return $this
          * @static
-         */
+         */ 
         public static function setWrapperTag($wrapperTagName = null)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15081,7 +15081,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string|null $wrapperTagName
          * @return $this
          * @static
-         */
+         */ 
         public static function withoutWrapperTag()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15094,7 +15094,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string|null $parentTagName
          * @return $this
          * @static
-         */
+         */ 
         public static function setParentTag($parentTagName = null)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15106,7 +15106,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return $this
          * @static
-         */
+         */ 
         public static function withoutParentTag()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15119,7 +15119,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param $activeClassOnLink
          * @return $this
          * @static
-         */
+         */ 
         public static function setActiveClassOnLink($activeClassOnLink = true)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15132,7 +15132,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param $activeClassOnParent
          * @return $this
          * @static
-         */
+         */ 
         public static function setActiveClassOnParent($activeClassOnParent = true)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15140,13 +15140,13 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param bool $condition
          * @param callable $callable
          * @return $this
          * @static
-         */
+         */ 
         public static function if($condition, $callable)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15158,7 +15158,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return static
          * @static
-         */
+         */ 
         public static function blueprint()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15170,7 +15170,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return string
          * @static
-         */
+         */ 
         public static function render()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15182,7 +15182,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return int
          * @static
-         */
+         */ 
         public static function count()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15190,10 +15190,10 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function getIterator()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15201,13 +15201,13 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param string $attribute
          * @param string $value
          * @return $this
          * @static
-         */
+         */ 
         public static function setAttribute($attribute, $value = '')
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15215,12 +15215,12 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param array $attributes
          * @return $this
          * @static
-         */
+         */ 
         public static function setAttributes($attributes)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15228,12 +15228,12 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param string $class
          * @return $this
          * @static
-         */
+         */ 
         public static function addClass($class)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15246,7 +15246,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function parentAttributes()
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15254,13 +15254,13 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param string $attribute
          * @param string $value
          * @return $this
          * @static
-         */
+         */ 
         public static function setParentAttribute($attribute, $value = '')
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15268,12 +15268,12 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param array $attributes
          * @return $this
          * @static
-         */
+         */ 
         public static function setParentAttributes($attributes)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15281,12 +15281,12 @@ namespace Spatie\Menu\Laravel\Facades {
         }
 
         /**
-         *
+         * 
          *
          * @param string $class
          * @return $this
          * @static
-         */
+         */ 
         public static function addParentClass($class)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15299,7 +15299,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $prepend
          * @return $this
          * @static
-         */
+         */ 
         public static function prepend($prepend)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15314,7 +15314,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $prepend
          * @return $this
          * @static
-         */
+         */ 
         public static function prependIf($condition, $prepend)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15327,7 +15327,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $append
          * @return $this
          * @static
-         */
+         */ 
         public static function append($append)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15342,7 +15342,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $append
          * @return static
          * @static
-         */
+         */ 
         public static function appendIf($condition, $append)
         {
             //Method inherited from \Spatie\Menu\Menu            
@@ -15356,7 +15356,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param object|callable $macro
          * @return void
          * @static
-         */
+         */ 
         public static function macro($name, $macro)
         {
             \Spatie\Menu\Laravel\Menu::macro($name, $macro);
@@ -15366,10 +15366,10 @@ namespace Spatie\Menu\Laravel\Facades {
          * Mix another object into the class.
          *
          * @param object $mixin
-         * @return void
+         * @return void 
          * @throws \ReflectionException
          * @static
-         */
+         */ 
         public static function mixin($mixin)
         {
             \Spatie\Menu\Laravel\Menu::mixin($mixin);
@@ -15381,7 +15381,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $name
          * @return bool
          * @static
-         */
+         */ 
         public static function hasMacro($name)
         {
             return \Spatie\Menu\Laravel\Menu::hasMacro($name);

@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use App\Traits\HasSeoTrait;
+
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Translatable\HasTranslations;
 use Spatie\Sluggable\SlugOptions;
+use Yarmat\Seo\Traits\HasSeoTrait;
+use Yarmat\Seo\Contracts\SeoContract;
 
 /**
  * App\Models\Portfolio
@@ -48,7 +49,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio withCacheCooldownSeconds($seconds)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
  */
-class Portfolio extends Model implements HasMedia
+class Portfolio extends Model implements HasMedia, SeoContract
 {
     use HasTranslations;
     use HasSlug;

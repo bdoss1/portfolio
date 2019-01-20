@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Category;
 
 use App\Models\Category;
-use App\Services\Portfolio\PortfolioService;
+use App\UseCases\PortfolioUseCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PortfolioController extends Controller
 {
-    protected $portfolioService;
+    protected $portfolioUseCase;
 
-    public function __construct(PortfolioService $portfolioService)
+    public function __construct(PortfolioUseCase $portfolioUseCase)
     {
-        $this->portfolioService = $portfolioService;
+        $this->portfolioUseCase = $portfolioUseCase;
     }
 
     public function show($slug)
@@ -22,10 +22,10 @@ class PortfolioController extends Controller
 
         $seo = $category->seo;
 
-        $items = $this->portfolioService->itemsWhereHasCategoryQuery($category->id)->get();
+        $items = $this->portfolioUseCase->itemsWhereHasCategoryQuery($category->id)->get();
 
-        $moreCountItems = ($items->count() === $this->portfolioService::ITEM_LIMIT)
-            ? ($this->portfolioService->moreCountItemsWhereHasCategoryQuery($category->id)->get())->count()
+        $moreCountItems = ($items->count() === $this->portfolioUseCase::ITEM_LIMIT)
+            ? ($this->portfolioUseCase->moreCountItemsWhereHasCategoryQuery($category->id)->get())->count()
             : 0;
 
         $isButtonVisible = $moreCountItems != 0;
@@ -41,7 +41,7 @@ class PortfolioController extends Controller
 
         $category = Category::whereSlug($slug)->firstOrFail();
 
-        $items = $this->portfolioService->itemsWhereHasCategoryQuery($category->id, $request->get('page'))->get();
+        $items = $this->portfolioUseCase->itemsWhereHasCategoryQuery($category->id, $request->get('page'))->get();
 
         $renderedItems = null;
 
@@ -51,8 +51,8 @@ class PortfolioController extends Controller
             }
         }
 
-        $moreCountItems = ($items->count() == $this->portfolioService::ITEM_LIMIT)
-            ? ($this->portfolioService->moreCountItemsWhereHasCategoryQuery($category->id, $request->get('page'))->get())->count()
+        $moreCountItems = ($items->count() == $this->portfolioUseCase::ITEM_LIMIT)
+            ? ($this->portfolioUseCase->moreCountItemsWhereHasCategoryQuery($category->id, $request->get('page'))->get())->count()
             : 0;
 
         $isButtonVisible = $moreCountItems != 0;

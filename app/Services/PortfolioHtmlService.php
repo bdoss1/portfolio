@@ -6,12 +6,14 @@
  * Time: 15:23
  */
 
-namespace App\Services\Portfolio;
+namespace App\Services;
 
 
-class HtmlService
+use App\Entities\PortfolioHtmlItem;
+
+class PortfolioHtmlService
 {
-    public static function get($dir = null)
+    public function get($dir = null)
     {
         if (empty($dir)) return false;
 
@@ -27,10 +29,10 @@ class HtmlService
         foreach ($items as $item) {
             $extension = pathinfo($item, PATHINFO_EXTENSION);
             if ($extension === 'html') {
-                $htmlItems[] = [
-                    'name' => $item,
-                    'path' => \Storage::disk('portfolio_html')->url($dir . '/' . $item)
-                ];
+                $htmlItem = new PortfolioHtmlItem();
+                $htmlItem->title = $item;
+                $htmlItem->url = \Storage::disk('portfolio_html')->url($dir . '/' . $item);
+                $htmlItems[] = $htmlItem;
             }
         }
 

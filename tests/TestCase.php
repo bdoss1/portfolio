@@ -34,7 +34,7 @@ abstract class TestCase extends BaseTestCase
         $user = User::whereHas('roles', function ($query) use ($role) {
             $query->whereName($role);
         })->first();
-        dd($user);
+
         return $this->actingAs($user);
     }
 

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Blog;
 use App\Models\Category;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

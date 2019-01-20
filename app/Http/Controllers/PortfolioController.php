@@ -5,27 +5,28 @@ namespace App\Http\Controllers;
 use App\Entities\Seo;
 use App\Models\Category;
 use App\Models\Portfolio;
-use App\Services\Portfolio\PortfolioService;
+use App\UseCases\PortfolioUseCase;
+use App\Services\PortfolioHtmlService;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
 
-    protected $portfolioService;
+    protected $portfolioUseCase;
 
-    public function __construct(PortfolioService $service)
+    public function __construct(PortfolioUseCase $portfolioUseCase)
     {
-        $this->portfolioService = $service;
+        $this->portfolioUseCase = $portfolioUseCase;
     }
 
     public function index(Seo $seo)
     {
-        $items = $this->portfolioService->itemsQuery()->get();
+        $items = $this->portfolioUseCase->itemsQuery()->get();
 
         $seo->title = __('custom.portfolio');
 
-        $moreCountItems = ($items->count() === $this->portfolioService::ITEM_LIMIT)
-            ? ($this->portfolioService->moreCountItemsQuery(1)->get())->count()
+        $moreCountItems = ($items->count() === $this->portfolioUseCase::ITEM_LIMIT)
+            ? ($this->portfolioUseCase->moreCountItemsQuery(1)->get())->count()
             : 0;
 
         $isButtonVisible = $moreCountItems != 0;
@@ -35,7 +36,7 @@ class PortfolioController extends Controller
         return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo'));
     }
 
-    public function show($slug)
+    public function show($slug, PortfolioHtmlService $htmlService)
     {
         $item = Portfolio::whereSlug($slug)->with(['media', 'categories', 'seo'])->firstOrFail();
 
@@ -43,17 +44,19 @@ class PortfolioController extends Controller
 
         $seo = $item->seo;
 
+        $htmlItems = $htmlService->get($item->dir_path);
+
         if (!$next) {
             $next = Portfolio::first(['slug', 'title']);
         }
-        return view('portfolio.show')->with(compact('item', 'next', 'seo'));
+        return view('portfolio.show')->with(compact('item', 'next', 'seo', 'htmlItems'));
     }
 
     public function load(Request $request)
     {
         if (!$request->ajax()) abort(405);
 
-        $items = $this->portfolioService->itemsQuery($request->get('page'))->get();
+        $items = $this->portfolioUseCase->itemsQuery($request->get('page'))->get();
 
         $renderedItems = null;
 
@@ -63,8 +66,8 @@ class PortfolioController extends Controller
             }
         }
 
-        $moreCountItems = ($items->count() == $this->portfolioService::ITEM_LIMIT)
-            ? ($this->portfolioService->moreCountItemsQuery($request->get('page'))->get())->count()
+        $moreCountItems = ($items->count() == $this->portfolioUseCase::ITEM_LIMIT)
+            ? ($this->portfolioUseCase->moreCountItemsQuery($request->get('page'))->get())->count()
             : 0;
 
         $isButtonVisible = $moreCountItems != 0;

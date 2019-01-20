@@ -2,19 +2,17 @@
 
 use Illuminate\Database\Seeder;
 
-class PortfolioSeeder extends Seeder
+class BlogSeeder extends Seeder
 {
 
-    const ITEMS_LIMIT = 21;
+    const ITEMS_LIMIT = 10;
 
     public function run()
     {
+        if (\App\Models\Blog::count() >= self::ITEMS_LIMIT) return false;
 
-        if (\App\Models\Portfolio::count() >= self::ITEMS_LIMIT) return false;
-
-        $items = factory(\App\Models\Portfolio::class, self::ITEMS_LIMIT)->create()->each(function ($item) {
+        $items = factory(\App\Models\Blog::class, self::ITEMS_LIMIT)->create()->each(function ($item) {
             $categories = array_pluck(\App\Models\Category::inRandomOrder()->take(rand(1, 4))->get(['id'])->toArray(), 'id');
-
             $item->categories()->attach($categories);
 
             $item->saveSeo([
@@ -43,19 +41,6 @@ class PortfolioSeeder extends Seeder
                     'alt' => 'Alt'
                 ])
                 ->toMediaCollection('preview');
-
-            for ($i = rand(1, 9); $i <= 9; $i++) {
-                $item->addMedia(database_path('seeds/images/') . $i . '.jpg')
-                    ->preservingOriginal()
-                    ->withCustomProperties([
-                        'alt' => 'Alt',
-                        'description' => [
-                            'ru' => 'Превью',
-                            'en' => 'preview'
-                        ]
-                    ])
-                    ->toMediaCollection('images');
-            }
         }
 
     }
