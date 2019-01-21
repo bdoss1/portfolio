@@ -1871,6 +1871,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     changeOrder: function changeOrder() {
       this.items = [];
+        this.page = 1;
       this.getItems();
     },
     addItemToArray: function addItemToArray(parentId, item) {
