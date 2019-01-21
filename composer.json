@@ -23,8 +23,8 @@
         "spatie/laravel-permission": "^2.29",
         "spatie/laravel-sluggable": "^2.1",
         "spatie/laravel-translatable": "^3.1",
-        "yarmat/laravel-seo": "dev-master",
-        "yarmat/laravel-comment": "*"
+        "yarmat/laravel-comment": "^1.0",
+        "yarmat/laravel-seo": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

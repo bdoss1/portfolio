@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.21 on 2019-01-21 12:09:10.
+ * Generated for Laravel 5.7.21 on 2019-01-21 18:56:31.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14150,7 +14150,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
          *
          * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function before($callback)
@@ -14164,7 +14164,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * For example, this can be used to append the current page number when using pagination.
          *
          * @param callable $callback The callback, which should accept a Generator instance as the first and only parameter.
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function after($callback)
@@ -14256,7 +14256,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          *
          * @param string $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function setCurrentRoute($name, $params = null)
@@ -14269,7 +14269,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * 
          * Next time it will revert to the default behaviour of using the current route from Laravel.
          *
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function clearCurrentRoute()
@@ -14282,7 +14282,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          *
          * @param string $name
          * @param object|callable $macro
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function macro($name, $macro)
@@ -14307,7 +14307,7 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
          * Checks if macro is registered.
          *
          * @param string $name
-         * @return bool
+         * @return bool 
          * @static 
          */ 
         public static function hasMacro($name)
@@ -14419,7 +14419,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *                            request root, the link won't be set active.
          *                            This behavior is to avoid having home links
          *                            active on every request.
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActiveFromRequest($requestRoot = '/')
@@ -14434,7 +14434,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param mixed $parameters
          * @param bool|null $secure
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function url($path, $text, $parameters = array(), $secure = null)
@@ -14449,7 +14449,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param mixed $parameters
          * @param bool $absolute
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function action($action, $text, $parameters = array(), $absolute = true)
@@ -14464,7 +14464,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param mixed $parameters
          * @param bool $absolute
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function route($name, $text, $parameters = array(), $absolute = true)
@@ -14477,7 +14477,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $name
          * @param array $data
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function view($name, $data = array())
@@ -14493,7 +14493,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param array $parameters
          * @param bool|null $secure
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function urlIf($condition, $path, $text, $parameters = array(), $secure = null)
@@ -14509,7 +14509,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param array $parameters
          * @param bool $absolute
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function actionIf($condition, $action, $text, $parameters = array(), $absolute = true)
@@ -14525,7 +14525,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param array $parameters
          * @param bool $absolute
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function routeIf($condition, $name, $text, $parameters = array(), $absolute = true)
@@ -14539,7 +14539,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param $condition
          * @param string $name
          * @param array $data
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function viewIf($condition, $name, $data = null)
@@ -14552,7 +14552,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string|array $authorization
          * @param \Spatie\Menu\Item $item
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function addIfCan($authorization, $item)
@@ -14566,7 +14566,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string|array $authorization
          * @param string $url
          * @param string $text
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function linkIfCan($authorization, $url, $text)
@@ -14579,7 +14579,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string|array $authorization
          * @param string $html
-         * @return \Spatie\Menu\Laravel\Menu
+         * @return \Spatie\Menu\Laravel\Menu 
          * @static 
          */ 
         public static function htmlIfCan($authorization, $html)
@@ -14593,7 +14593,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string|array $authorization
          * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
          * @param callable|\Spatie\Menu\Menu|null $menu
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function submenuIfCan($authorization, $header, $menu = null)
@@ -14609,7 +14609,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param array $parameters
          * @param bool|null $secure
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function urlIfCan($authorization, $path, $text, $parameters = array(), $secure = null)
@@ -14625,7 +14625,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param array $parameters
          * @param bool $absolute
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function actionIfCan($authorization, $action, $text, $parameters = array(), $absolute = true)
@@ -14641,7 +14641,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $text
          * @param array $parameters
          * @param bool $absolute
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function routeIfCan($authorization, $name, $text, $parameters = array(), $absolute = true)
@@ -14667,7 +14667,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * 
          *
-         * @return string
+         * @return string 
          * @static 
          */ 
         public static function toHtml()
@@ -14679,7 +14679,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Create a new menu, optionally prefilled with items.
          *
          * @param array $items
-         * @return static
+         * @return static 
          * @static 
          */ 
         public static function new($items = array())
@@ -14696,7 +14696,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param array|\Iterator $items
          * @param callable $callback
          * @param \Spatie\Menu\Menu|null $initial
-         * @return static
+         * @return static 
          * @static 
          */ 
         public static function build($items, $callback, $initial = null)
@@ -14712,7 +14712,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param array|\Iterator $items
          * @param callable $callback
-         * @return static
+         * @return static 
          * @static 
          */ 
         public static function fill($items, $callback)
@@ -14726,7 +14726,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * item.
          *
          * @param \Spatie\Menu\Item $item
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function add($item)
@@ -14740,7 +14740,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param bool $condition
          * @param \Spatie\Menu\Item $item
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function addIf($condition, $item)
@@ -14754,7 +14754,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $url
          * @param string $text
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function link($url, $text)
@@ -14766,7 +14766,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * Shortcut function to add an empty item to the menu.
          *
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function empty()
@@ -14781,7 +14781,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $condition
          * @param string $url
          * @param string $text
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function linkIf($condition, $url, $text)
@@ -14795,7 +14795,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $html
          * @param array $parentAttributes
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function html($html, $parentAttributes = array())
@@ -14810,7 +14810,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $condition
          * @param string $html
          * @param array $parentAttributes
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function htmlIf($condition, $html, $parentAttributes = array())
@@ -14824,7 +14824,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
          * @param callable|\Spatie\Menu\Menu|null $menu
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function submenu($header, $menu = null)
@@ -14839,7 +14839,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param bool $condition
          * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
          * @param callable|\Spatie\Menu\Menu|null $menu
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function submenuIf($condition, $header, $menu = null)
@@ -14854,7 +14854,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * type.
          *
          * @param callable $callable
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function each($callable)
@@ -14869,7 +14869,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * will only be applied to items of that type.
          *
          * @param callable $callable
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function registerFilter($callable)
@@ -14884,7 +14884,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * in the callable, it wil only be applied to items of that type.
          *
          * @param callable $callable
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function applyToAll($callable)
@@ -14899,7 +14899,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $element
          * @param array $attributes
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function wrap($element, $attributes = array())
@@ -14911,7 +14911,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * Determine whether the menu is active.
          *
-         * @return bool
+         * @return bool 
          * @static 
          */ 
         public static function isActive()
@@ -14923,7 +14923,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * A menu can be active but not exact-active.
          *
-         * @return bool
+         * @return bool 
          * @static 
          */ 
         public static function isExactActive()
@@ -14939,7 +14939,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param callable|string $urlOrCallable
          * @param string $root
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActive($urlOrCallable, $root = '/')
@@ -14952,7 +14952,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set the class name that will be used on exact-active items for this menu.
          *
          * @param string $class
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setExactActiveClass($class)
@@ -14973,7 +14973,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * @param string $root If the link's URL is an exact match with the request
          *                     root, the link won't be set active. This behavior is
          *                     to avoid having home links active on every request.
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActiveFromUrl($url, $root = '/')
@@ -14986,7 +14986,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * 
          *
          * @param callable $callable
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActiveFromCallable($callable)
@@ -14999,7 +14999,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set the class name that will be used on active items for this menu.
          *
          * @param string $class
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActiveClass($class)
@@ -15012,7 +15012,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Add a class to all items in the menu.
          *
          * @param string $class
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function addItemClass($class)
@@ -15026,7 +15026,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $attribute
          * @param string $value
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setItemAttribute($attribute, $value = '')
@@ -15039,7 +15039,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Add a parent class to all items in the menu.
          *
          * @param string $class
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function addItemParentClass($class)
@@ -15053,7 +15053,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $attribute
          * @param string $value
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setItemParentAttribute($attribute, $value = '')
@@ -15066,7 +15066,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set tag for items wrapper.
          *
          * @param string|null $wrapperTagName
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setWrapperTag($wrapperTagName = null)
@@ -15079,7 +15079,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set tag for items wrapper.
          *
          * @param string|null $wrapperTagName
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function withoutWrapperTag()
@@ -15092,7 +15092,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set the parent tag name.
          *
          * @param string|null $parentTagName
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setParentTag($parentTagName = null)
@@ -15104,7 +15104,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * Render items without a parent tag.
          *
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function withoutParentTag()
@@ -15117,7 +15117,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set whether active class should (also) be on link.
          *
          * @param $activeClassOnLink
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActiveClassOnLink($activeClassOnLink = true)
@@ -15130,7 +15130,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Set whether active class should (also) be on parent.
          *
          * @param $activeClassOnParent
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setActiveClassOnParent($activeClassOnParent = true)
@@ -15144,7 +15144,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param bool $condition
          * @param callable $callable
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function if($condition, $callable)
@@ -15156,7 +15156,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * Create a empty blueprint of the menu (copies `filters` and `activeClass`).
          *
-         * @return static
+         * @return static 
          * @static 
          */ 
         public static function blueprint()
@@ -15168,7 +15168,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * Render the menu.
          *
-         * @return string
+         * @return string 
          * @static 
          */ 
         public static function render()
@@ -15180,7 +15180,7 @@ namespace Spatie\Menu\Laravel\Facades {
         /**
          * The amount of items in the menu.
          *
-         * @return int
+         * @return int 
          * @static 
          */ 
         public static function count()
@@ -15205,7 +15205,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $attribute
          * @param string $value
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setAttribute($attribute, $value = '')
@@ -15218,7 +15218,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * 
          *
          * @param array $attributes
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setAttributes($attributes)
@@ -15231,7 +15231,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * 
          *
          * @param string $class
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function addClass($class)
@@ -15244,7 +15244,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Return an array of attributes to apply on the parent. This generally means
          * the attributes that should be applied on the <li> tag.
          *
-         * @return array
+         * @return array 
          * @static 
          */ 
         public static function parentAttributes()
@@ -15258,7 +15258,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $attribute
          * @param string $value
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setParentAttribute($attribute, $value = '')
@@ -15271,7 +15271,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * 
          *
          * @param array $attributes
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function setParentAttributes($attributes)
@@ -15284,7 +15284,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * 
          *
          * @param string $class
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function addParentClass($class)
@@ -15297,7 +15297,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Prepend the anchor with a string of html on render.
          *
          * @param string $prepend
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function prepend($prepend)
@@ -15312,7 +15312,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param bool $condition
          * @param string $prepend
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function prependIf($condition, $prepend)
@@ -15325,7 +15325,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Append a text of html to the menu on render.
          *
          * @param string $append
-         * @return $this
+         * @return $this 
          * @static 
          */ 
         public static function append($append)
@@ -15340,7 +15340,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param bool $condition
          * @param string $append
-         * @return static
+         * @return static 
          * @static 
          */ 
         public static function appendIf($condition, $append)
@@ -15354,7 +15354,7 @@ namespace Spatie\Menu\Laravel\Facades {
          *
          * @param string $name
          * @param object|callable $macro
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function macro($name, $macro)
@@ -15379,7 +15379,7 @@ namespace Spatie\Menu\Laravel\Facades {
          * Checks if macro is registered.
          *
          * @param string $name
-         * @return bool
+         * @return bool 
          * @static 
          */ 
         public static function hasMacro($name)
@@ -15391,30 +15391,30 @@ namespace Spatie\Menu\Laravel\Facades {
 
 }
 
-namespace Yarmat\Comment\Facades {
+namespace Yarmat\Comment\Facades { 
 
     /**
-     *
+     * 
      *
      */
     class Comment
     {
-
+        
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function config($modelName, $modelId)
         {
             return \Yarmat\Comment\CommentServcice::config($modelName, $modelId);
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function getModel($modelName)
         {
             return \Yarmat\Comment\CommentServcice::getModel($modelName);

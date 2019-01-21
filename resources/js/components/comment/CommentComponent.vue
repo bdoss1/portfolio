@@ -93,6 +93,7 @@
             },
             changeOrder() {
                 this.items = [];
+                this.page = 1;
                 this.getItems();
             },
             addItemToArray(parentId, item) {
