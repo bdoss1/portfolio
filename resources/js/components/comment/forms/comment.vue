@@ -11,7 +11,7 @@
                 <textarea class="form-control" v-model="message" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Отправить</button>
+                <button type="submit" class="btn btn-primary">{{ lang.buttons.send }}</button>
             </div>
         </form>
     </div>
@@ -19,29 +19,57 @@
 
 
 <script>
-
+    import RouteMixin from './../mixins/route';
+    import ConfigMixin from './../mixins/config';
     import bus from './../bus';
 
     export default {
         name: "CommentForm",
-        props: ['parent-id', 'isUserLogged'],
+        props: ['parent-id'],
+        mixins: [RouteMixin, ConfigMixin],
         data() {
             return {
-                name: '',
-                email: '',
                 message: ''
             }
         },
         methods: {
             store() {
-                bus.$emit('store-item', {
-                    parentId: this.parentId,
-                    form: {
-                        message: this.message,
-                        name: this.name,
-                        email: this.email,
+                // console.log(this.model, this.modelId, this.parentId, this.prefix, this.isUserLogged);
+                axios.post(this.route('store'), {
+                    name: this.name,
+                    email: this.email,
+                    message: this.message,
+                    parent_id: this.parentId,
+                    model: this.model,
+                    model_id: this.modelId,
+                    locale: this.locale
+                }).then(response => {
+                    if (response.data.success) {
+                        this.message = '';
+                        bus.$emit('add-item', {
+                            parentId: this.parentId,
+                            item: response.data.comment
+                        });
+
+                        bus.$emit('up-count', 1);
+
+                        this.updateConfigAuthor(this.name, this.email);
                     }
+                }).catch(error => {
+
+                    if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors)
+
+                    if (error.response.status === 429) this.showErrorOfTooManyAttempts();
                 });
+
+            },
+            showErrorsOfValidation(errors) {
+                for (let key in errors) {
+                    return alert(errors[key][0]);
+                }
+            },
+            showErrorOfTooManyAttempts() {
+                alert(this.lang.dont_spam);
             }
         }
     }

@@ -30,9 +30,10 @@ class CommentTest extends TestCase
 
     public function test_store_auth()
     {
+        $this->withoutExceptionHandling();
         $blog = Blog::first();
         $response = $this->auth()->post(route('comment.store'), [
-            'model' => Blog::class,
+            'model' => 'Blog',
             'id' => $blog->id,
             'message' => $this->faker->realText(100),
             'parent_id' => 0,
@@ -78,6 +79,27 @@ class CommentTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJsonStructure(['success', 'message']);
+
+    }
+
+    public function test_count()
+    {
+
+        $blog = Blog::first();
+        $blog->saveComment([
+            'name' => $this->faker->firstName,
+            'email' => $this->faker->email,
+            'message' => $this->faker->realText(100)
+        ]);
+
+        $response = $this->post(route('comment.count'), [
+            'model' => 'Blog',
+            'model_id' => $blog->id
+        ]);
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure(['success', 'count']);
 
     }
 }

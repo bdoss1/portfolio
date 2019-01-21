@@ -24,12 +24,7 @@
                 {!! $item->content !!}
             </article>
 
-            <comment-component
-                model="{{ \App\Models\Blog::class }}"
-                model-id="{{ $item->id }}"
-                prefix="{{ config('comment.prefix') }}"
-                is-user-logged="{{ Auth::check() }}"
-            ></comment-component>
+            <comment-component></comment-component>
 
             <!-- COMMENTS -->
             <div class="article-comments top_120">
@@ -100,4 +95,8 @@
         </section>
 
     </div> <!-- cont end -->
+@endsection
+
+@section('before.script')
+    {!! \Comment::config('Blog', $item->id) !!}
 @endsection

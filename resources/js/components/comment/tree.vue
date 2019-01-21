@@ -4,32 +4,24 @@
 
             <div :data-depth="depth" :data-id="item.id" class="comments-tree">
                 <div class="d-flex comments-item">
-                    <div class="comments-avatar"></div>
+                    <div v-if="item.user.avatar" class="comments-avatar"></div>
                     <div class="w-100 comments-group">
                         <div class="comment-date">
                             <small>{{ item.date }}</small>
                         </div>
                         <div class="comment-author"><b>{{ item.user.name }}</b></div>
-                        <div class="comment-message">
-                            {{ item.message }}
-                        </div>
+                        <div v-html="item.message" class="comment-message"></div>
                         <div class="comment-buttons">
-                            <button @click="toggleForm(item)" type="button" class="btn btn-primary">Ответить</button>
+                            <button @click="toggleForm(item)" type="button" class="btn btn-primary">{{
+                                lang.buttons.reply }}
+                            </button>
                         </div>
 
-                        <comment-form v-if="item.isVisibleForm"
-                                      :parent-id="item.id"
-                                      :is-user-logged="isUserLogged"
-                        ></comment-form>
+                        <comment-form v-if="item.isVisibleForm" :parent-id="item.id"></comment-form>
                     </div>
                 </div>
 
-                <comment-tree
-                    :is-user-logged="isUserLogged"
-                    :items="item.children"
-                    :item="item"
-                    :depth="parseInt(depth) + 1"
-                ></comment-tree>
+                <comment-tree :items="item.children" :depth="parseInt(depth) + 1"></comment-tree>
 
             </div>
         </template>
@@ -38,11 +30,13 @@
 
 <script>
     import CommentForm from './forms/comment'
+    import ConfigMixin from './mixins/config';
 
     export default {
         name: "CommentTree",
-        props: ['items', 'depth', 'isUserLogged'],
+        props: ['items', 'depth'],
         components: {CommentForm},
+        mixins: [ConfigMixin],
         methods: {
             toggleForm(item) {
                 item.isVisibleForm = !item.isVisibleForm;

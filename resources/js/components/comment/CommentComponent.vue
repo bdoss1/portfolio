@@ -1,21 +1,28 @@
 <template>
     <div>
-
         <div class="comments">
-            <div class="comments-title"><h3>Комментарии ({{ itemsCount }})</h3></div>
-            <div class="comment-form">
-                <comment-form
-                    :is-user-logged="isUserLogged"
-                    parent-id="0"
-                ></comment-form>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="comments-title"><h3>{{ lang.title }} ({{ itemsCount }})</h3></div>
+                </div>
+                <div style="text-align: right;" class="col-md-6">
+                    <select @change="changeOrder()" v-model="order">
+                        <option value="DESC">{{ lang.sort.newest }}</option>
+                        <option value="ASC">{{ lang.sort.oldest }}</option>
+                    </select>
+                </div>
             </div>
 
-            <comment-tree
-                :is-user-logged="isUserLogged"
-                :items="items"
-                depth="0"
-            ></comment-tree>
+            <div class="comment-form">
+                <comment-form parent-id="0"></comment-form>
+            </div>
 
+
+            <comment-tree :items="items" depth="0"></comment-tree>
+
+            <button class="btn btn-success" style="width: 100%" v-if="isVisibleMoreButton" @click="getItems()">{{
+                lang.buttons.show_more }}
+            </button>
         </div>
     </div>
 </template>
@@ -25,64 +32,80 @@
     import CommentForm from './forms/comment';
     import CommentTree from './tree';
     import RouteMixin from './mixins/route';
+    import ConfigMixin from './mixins/config';
     import bus from './bus';
 
 
     export default {
         name: "CommentComponent",
-        props: ['model', 'model-id', 'prefix', 'is-user-logged'],
         components: {CommentForm, CommentTree},
-        mixins: [RouteMixin],
+        mixins: [RouteMixin, ConfigMixin],
         data() {
             return {
                 items: [],
-                itemsCount: 0
+                itemsCount: 0,
+                page: 1,
+                isVisibleMoreButton: false
             };
         },
         created() {
-            bus.$on('store-item', (values) => {
-                this.store(values.parentId, values.form);
+            bus.$on('add-item', (values) => {
+                this.addItemToArray(values.parentId, values.item);
             });
+
+            bus.$on('up-count', (count) => this.itemsCount = this.itemsCount + count);
         },
         mounted() {
             this.getItemsCount();
+            this.getItems();
+            console.log(this.lang);
         },
         methods: {
             getItemsCount() {
                 axios.post(this.route('count'), {
                     model: this.model,
-                    model_id: this.modelId
+                    model_id: this.modelId,
+                    locale: this.locale
                 }).then(response => {
                     if (response.data.success) this.itemsCount = response.data.count;
                 }).catch(error => {
                     console.log(error);
                 });
             },
-            store(parentId, form) {
-                axios.post(this.route('store'), {
-                    name: form.name,
-                    email: form.email,
-                    message: form.message,
-                    parent_id: parentId,
+            getItems(parentId = null) {
+                axios.post(this.route('get'), {
                     model: this.model,
-                    model_id: this.modelId
+                    model_id: this.modelId,
+                    parent_id: parentId,
+                    page: this.page,
+                    locale: this.locale,
+                    order: this.order
                 }).then(response => {
                     if (response.data.success) {
-                        this.addItemToArray(parentId, response.data.comment);
+                        // Vue.set(this, 'items', response.data.comments);
+                        this.items = this.items.concat(response.data.comments);
+                        Vue.set(this, 'isVisibleMoreButton', response.data.isVisibleMoreButton);
+                        this.page++;
                     }
                 }).catch(error => {
-
+                    console.log(error);
                 });
+            },
+            changeOrder() {
+                this.items = [];
+                this.getItems();
             },
             addItemToArray(parentId, item) {
                 if (parentId == 0) {
                     this.items.unshift(item);
+                    this.items.splice(this.items.length - 1, 1);
                 } else {
                     insertItem(this.items);
 
                     function insertItem(array) {
                         for (let key in array) {
                             if (array[key].id == parentId) {
+                                array[key].isVisibleForm = false;
                                 return array[key].children.unshift(item);
                             }
                             if (array[key].children.length > 0) {

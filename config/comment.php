@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'limit' => '10',
+    'limit' => '5',
 
-    'default_order' => 'desc',
+    'default_order' => 'DESC',
 
     'models' => [
         'user' => App\Models\User::class,
@@ -16,7 +16,7 @@ return [
 
     'middleware' => [
 
-        'store' => ['auth'],
+        'store' => ['throttle:15'],
 
         'destroy' => ['auth'],
 
@@ -25,5 +25,49 @@ return [
         'update' => [],
 
         'count' => []
-    ]
+    ],
+
+    'models_with_comments' => [
+        'Blog' => \App\Models\Blog::class
+    ],
+
+//    'comment_relations' => ['user' => function($query) {
+//        $query->select(['id', 'name', 'email']);
+//    }, 'likes' => function($query){
+//        $query-> ...
+//    }],
+
+    'comment_relations' => ['user'],
+
+
+    // Validation
+    'validation' => [
+        'auth' => [
+            'message' => 'required|string'
+        ],
+        'not_auth' => [
+            'name' => 'required|alpha',
+            'email'=> 'required|email',
+            'message' => 'required|string'
+        ],
+        'messages' => []
+    ],
+
+
+
+    'transformFunction' => function($item) {
+        return [
+            'id' => $item->id,
+            'message' => $item->message,
+            'isVisibleForm' => false,
+            'date' => \Date::parse($item->created_at)->diffForHumans(),
+            'user' => [
+                'name' => $item->user->name ?? $item->name,
+                'email' => $item->user->email ?? $item->email
+            ],
+            'children' => []
+        ];
+    },
+
+    'allowable_tags' => '<p>'
 ];
