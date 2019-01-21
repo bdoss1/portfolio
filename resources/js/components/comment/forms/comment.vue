@@ -19,14 +19,12 @@
 
 
 <script>
-    import RouteMixin from './../mixins/route';
-    import ValuesMixin from './../mixins/values';
+
     import bus from './../bus';
 
     export default {
         name: "CommentForm",
-        props: ['parent-id', 'items', 'item'],
-        mixins: [RouteMixin, ValuesMixin],
+        props: ['parent-id', 'isUserLogged'],
         data() {
             return {
                 name: '',
@@ -36,23 +34,13 @@
         },
         methods: {
             store() {
-                axios.post(this.route('store'), {
-                    name: this.name,
-                    email: this.email,
-                    message: this.message,
-                    parent_id: this.parentId,
-                    model: this.model,
-                    model_id: this.modelId
-                }).then(response => {
-                    if (response.data.success) {
-                        this.message = null;
-                        bus.$emit('add-item', {
-                            parentId: this.parentId,
-                            item: response.data.comment
-                        });
+                bus.$emit('store-item', {
+                    parentId: this.parentId,
+                    form: {
+                        message: this.message,
+                        name: this.name,
+                        email: this.email,
                     }
-                }).catch(error => {
-
                 });
             }
         }

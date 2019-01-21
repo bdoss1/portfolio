@@ -19,11 +19,13 @@
 
                         <comment-form v-if="item.isVisibleForm"
                                       :parent-id="item.id"
+                                      :is-user-logged="isUserLogged"
                         ></comment-form>
                     </div>
                 </div>
 
                 <comment-tree
+                    :is-user-logged="isUserLogged"
                     :items="item.children"
                     :item="item"
                     :depth="parseInt(depth) + 1"
@@ -36,13 +38,11 @@
 
 <script>
     import CommentForm from './forms/comment'
-    import ValuesMixin from './mixins/values';
 
     export default {
         name: "CommentTree",
-        props: ['items', 'depth'],
+        props: ['items', 'depth', 'isUserLogged'],
         components: {CommentForm},
-        mixins: [ValuesMixin],
         methods: {
             toggleForm(item) {
                 item.isVisibleForm = !item.isVisibleForm;

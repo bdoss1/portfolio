@@ -5,11 +5,13 @@
             <div class="comments-title"><h3>Комментарии ({{ itemsCount }})</h3></div>
             <div class="comment-form">
                 <comment-form
+                    :is-user-logged="isUserLogged"
                     parent-id="0"
                 ></comment-form>
             </div>
 
             <comment-tree
+                :is-user-logged="isUserLogged"
                 :items="items"
                 depth="0"
             ></comment-tree>
@@ -38,8 +40,8 @@
             };
         },
         created() {
-            bus.$on('add-item', (values) => {
-                this.addItem(values.parentId, values.item);
+            bus.$on('store-item', (values) => {
+                this.store(values.parentId, values.form);
             });
         },
         mounted() {
@@ -56,7 +58,23 @@
                     console.log(error);
                 });
             },
-            addItem(parentId, item) {
+            store(parentId, form) {
+                axios.post(this.route('store'), {
+                    name: form.name,
+                    email: form.email,
+                    message: form.message,
+                    parent_id: parentId,
+                    model: this.model,
+                    model_id: this.modelId
+                }).then(response => {
+                    if (response.data.success) {
+                        this.addItemToArray(parentId, response.data.comment);
+                    }
+                }).catch(error => {
+
+                });
+            },
+            addItemToArray(parentId, item) {
                 if (parentId == 0) {
                     this.items.unshift(item);
                 } else {
