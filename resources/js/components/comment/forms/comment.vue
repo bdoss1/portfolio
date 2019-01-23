@@ -2,7 +2,16 @@
     <div class="vld-parent" ref="formContainer">
         <!-- LEAVE A COMMENT -->
         <div class="leave-reply top_30 bottom_45">
-            <form @submit.prevent="store" class="row">
+            <form @submit.prevent="checkByGoogleRecaptcha()" class="row">
+
+                <vue-recaptcha
+                        ref="invisibleRecaptcha"
+                        @verify="onVerify"
+                        @expired="onExpired"
+                        size="invisible"
+                        :sitekey="sitekey">
+                </vue-recaptcha>
+
                 <div v-if="! isUserLogged" class="col-md-6">
                     <input class="inp" type="text" v-model="name" :placeholder="lang.labels.name">
                 </div>
@@ -26,26 +35,25 @@
     import RouteMixin from './../mixins/route';
     import ConfigMixin from './../mixins/config';
     import ErrorMixin from './../mixins/error';
+    import LoaderMixin from './../../mixins/loader';
     import bus from './../bus';
+    import VueRecaptcha from 'vue-recaptcha';
+
 
     export default {
         name: "CommentForm",
         props: ['parent-id'],
-        mixins: [RouteMixin, ConfigMixin, ErrorMixin],
+        mixins: [RouteMixin, ConfigMixin, ErrorMixin, LoaderMixin],
+        components: {VueRecaptcha},
         data() {
             return {
-                message: ''
+                message: '',
+                sitekey: '6Lf1F4wUAAAAAK41yRxSR0jWnozligdijz-Zxg46',
+                gRecaptchaResponse: ''
             }
         },
         methods: {
             store() {
-
-                let loader = this.$loading.show({
-                    container: this.$refs.formContainer,
-                    canCancel: false
-                });
-
-                // console.log(this.model, this.modelId, this.parentId, this.prefix, this.isUserLogged);
                 axios.post(this.route('store'), {
                     name: this.name,
                     email: this.email,
@@ -53,9 +61,12 @@
                     parent_id: this.parentId,
                     model: this.model,
                     model_id: this.modelId,
-                    locale: this.locale
+                    locale: this.locale,
+                    'g-recaptcha-response': this.gRecaptchaResponse
                 }).then(response => {
-                    this.loaderHide(loader);
+                    this.loaderHide();
+
+                    this.resetRecaptcha();
 
                     if (response.data.success) {
                         this.message = '';
@@ -67,7 +78,9 @@
                         this.updateConfigAuthor(this.name, this.email);
                     }
                 }).catch(error => {
-                    this.loaderHide(loader);
+                    this.loaderHide();
+
+                    this.resetRecaptcha();
 
                     if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors)
 
@@ -75,10 +88,19 @@
                 });
 
             },
-            loaderHide(loader) {
-                setTimeout(() => {
-                    loader.hide();
-                }, 200)
+            checkByGoogleRecaptcha() {
+                this.loaderShow(this.$refs.formContainer);
+                this.$refs.invisibleRecaptcha.execute();
+            },
+            onVerify: function (response) {
+                this.gRecaptchaResponse = response;
+                this.store();
+            },
+            onExpired: function () {
+                this.gRecaptchaResponse = '';
+            },
+            resetRecaptcha() {
+                this.$refs.invisibleRecaptcha.reset() // Direct call reset method
             }
         }
     }

@@ -45,13 +45,14 @@
     import RouteMixin from './mixins/route';
     import ConfigMixin from './mixins/config';
     import ErrorMixin from './mixins/error';
+    import LoaderMixin from './../mixins/loader';
     import bus from './bus';
 
 
     export default {
         name: "CommentComponent",
         components: {CommentForm, CommentItem},
-        mixins: [RouteMixin, ConfigMixin, ErrorMixin],
+        mixins: [RouteMixin, ConfigMixin, ErrorMixin, LoaderMixin],
         data() {
             return {
                 items: [],
@@ -82,10 +83,7 @@
                 });
             },
             getItems(parentId = null) {
-                let loader = this.$loading.show({
-                    container: this.$refs.commentWrap,
-                    canCancel: false
-                });
+                this.loaderShow(this.$refs.commentWrap);
 
                 axios.post(this.route('get'), {
                     model: this.model,
@@ -95,7 +93,7 @@
                     locale: this.locale,
                     order: this.order
                 }).then(response => {
-                    this.loaderHide(loader);
+                    this.loaderHide();
 
                     if (response.data.success) {
                         // Vue.set(this, 'items', response.data.comments);
@@ -104,7 +102,7 @@
                         this.page++;
                     }
                 }).catch(error => {
-                    this.loaderHide(loader);
+                    this.loaderHide();
                     console.log(error);
                 });
             },
@@ -140,11 +138,6 @@
                     }
 
                 }
-            },
-            loaderHide(loader) {
-                setTimeout(() => {
-                    loader.hide();
-                }, 200)
             }
         }
     }

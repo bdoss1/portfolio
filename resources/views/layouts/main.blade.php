@@ -127,6 +127,7 @@
 </div>
 
 @yield('before.script')
+<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('after.script')
 </body>

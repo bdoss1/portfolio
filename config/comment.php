@@ -45,12 +45,14 @@ return [
     // Validation
     'validation' => [
         'auth' => [
-            'message' => ['required', 'string', new \Yarmat\Comment\Rules\Spam(), new \Yarmat\Comment\Rules\AllowableSite()]
+            'message' => ['required', 'string', new \Yarmat\Comment\Rules\Spam(), new \Yarmat\Comment\Rules\AllowableSite()],
+            'g-recaptcha-response' => 'required|captcha'
         ],
         'not_auth' => [
             'name' => 'required|alpha',
             'email' => 'required|email',
-            'message' => ['required', 'string', new \Yarmat\Comment\Rules\Spam(), new \Yarmat\Comment\Rules\AllowableSite()]
+            'message' => ['required', 'string', new \Yarmat\Comment\Rules\Spam(), new \Yarmat\Comment\Rules\AllowableSite()],
+            'g-recaptcha-response' => 'required|captcha'
         ],
         'messages' => []
     ],
