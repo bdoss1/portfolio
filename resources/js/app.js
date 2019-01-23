@@ -28,9 +28,17 @@ Vue.component('comment-component', require('./components/comment/CommentComponen
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Notifications from 'vue-notification';
+import velocity from 'velocity-animate';
+import Loading from 'vue-loading-overlay';
+
+Vue.use(Notifications, {velocity});
+Vue.use(Loading);
+
 const app = new Vue({
     el: '#app'
 });
+
 
 require('./custom');
 

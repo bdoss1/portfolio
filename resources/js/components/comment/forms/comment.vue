@@ -1,19 +1,32 @@
 <template>
-    <div>
-        <form @submit.prevent="store" class="comment-form">
-            <div v-if="! isUserLogged" class="form-group">
-                <input type="text" v-model="name" class="form-control" placeholder="Имя">
-            </div>
-            <div v-if="! isUserLogged" class="form-group">
-                <input type="email" v-model="email" class="form-control" placeholder="E-mail">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" v-model="message" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">{{ lang.buttons.send }}</button>
-            </div>
-        </form>
+    <div class="vld-parent" ref="formContainer">
+        <!-- LEAVE A COMMENT -->
+        <div class="leave-reply top_30 bottom_45">
+            <form @submit.prevent="checkByGoogleRecaptcha()" class="row">
+
+                <vue-recaptcha
+                        ref="invisibleRecaptcha"
+                        @verify="onVerify"
+                        @expired="onExpired"
+                        size="invisible"
+                        :sitekey="sitekey">
+                </vue-recaptcha>
+
+                <div v-if="! isUserLogged" class="col-md-6">
+                    <input class="inp" type="text" v-model="name" :placeholder="lang.labels.name">
+                </div>
+                <div v-if="! isUserLogged" class="col-md-6">
+                    <input class="inp" type="email" v-model="email" :placeholder="lang.labels.email">
+                </div>
+                <div class="col-md-12">
+                    <textarea :placeholder="lang.labels.message" v-model="message" rows="4"
+                              class="col-md-12 form-message"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" :value="lang.buttons.send" class="site-btn2">
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -21,20 +34,26 @@
 <script>
     import RouteMixin from './../mixins/route';
     import ConfigMixin from './../mixins/config';
+    import ErrorMixin from './../mixins/error';
+    import LoaderMixin from './../../mixins/loader';
     import bus from './../bus';
+    import VueRecaptcha from 'vue-recaptcha';
+
 
     export default {
         name: "CommentForm",
         props: ['parent-id'],
-        mixins: [RouteMixin, ConfigMixin],
+        mixins: [RouteMixin, ConfigMixin, ErrorMixin, LoaderMixin],
+        components: {VueRecaptcha},
         data() {
             return {
-                message: ''
+                message: '',
+                sitekey: '6Lf1F4wUAAAAAK41yRxSR0jWnozligdijz-Zxg46',
+                gRecaptchaResponse: ''
             }
         },
         methods: {
             store() {
-                // console.log(this.model, this.modelId, this.parentId, this.prefix, this.isUserLogged);
                 axios.post(this.route('store'), {
                     name: this.name,
                     email: this.email,
@@ -42,8 +61,13 @@
                     parent_id: this.parentId,
                     model: this.model,
                     model_id: this.modelId,
-                    locale: this.locale
+                    locale: this.locale,
+                    'g-recaptcha-response': this.gRecaptchaResponse
                 }).then(response => {
+                    this.loaderHide();
+
+                    this.resetRecaptcha();
+
                     if (response.data.success) {
                         this.message = '';
                         bus.$emit('add-item', {
@@ -51,11 +75,12 @@
                             item: response.data.comment
                         });
 
-                        bus.$emit('up-count', 1);
-
                         this.updateConfigAuthor(this.name, this.email);
                     }
                 }).catch(error => {
+                    this.loaderHide();
+
+                    this.resetRecaptcha();
 
                     if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors)
 
@@ -63,13 +88,19 @@
                 });
 
             },
-            showErrorsOfValidation(errors) {
-                for (let key in errors) {
-                    return alert(errors[key][0]);
-                }
+            checkByGoogleRecaptcha() {
+                this.loaderShow(this.$refs.formContainer);
+                this.$refs.invisibleRecaptcha.execute();
             },
-            showErrorOfTooManyAttempts() {
-                alert(this.lang.dont_spam);
+            onVerify: function (response) {
+                this.gRecaptchaResponse = response;
+                this.store();
+            },
+            onExpired: function () {
+                this.gRecaptchaResponse = '';
+            },
+            resetRecaptcha() {
+                this.$refs.invisibleRecaptcha.reset() // Direct call reset method
             }
         }
     }

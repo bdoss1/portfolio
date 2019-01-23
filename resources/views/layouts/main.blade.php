@@ -25,6 +25,8 @@
 </head>
 <body>
 <div id="app">
+    <notifications classes="portfolio_notifications" group="foo" animation-type="velocity"
+                   position="bottom left"></notifications>
 
     <!-- PRELOADER -->
     <div class="preloader">
@@ -32,7 +34,6 @@
             <div class="loader-inner"></div>
         </div>
     </div>
-
 
     <!-- HEADER -->
     <header>
@@ -126,6 +127,7 @@
 </div>
 
 @yield('before.script')
+<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('after.script')
 </body>
