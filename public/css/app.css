@@ -2200,3 +2200,7 @@ textarea.form-message {
   border-left-color: #ea0026;
 }
 
+.grecaptcha-badge {
+    display: none !important;
+}
+
