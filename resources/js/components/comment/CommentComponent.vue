@@ -1,28 +1,39 @@
 <template>
-    <div>
-        <div class="comments">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="comments-title"><h3>{{ lang.title }} ({{ itemsCount }})</h3></div>
-                </div>
-                <div style="text-align: right;" class="col-md-6">
-                    <select @change="changeOrder()" v-model="order">
-                        <option value="DESC">{{ lang.sort.newest }}</option>
-                        <option value="ASC">{{ lang.sort.oldest }}</option>
-                    </select>
-                </div>
-            </div>
+    <div class="vld-parent" ref="commentWrap">
+        <!-- COMMENTS -->
+        <div class="article-comments top_60">
+            <h2 class="subtitle">{{ lang.title }} ({{ itemsCount }})</h2>
+            <!-- a comment -->
+
+            <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+            <!--<div class="comments-title"><h3>{{ lang.title }} ({{ itemsCount }})</h3></div>-->
+            <!--</div>-->
+            <!--<div style="text-align: right;" class="col-md-6">-->
+            <!--<select @change="changeOrder()" v-model="order">-->
+            <!--<option value="DESC">{{ lang.sort.newest }}</option>-->
+            <!--<option value="ASC">{{ lang.sort.oldest }}</option>-->
+            <!--</select>-->
+            <!--</div>-->
+            <!--</div>-->
 
             <div class="comment-form">
                 <comment-form parent-id="0"></comment-form>
             </div>
 
 
-            <comment-tree :items="items" depth="0"></comment-tree>
+            <comment-item :items="items" depth="0"></comment-item>
 
-            <button class="btn btn-success" style="width: 100%" v-if="isVisibleMoreButton" @click="getItems()">{{
-                lang.buttons.show_more }}
-            </button>
+            <div id="port-loadMore" v-if="isVisibleMoreButton"
+                 class="is-visible-js cbp-l-loadMore-button top_30 bottom_90">
+                <a data-page="2" @click.prevent="getItems()" href="#" rel="nofollow"
+                   class="cbp-l-loadMore-link site-btn">
+                    <span class="cbp-l-loadMore-defaultText">
+                        {{ lang.buttons.show_more }}
+                    </span>
+                </a>
+            </div>
+
         </div>
     </div>
 </template>
@@ -30,16 +41,17 @@
 
 <script>
     import CommentForm from './forms/comment';
-    import CommentTree from './tree';
+    import CommentItem from './CommentItem';
     import RouteMixin from './mixins/route';
     import ConfigMixin from './mixins/config';
+    import ErrorMixin from './mixins/error';
     import bus from './bus';
 
 
     export default {
         name: "CommentComponent",
-        components: {CommentForm, CommentTree},
-        mixins: [RouteMixin, ConfigMixin],
+        components: {CommentForm, CommentItem},
+        mixins: [RouteMixin, ConfigMixin, ErrorMixin],
         data() {
             return {
                 items: [],
@@ -52,13 +64,10 @@
             bus.$on('add-item', (values) => {
                 this.addItemToArray(values.parentId, values.item);
             });
-
-            bus.$on('up-count', (count) => this.itemsCount = this.itemsCount + count);
         },
         mounted() {
             this.getItemsCount();
             this.getItems();
-            console.log(this.lang);
         },
         methods: {
             getItemsCount() {
@@ -73,6 +82,11 @@
                 });
             },
             getItems(parentId = null) {
+                let loader = this.$loading.show({
+                    container: this.$refs.commentWrap,
+                    canCancel: false
+                });
+
                 axios.post(this.route('get'), {
                     model: this.model,
                     model_id: this.modelId,
@@ -81,6 +95,8 @@
                     locale: this.locale,
                     order: this.order
                 }).then(response => {
+                    this.loaderHide(loader);
+
                     if (response.data.success) {
                         // Vue.set(this, 'items', response.data.comments);
                         this.items = this.items.concat(response.data.comments);
@@ -88,17 +104,26 @@
                         this.page++;
                     }
                 }).catch(error => {
+                    this.loaderHide(loader);
                     console.log(error);
                 });
             },
             changeOrder() {
                 this.items = [];
+                this.page = 1;
                 this.getItems();
             },
             addItemToArray(parentId, item) {
+                if (!item.is_approved) return this.showNotApprovedError();
+
+                this.itemsCount = this.itemsCount + 1;
+
                 if (parentId == 0) {
+                    if (this.items.length == this.limit) {
+                        this.items.splice(this.items.length - 1, 1);
+                        this.isVisibleMoreButton = true;
+                    }
                     this.items.unshift(item);
-                    this.items.splice(this.items.length - 1, 1);
                 } else {
                     insertItem(this.items);
 
@@ -115,6 +140,11 @@
                     }
 
                 }
+            },
+            loaderHide(loader) {
+                setTimeout(() => {
+                    loader.hide();
+                }, 200)
             }
         }
     }

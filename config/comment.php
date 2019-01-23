@@ -6,7 +6,7 @@ return [
     'default_order' => 'DESC',
 
     'models' => [
-        'user' => App\Models\User::class,
+        'user' => \App\Models\User::class,
         'comment' => \Yarmat\Comment\Models\Comment::class
     ],
 
@@ -22,13 +22,15 @@ return [
 
         'get' => [],
 
-        'update' => [],
+        'update' => ['auth'],
 
         'count' => []
     ],
 
     'models_with_comments' => [
+
         'Blog' => \App\Models\Blog::class
+
     ],
 
 //    'comment_relations' => ['user' => function($query) {
@@ -43,31 +45,40 @@ return [
     // Validation
     'validation' => [
         'auth' => [
-            'message' => 'required|string'
+            'message' => ['required', 'string', new \Yarmat\Comment\Rules\Spam(), new \Yarmat\Comment\Rules\AllowableSite()]
         ],
         'not_auth' => [
             'name' => 'required|alpha',
-            'email'=> 'required|email',
-            'message' => 'required|string'
+            'email' => 'required|email',
+            'message' => ['required', 'string', new \Yarmat\Comment\Rules\Spam(), new \Yarmat\Comment\Rules\AllowableSite()]
         ],
         'messages' => []
     ],
 
 
-
-    'transformFunction' => function($item) {
+    'transformFunction' => function ($item) {
         return [
             'id' => $item->id,
             'message' => $item->message,
             'isVisibleForm' => false,
             'date' => \Date::parse($item->created_at)->diffForHumans(),
+            'is_approved' => $item->isApproved(),
             'user' => [
                 'name' => $item->user->name ?? $item->name,
                 'email' => $item->user->email ?? $item->email
             ],
-            'children' => []
+            'children' => [] // default must be empty array
         ];
     },
 
-    'allowable_tags' => '<p>'
+    'allowable_tags' => '',
+
+    'spam_list' => ['spam'],
+
+    'allowable_sites' => ['test.com', 'vk.com'],
+
+    'approved_quest' => false,
+
+    'seconds_to_edit_own_comment' => 60 * 5 // 5 minutes. Only for auth users
+
 ];

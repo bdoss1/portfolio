@@ -1,19 +1,23 @@
 <template>
-    <div>
-        <form @submit.prevent="store" class="comment-form">
-            <div v-if="! isUserLogged" class="form-group">
-                <input type="text" v-model="name" class="form-control" placeholder="Имя">
-            </div>
-            <div v-if="! isUserLogged" class="form-group">
-                <input type="email" v-model="email" class="form-control" placeholder="E-mail">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" v-model="message" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">{{ lang.buttons.send }}</button>
-            </div>
-        </form>
+    <div class="vld-parent" ref="formContainer">
+        <!-- LEAVE A COMMENT -->
+        <div class="leave-reply top_30 bottom_45">
+            <form @submit.prevent="store" class="row">
+                <div v-if="! isUserLogged" class="col-md-6">
+                    <input class="inp" type="text" v-model="name" :placeholder="lang.labels.name">
+                </div>
+                <div v-if="! isUserLogged" class="col-md-6">
+                    <input class="inp" type="email" v-model="email" :placeholder="lang.labels.email">
+                </div>
+                <div class="col-md-12">
+                    <textarea :placeholder="lang.labels.message" v-model="message" rows="4"
+                              class="col-md-12 form-message"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" :value="lang.buttons.send" class="site-btn2">
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -21,12 +25,13 @@
 <script>
     import RouteMixin from './../mixins/route';
     import ConfigMixin from './../mixins/config';
+    import ErrorMixin from './../mixins/error';
     import bus from './../bus';
 
     export default {
         name: "CommentForm",
         props: ['parent-id'],
-        mixins: [RouteMixin, ConfigMixin],
+        mixins: [RouteMixin, ConfigMixin, ErrorMixin],
         data() {
             return {
                 message: ''
@@ -34,6 +39,12 @@
         },
         methods: {
             store() {
+
+                let loader = this.$loading.show({
+                    container: this.$refs.formContainer,
+                    canCancel: false
+                });
+
                 // console.log(this.model, this.modelId, this.parentId, this.prefix, this.isUserLogged);
                 axios.post(this.route('store'), {
                     name: this.name,
@@ -44,6 +55,8 @@
                     model_id: this.modelId,
                     locale: this.locale
                 }).then(response => {
+                    this.loaderHide(loader);
+
                     if (response.data.success) {
                         this.message = '';
                         bus.$emit('add-item', {
@@ -51,11 +64,10 @@
                             item: response.data.comment
                         });
 
-                        bus.$emit('up-count', 1);
-
                         this.updateConfigAuthor(this.name, this.email);
                     }
                 }).catch(error => {
+                    this.loaderHide(loader);
 
                     if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors)
 
@@ -63,13 +75,10 @@
                 });
 
             },
-            showErrorsOfValidation(errors) {
-                for (let key in errors) {
-                    return alert(errors[key][0]);
-                }
-            },
-            showErrorOfTooManyAttempts() {
-                alert(this.lang.dont_spam);
+            loaderHide(loader) {
+                setTimeout(() => {
+                    loader.hide();
+                }, 200)
             }
         }
     }

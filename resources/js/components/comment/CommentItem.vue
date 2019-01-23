@@ -1,29 +1,26 @@
 <template>
     <div>
         <template v-for="item in items">
-
-            <div :data-depth="depth" :data-id="item.id" class="comments-tree">
-                <div class="d-flex comments-item">
-                    <div v-if="item.user.avatar" class="comments-avatar"></div>
-                    <div class="w-100 comments-group">
-                        <div class="comment-date">
-                            <small>{{ item.date }}</small>
-                        </div>
-                        <div class="comment-author"><b>{{ item.user.name }}</b></div>
-                        <div v-html="item.message" class="comment-message"></div>
-                        <div class="comment-buttons">
-                            <button @click="toggleForm(item)" type="button" class="btn btn-primary">{{
-                                lang.buttons.reply }}
-                            </button>
-                        </div>
-
+            <!-- a comment -->
+            <div :class="{
+              'comments-tree': true,
+              'comments-tree_no_margin': depth > 3
+            }">
+                <div :data-depth="depth" :data-id="item.id" class="comment row top_15">
+                    <div class="comment-content col-md-12">
+                        <h3 class="title top_15">{{ item.user.name }}</h3>
+                        <span class="date">{{ item.date }}</span>
+                        <p>{{ item.message }}</p>
+                        <a @click.prevent="toggleForm(item)" href="#" class="reply">
+                            {{ lang.buttons.reply }}
+                        </a>
                         <comment-form v-if="item.isVisibleForm" :parent-id="item.id"></comment-form>
                     </div>
                 </div>
 
-                <comment-tree :items="item.children" :depth="parseInt(depth) + 1"></comment-tree>
-
+                <comment-item :items="item.children" :depth="parseInt(depth) + 1"></comment-item>
             </div>
+
         </template>
     </div>
 </template>
@@ -33,7 +30,7 @@
     import ConfigMixin from './mixins/config';
 
     export default {
-        name: "CommentTree",
+        name: "CommentItem",
         props: ['items', 'depth'],
         components: {CommentForm},
         mixins: [ConfigMixin],
@@ -70,8 +67,17 @@
         margin: 10px 0;
     }
 
-
     .comments-tree .comments-tree {
-        margin-left: 30px;
+        margin-left: 70px;
+    }
+
+    .comments-tree .comments-tree .comments-tree_no_margin {
+        margin-left: 0;
+    }
+
+    .comment-error {
+        color: red;
+        font-size: 12px;
+        margin: 10px 0;
     }
 </style>

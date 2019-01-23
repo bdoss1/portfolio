@@ -25,6 +25,8 @@
 </head>
 <body>
 <div id="app">
+    <notifications classes="portfolio_notifications" group="foo" animation-type="velocity"
+                   position="bottom left"></notifications>
 
     <!-- PRELOADER -->
     <div class="preloader">
@@ -32,7 +34,6 @@
             <div class="loader-inner"></div>
         </div>
     </div>
-
 
     <!-- HEADER -->
     <header>
