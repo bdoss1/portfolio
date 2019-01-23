@@ -7,7 +7,7 @@ return [
 
     'models' => [
         'user' => \App\Models\User::class,
-        'comment' => \Yarmat\Comment\Models\Comment::class
+        'comment' => \App\Models\Comment::class
     ],
 
     'controller' => \Yarmat\Comment\Http\Controllers\CommentController::class,

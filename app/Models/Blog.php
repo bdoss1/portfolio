@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -11,6 +10,7 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Yarmat\Comment\Contracts\CommentContract;
 use Yarmat\Comment\Traits\HasCommentTrait;
 use Yarmat\Seo\Traits\HasSeoTrait;
@@ -57,7 +57,7 @@ class Blog extends Model implements HasMedia, SeoContract, CommentContract
     use HasSlug;
     use HasMediaTrait;
     use HasSeoTrait;
-    use Cachable;
+    use LadaCacheTrait;
     use HasCommentTrait;
 
     public $translatable = ['title', 'description', 'content'];

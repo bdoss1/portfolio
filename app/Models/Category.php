@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Yarmat\Seo\Traits\HasSeoTrait;
 use Yarmat\Seo\Contracts\SeoContract;
 
@@ -38,7 +38,7 @@ class Category extends Model implements SeoContract
 {
     use HasTranslations;
     use HasSlug;
-    use Cachable;
+    use LadaCacheTrait;
     use HasSeoTrait;
 
     public $translatable = ['title'];

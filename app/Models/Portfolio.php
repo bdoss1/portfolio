@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -11,6 +9,7 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Translatable\HasTranslations;
 use Spatie\Sluggable\SlugOptions;
+use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Yarmat\Seo\Traits\HasSeoTrait;
 use Yarmat\Seo\Contracts\SeoContract;
 
@@ -55,7 +54,7 @@ class Portfolio extends Model implements HasMedia, SeoContract
     use HasSlug;
     use HasMediaTrait;
     use HasSeoTrait;
-    use Cachable;
+    use LadaCacheTrait;
 
     public $translatable = ['title', 'description'];
 
