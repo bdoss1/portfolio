@@ -36,6 +36,7 @@ use Yarmat\Comment\Traits\CommenterTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User role($roles)
+ * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Comment[] $comments
  */
 class User extends Authenticatable
 {

@@ -127,6 +127,17 @@
 </div>
 
 @yield('before.script')
+<script>
+    window.Portfolio = {
+        'captcha': {
+            sitekey: '{{ config('captcha.sitekey') }}'
+        },
+        lang: {
+            custom: JSON.parse(`{!! json_encode(__('custom')) !!}`),
+            attributes: JSON.parse(`{!! json_encode(__('validation.attributes')) !!}`)
+        }
+    };
+</script>
 <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('after.script')

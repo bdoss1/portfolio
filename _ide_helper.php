@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.21 on 2019-01-21 18:56:31.
+ * Generated for Laravel 5.7.22 on 2019-01-24 11:34:58.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2547,7 +2547,7 @@ namespace Illuminate\Support\Facades {
     class Cache {
         
         /**
-         * Get a cache store instance by name.
+         * Get a cache store instance by name, wrapped in a repository.
          *
          * @param string|null $name
          * @return \Illuminate\Contracts\Cache\Repository 
@@ -14099,6 +14099,105 @@ namespace Barryvdh\Debugbar {
  
 }
 
+namespace Buzz\LaravelGoogleCaptcha {
+
+    /**
+     *
+     *
+     */
+    class CaptchaFacade
+    {
+
+        /**
+         * Create captcha html element
+         *
+         * @param array $attributes
+         * @param array $options
+         * @return string
+         * @static
+         */
+        public static function display($attributes = array(), $options = array())
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::display($attributes, $options);
+        }
+
+        /**
+         * Create javascript api link with language
+         *
+         * @param array $options
+         * @return string
+         * @static
+         */
+        public static function getJsLink($options = array())
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::getJsLink($options);
+        }
+
+        /**
+         * Display multiple captcha on page
+         *
+         * @param array $options
+         * @return string
+         * @static
+         */
+        public static function displayMultiple($options = array())
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::displayMultiple($options);
+        }
+
+        /**
+         *
+         *
+         * @param array $options
+         * @param array $attributes
+         * @return string
+         * @internal param null $lang
+         * @static
+         */
+        public static function displayJs($options = array(), $attributes = array())
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::displayJs($options, $attributes);
+        }
+
+        /**
+         *
+         *
+         * @param boolean $multiple
+         * @static
+         */
+        public static function multiple($multiple = true)
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::multiple($multiple);
+        }
+
+        /**
+         *
+         *
+         * @param array $options
+         * @static
+         */
+        public static function setOptions($options = array())
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::setOptions($options);
+        }
+
+        /**
+         * Verify captcha
+         *
+         * @param string $response
+         * @param string $clientIp
+         * @return bool
+         * @static
+         */
+        public static function verify($response, $clientIp = null)
+        {
+            return \Buzz\LaravelGoogleCaptcha\Captcha::verify($response, $clientIp);
+        }
+
+    }
+
+}
+
 namespace DaveJamesMiller\Breadcrumbs\Facades { 
 
     /**
@@ -15403,21 +15502,21 @@ namespace Yarmat\Comment\Facades {
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function config($modelName, $modelId)
         {
-            return \Yarmat\Comment\CommentServcice::config($modelName, $modelId);
+            return \Yarmat\Comment\CommentService::config($modelName, $modelId);
         }
 
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function getModel($modelName)
         {
-            return \Yarmat\Comment\CommentServcice::getModel($modelName);
+            return \Yarmat\Comment\CommentService::getModel($modelName);
         }
 
     }
@@ -16409,7 +16508,7 @@ namespace  {
              * Add a "join where" clause to the query.
              *
              * @param string $table
-             * @param string $first
+             * @param \Closure|string $first
              * @param string $operator
              * @param string $second
              * @return \Illuminate\Database\Query\Builder|static 
@@ -16425,7 +16524,7 @@ namespace  {
              *
              * @param \Closure|\Illuminate\Database\Query\Builder|string $query
              * @param string $as
-             * @param string $first
+             * @param \Closure|string $first
              * @param string|null $operator
              * @param string|null $second
              * @return \Illuminate\Database\Query\Builder|static 
@@ -16455,7 +16554,7 @@ namespace  {
              * Add a "right join where" clause to the query.
              *
              * @param string $table
-             * @param string $first
+             * @param \Closure|string $first
              * @param string $operator
              * @param string $second
              * @return \Illuminate\Database\Query\Builder|static 
@@ -16471,7 +16570,7 @@ namespace  {
              *
              * @param \Closure|\Illuminate\Database\Query\Builder|string $query
              * @param string $as
-             * @param string $first
+             * @param \Closure|string $first
              * @param string|null $operator
              * @param string|null $second
              * @return \Illuminate\Database\Query\Builder|static 
@@ -17863,6 +17962,10 @@ namespace  {
     }
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
+
+    class Captcha extends \Buzz\LaravelGoogleCaptcha\CaptchaFacade
+    {
+    }
 
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs
     {

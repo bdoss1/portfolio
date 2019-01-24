@@ -50,6 +50,7 @@ use Yarmat\Seo\Contracts\SeoContract;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog withCacheCooldownSeconds($seconds)
  * @mixin \Eloquent
+ * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Comment[] $comments
  */
 class Blog extends Model implements HasMedia, SeoContract, CommentContract
 {

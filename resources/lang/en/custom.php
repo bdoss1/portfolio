@@ -12,5 +12,9 @@ return [
     'about' => 'About me',
     'contact' => 'Contact',
     'all_works' => 'All works',
-    'load_more' => 'Load More'
+    'load_more' => 'Load More',
+    'send' => 'Send',
+    'error' => 'Error',
+    'attention' => 'Attention',
+    'success' => 'Success'
 ];

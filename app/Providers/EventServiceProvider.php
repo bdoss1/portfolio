@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\FormSaved;
+use App\Listeners\SendEmailToAdmin;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -15,6 +17,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        'App\Events\Forms\ContactStored' => [
+            'App\Listeners\Forms\ContactSendNotifications',
+        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],

@@ -22,3 +22,5 @@ Route::get('blog/item/{slug}', 'BlogController@show')->name('blog.show');
 Route::post('blog/load', 'BlogController@load')->name('blog.load');
 Route::get('blog/{slug}', 'Category\BlogController@show')->name('blog.category.show');
 Route::post('blog/load/{slug}', 'Category\BlogController@load')->name('blog.category.load');
+
+Route::post('form/contact', 'FormController@contact')->name('form.contact');

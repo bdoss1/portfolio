@@ -20,20 +20,10 @@
                 <p>0800 123 456789</p>
             </div>
             <div class="contact-form top_90">
-                <form class="row">
-                    <div class="col-md-6">
-                        <input class="inp" type="text" placeholder="Name">
-                    </div>
-                    <div class="col-md-6">
-                        <input class="inp" type="text" placeholder="Email">
-                    </div>
-                    <div class="col-md-12">
-                        <textarea placeholder="Your Message" rows="6" class="col-md-12 form-message"></textarea>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <input type="submit" value="Submit" class="site-btn2">
-                    </div>
-                </form>
+                <contact-form-component
+                        route="{{ route('form.contact') }}"
+                        is-user-logged="{{ \Auth::check() }}"
+                ></contact-form-component>
             </div>
 
 

@@ -36,6 +36,9 @@
     import ConfigMixin from './../mixins/config';
     import ErrorMixin from './../mixins/error';
     import LoaderMixin from './../../mixins/loader';
+    import CaptchaMixin from './../../mixins/captcha';
+
+
     import bus from './../bus';
     import VueRecaptcha from 'vue-recaptcha';
 
@@ -43,13 +46,11 @@
     export default {
         name: "CommentForm",
         props: ['parent-id'],
-        mixins: [RouteMixin, ConfigMixin, ErrorMixin, LoaderMixin],
+        mixins: [RouteMixin, ConfigMixin, ErrorMixin, LoaderMixin, CaptchaMixin],
         components: {VueRecaptcha},
         data() {
             return {
-                message: '',
-                sitekey: '6Lf1F4wUAAAAAK41yRxSR0jWnozligdijz-Zxg46',
-                gRecaptchaResponse: ''
+                message: ''
             }
         },
         methods: {
@@ -82,7 +83,7 @@
 
                     this.resetRecaptcha();
 
-                    if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors)
+                    if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors);
 
                     if (error.response.status === 429) this.showErrorOfTooManyAttempts();
                 });
@@ -95,12 +96,6 @@
             onVerify: function (response) {
                 this.gRecaptchaResponse = response;
                 this.store();
-            },
-            onExpired: function () {
-                this.gRecaptchaResponse = '';
-            },
-            resetRecaptcha() {
-                this.$refs.invisibleRecaptcha.reset() // Direct call reset method
             }
         }
     }
