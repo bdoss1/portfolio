@@ -93,7 +93,7 @@
 
 .portfolio_notifications {
     padding: 10px;
-    margin: 0 5px 5px;
+    margin: 5px;
 
     font-size: 12px;
 
@@ -102,7 +102,8 @@
     border-left: 5px solid #187FE7;
 
     &.warn {
-        background: #ffb648;
+        background: #efefef;
+        color: #000;
         border-left-color: #ea0026;
     }
 
@@ -110,11 +111,12 @@
         background: #efefef;
         color: #000;
         border-left-color: #ea0026;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+
     }
 
     &.success {
-        background: #68CD86;
+        background: #efefef;
+        color: #000;
         border-left-color: #ea0026;
     }
 }

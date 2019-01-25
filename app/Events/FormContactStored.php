@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Events\Forms;
+namespace App\Events;
 
+use App\Models\Form;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -10,14 +11,13 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class ContactStored
+class FormContactStored
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $form;
 
-
-    public function __construct($form)
+    public function __construct(Form $form)
     {
         $this->form = $form;
     }

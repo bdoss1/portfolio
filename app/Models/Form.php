@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Form whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Form whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User|null $user
  */
 class Form extends Model
 {
@@ -44,6 +45,6 @@ class Form extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault();
     }
 }

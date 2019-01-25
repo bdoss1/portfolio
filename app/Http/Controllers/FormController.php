@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FormContactStored;
 use App\Events\Forms\ContactStored;
 use App\Events\FormSaved;
 use App\Http\Requests\FormRequest;
@@ -16,7 +17,7 @@ class FormController extends Controller
 
         $form = Form::create($data);
 
-        event(new ContactStored($form));
+        event(new FormContactStored($form));
 
         if (!$request->ajax()) return back()->with($this->responseSuccess());
 

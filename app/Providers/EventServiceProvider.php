@@ -17,8 +17,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Forms\ContactStored' => [
-            'App\Listeners\Forms\ContactSendNotifications',
+        'App\Events\FormContactStored' => [
+            'App\Listeners\SendAdminNotification',
+            'App\Listeners\SendThankVisitorNotification'
         ],
         Registered::class => [
             SendEmailVerificationNotification::class,

@@ -2,23 +2,22 @@
 
 namespace App\Notifications;
 
+use App\Models\Form;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ThankForYourMessage extends Notification
+class AdminNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $form;
+
+
+    public function __construct(Form $form)
     {
-        //
+        $this->form = $form;
     }
 
     /**
@@ -41,8 +40,13 @@ class ThankForYourMessage extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->line('Thank you for using our application!');
+            ->line('Application from the site - "' . config('app.name') . '".')
+            ->from('no-reply@' . parse_url(config('app.url'), PHP_URL_HOST), 'Not Reply (Robot)')
+            ->line('Author Name:' . $this->form->user->name ?? $this->form->name)
+            ->line('Author E-mail:' . $this->form->user->email ?? $this->form->email)
+            ->line('Author Message:' . $this->form->message)
+            ->subject('Form from the ' . config('app.url'))
+            ->action('Form Sent From', $this->form->url);
     }
 
     /**

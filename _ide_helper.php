@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.22 on 2019-01-24 11:34:58.
+ * Generated for Laravel 5.7.22 on 2019-01-25 12:16:45.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -7290,6 +7290,69 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Support\Testing\Fakes\QueueFake::setConnectionName($name);
         }
+
+        /**
+         * Migrate the delayed jobs that are ready to the regular queue.
+         *
+         * @param string $from
+         * @param string $to
+         * @return array
+         * @static
+         */
+        public static function migrateExpiredJobs($from, $to)
+        {
+            return \Illuminate\Queue\RedisQueue::migrateExpiredJobs($from, $to);
+        }
+
+        /**
+         * Delete a reserved job from the queue.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\RedisJob $job
+         * @return void
+         * @static
+         */
+        public static function deleteReserved($queue, $job)
+        {
+            \Illuminate\Queue\RedisQueue::deleteReserved($queue, $job);
+        }
+
+        /**
+         * Delete a reserved job from the reserved queue and release it.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\RedisJob $job
+         * @param int $delay
+         * @return void
+         * @static
+         */
+        public static function deleteAndRelease($queue, $job, $delay)
+        {
+            \Illuminate\Queue\RedisQueue::deleteAndRelease($queue, $job, $delay);
+        }
+
+        /**
+         * Get the queue or return the default.
+         *
+         * @param string|null $queue
+         * @return string
+         * @static
+         */
+        public static function getQueue($queue)
+        {
+            return \Illuminate\Queue\RedisQueue::getQueue($queue);
+        }
+
+        /**
+         * Get the underlying Redis instance.
+         *
+         * @return \Illuminate\Contracts\Redis\Factory
+         * @static
+         */
+        public static function getRedis()
+        {
+            return \Illuminate\Queue\RedisQueue::getRedis();
+        }
         
         /**
          * Get the expiration timestamp for an object-based queue handler.
@@ -7301,7 +7364,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobExpiration($job)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::getJobExpiration($job);
+            return \Illuminate\Queue\RedisQueue::getJobExpiration($job);
         }
         
         /**
@@ -7314,7 +7377,7 @@ namespace Illuminate\Support\Facades {
         public static function createPayloadUsing($callback)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\SyncQueue::createPayloadUsing($callback);
+            \Illuminate\Queue\RedisQueue::createPayloadUsing($callback);
         }
         
         /**
@@ -7327,7 +7390,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\SyncQueue::setContainer($container);
+            \Illuminate\Queue\RedisQueue::setContainer($container);
         }
          
     }
@@ -14099,15 +14162,15 @@ namespace Barryvdh\Debugbar {
  
 }
 
-namespace Buzz\LaravelGoogleCaptcha {
+namespace Buzz\LaravelGoogleCaptcha { 
 
     /**
-     *
+     * 
      *
      */
     class CaptchaFacade
     {
-
+        
         /**
          * Create captcha html element
          *
@@ -14115,7 +14178,7 @@ namespace Buzz\LaravelGoogleCaptcha {
          * @param array $options
          * @return string
          * @static
-         */
+         */ 
         public static function display($attributes = array(), $options = array())
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::display($attributes, $options);
@@ -14127,7 +14190,7 @@ namespace Buzz\LaravelGoogleCaptcha {
          * @param array $options
          * @return string
          * @static
-         */
+         */ 
         public static function getJsLink($options = array())
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::getJsLink($options);
@@ -14139,43 +14202,43 @@ namespace Buzz\LaravelGoogleCaptcha {
          * @param array $options
          * @return string
          * @static
-         */
+         */ 
         public static function displayMultiple($options = array())
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::displayMultiple($options);
         }
 
         /**
-         *
+         * 
          *
          * @param array $options
          * @param array $attributes
-         * @return string
+         * @return string 
          * @internal param null $lang
          * @static
-         */
+         */ 
         public static function displayJs($options = array(), $attributes = array())
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::displayJs($options, $attributes);
         }
 
         /**
-         *
+         * 
          *
          * @param boolean $multiple
          * @static
-         */
+         */ 
         public static function multiple($multiple = true)
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::multiple($multiple);
         }
 
         /**
-         *
+         * 
          *
          * @param array $options
          * @static
-         */
+         */ 
         public static function setOptions($options = array())
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::setOptions($options);
@@ -14188,7 +14251,7 @@ namespace Buzz\LaravelGoogleCaptcha {
          * @param string $clientIp
          * @return bool
          * @static
-         */
+         */ 
         public static function verify($response, $clientIp = null)
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::verify($response, $clientIp);

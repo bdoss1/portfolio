@@ -1794,6 +1794,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1829,14 +1830,16 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.success) {
           _this.message = '';
 
-          _this.notifySuccess('Успех');
+          _this.notifySuccess(_this.portfolio.lang.messages.form_sent);
         }
       }).catch(function (error) {
         _this.loaderHide();
 
         _this.resetRecaptcha();
 
-        if (error.response.status === 422) _this.showErrorsOfValidation(error.response.data.errors);
+        if (error.response.status === 422) return _this.showErrorsOfValidation(error.response.data.errors);
+        if (error.response.status === 429) return _this.showErrorOfTooManyAttempts();
+        return _this.notifyError(error.response.data);
       });
     },
     checkByGoogleRecaptcha: function checkByGoogleRecaptcha() {
@@ -1851,6 +1854,9 @@ __webpack_require__.r(__webpack_exports__);
       for (var key in errors) {
         return this.notifyError(errors[key][0]);
       }
+    },
+    showErrorOfTooManyAttempts: function showErrorOfTooManyAttempts() {
+      return this.notifyError(this.portfolio.lang.messages.dont_spam);
     }
   }
 });

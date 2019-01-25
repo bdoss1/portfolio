@@ -59,7 +59,7 @@
                     if (response.data.success) {
                         this.message = '';
 
-                        this.notifySuccess('Успех');
+                        this.notifySuccess(this.portfolio.lang.messages.form_sent);
                     }
 
                 }).catch(error => {
@@ -67,8 +67,11 @@
 
                     this.resetRecaptcha();
 
-                    if (error.response.status === 422) this.showErrorsOfValidation(error.response.data.errors);
+                    if (error.response.status === 422) return this.showErrorsOfValidation(error.response.data.errors);
 
+                    if (error.response.status === 429) return this.showErrorOfTooManyAttempts();
+
+                    return this.notifyError(error.response.data);
                 });
             },
             checkByGoogleRecaptcha() {
@@ -83,6 +86,9 @@
                 for (let key in errors) {
                     return this.notifyError(errors[key][0]);
                 }
+            },
+            showErrorOfTooManyAttempts() {
+                return this.notifyError(this.portfolio.lang.messages.dont_spam);
             },
         }
     }

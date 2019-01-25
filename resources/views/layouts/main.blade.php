@@ -26,7 +26,7 @@
 <body>
 <div id="app">
     <notifications classes="portfolio_notifications" group="foo" animation-type="velocity"
-                   position="bottom left"></notifications>
+                   position="top right"></notifications>
 
     <!-- PRELOADER -->
     <div class="preloader">
@@ -134,7 +134,8 @@
         },
         lang: {
             custom: JSON.parse(`{!! json_encode(__('custom')) !!}`),
-            attributes: JSON.parse(`{!! json_encode(__('validation.attributes')) !!}`)
+            attributes: JSON.parse(`{!! json_encode(__('validation.attributes')) !!}`),
+            messages: JSON.parse(`{!! json_encode(__('messages')) !!}`)
         }
     };
 </script>

@@ -14,7 +14,7 @@ return [
     'all_works' => 'All works',
     'load_more' => 'Load More',
     'send' => 'Send',
-    'error' => 'Error',
-    'attention' => 'Attention',
-    'success' => 'Success'
+    'error' => 'Error!',
+    'attention' => 'Attention!',
+    'success' => 'Success!'
 ];
