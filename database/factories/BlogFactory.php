@@ -17,6 +17,7 @@ $factory->define(App\Models\Blog::class, function (Faker $faker) {
             'en' => 'EN ' . $faker->realText(1000),
         ],
         'link' => $faker->url,
+        'image' => 'storage/fake-images/' . rand(1, 8) . '.jpg',
         'user_id' => (\App\Models\User::first(['id']))->id,
         'published_at' => now()
     ];

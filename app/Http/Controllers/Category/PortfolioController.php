@@ -20,6 +20,8 @@ class PortfolioController extends Controller
     {
         $category = Category::whereSlug($slug)->with(['seo'])->firstOrFail();
 
+        $page = $this->portfolioUseCase->getPage();
+
         $seo = $category->seo;
 
         $items = $this->portfolioUseCase->itemsWhereHasCategoryQuery($category->id)->get();
@@ -32,7 +34,7 @@ class PortfolioController extends Controller
 
         $categories = Category::whereHas('portfolios')->get(['title', 'slug']);
 
-        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'category', 'seo'));
+        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'category', 'seo', 'page'));
     }
 
     public function load(Request $request, $slug)

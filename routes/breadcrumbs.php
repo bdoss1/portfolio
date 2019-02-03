@@ -6,16 +6,11 @@ Breadcrumbs::for('index', function ($trail) {
 });
 
 // Home > About
-Breadcrumbs::for('about', function ($trail) {
+Breadcrumbs::for('page', function ($trail, $page) {
     $trail->parent('index');
-    $trail->push(__('custom.about'), route('about'));
+    $trail->push($page->title, route('page', $page->slug));
 });
 
-// Home > Contact
-Breadcrumbs::for('contact', function ($trail) {
-    $trail->parent('index');
-    $trail->push(__('custom.contact'), route('contact'));
-});
 
 // Home > Portfolio
 Breadcrumbs::for('portfolio.index', function ($trail) {

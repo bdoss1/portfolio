@@ -12,8 +12,13 @@ $factory->define(App\Models\Portfolio::class, function (Faker $faker) {
             'ru' => 'RU ' . $faker->realText(150),
             'en' => 'EN ' . $faker->realText(150),
         ],
+        'content' => [
+            'ru' => 'RU ' . $faker->realText(1000),
+            'en' => 'EN ' . $faker->realText(1000),
+        ],
         'link' => $faker->url,
-        'dir_path' => 'template',
+        'dir_path' => rand(1, 3) === 2 ? 'storage/html/template' : null,
+        'image' => 'storage/fake-images/' . rand(1, 8) . '.jpg',
         'user_id' => (\App\Models\User::first(['id']))->id,
         'published_at' => now()
     ];

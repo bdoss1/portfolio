@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\CrudTrait;
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Translatable\HasTranslations;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Yarmat\Comment\Contracts\CommentContract;
 use Yarmat\Comment\Traits\HasCommentTrait;
@@ -51,21 +48,23 @@ use Yarmat\Seo\Contracts\SeoContract;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog withCacheCooldownSeconds($seconds)
  * @mixin \Eloquent
  * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Comment[] $comments
+ * @property string $image
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog whereImage($value)
  */
-class Blog extends Model implements HasMedia, SeoContract, CommentContract
+class Blog extends Model implements SeoContract, CommentContract
 {
     use HasTranslations;
     use HasSlug;
-    use HasMediaTrait;
     use HasSeoTrait;
     use LadaCacheTrait;
     use HasCommentTrait;
+    use CrudTrait;
 
     public $translatable = ['title', 'description', 'content'];
 
     protected $dates = ['published_at', 'updated_at', 'created_at'];
 
-    protected $fillable = ['title', 'description', 'content', 'link', 'user_id', 'published_at'];
+    protected $fillable = ['title', 'description', 'content', 'link', 'image', 'user_id', 'published_at'];
 
     public function getSlugOptions(): SlugOptions
     {
@@ -73,23 +72,6 @@ class Blog extends Model implements HasMedia, SeoContract, CommentContract
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
-
-    public function registerMediaCollections()
-    {
-        $this->addMediaCollection('preview')->singleFile()->useDisk('blog_images');
-    }
-
-    public function registerMediaConversions(Media $media = null)
-    {
-        $this->addMediaConversion('small')
-            ->crop(Manipulations::CROP_CENTER, '410', '270')
-            ->quality(85);
-
-        $this->addMediaConversion('big')
-            ->width(1400)
-            ->quality(90);
-    }
-
 
     public function getRouteKeyName()
     {

@@ -9,19 +9,23 @@
 namespace App\UseCases;
 
 
+use App\Entities\Seo;
+use App\Models\Page;
 use App\Models\Portfolio;
 
 class PortfolioUseCase
 {
     const ITEM_LIMIT = 9;
 
+    protected $page = null;
+
     public function itemsQuery($page = 1)
     {
         $skip = ($page - 1) * self::ITEM_LIMIT;
-        $query = Portfolio::with(['media', 'categories' => function ($query) {
+        $query = Portfolio::with(['categories' => function ($query) {
             $query->select(['title']);
         }])->orderBy('published_at', 'desc')
-            ->select(['id', 'title', 'slug'])
+            ->select(['id', 'title', 'image', 'slug'])
             ->take(self::ITEM_LIMIT)
             ->skip($skip);
 
@@ -49,5 +53,26 @@ class PortfolioUseCase
             ->whereHas('categories', function ($query) use ($categoryId) {
                 $query->whereId($categoryId);
             });
+    }
+
+    public function getPage()
+    {
+        if ($this->page === null) {
+            $this->page = Page::whereSlug('portfolio')->first()->withFakes();
+        }
+        return $this->page;
+    }
+
+    public function getSeo()
+    {
+        $page = $this->getPage();
+
+        $seo = new Seo();
+
+        $seo->title = $page->meta_title ?? '';
+        $seo->description = $page->meta_description ?? '';
+        $seo->keywords = $page->meta_keywords ?? '';
+
+        return $seo;
     }
 }

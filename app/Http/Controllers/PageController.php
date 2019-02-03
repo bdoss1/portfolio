@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Seo;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function about()
+    public function index($slug, Seo $seo)
     {
-        return view('page.about');
-    }
+        $page = Page::whereSlug($slug)->firstOrFail()->withFakes();
 
-    public function contact()
-    {
-        return view('page.contact');
+        if (in_array($page->template, ['main', 'service'])) abort(404);
+
+        $seo->title = $page->meta_title ?? '';
+        $seo->description = $page->meta_description ?? '';
+        $seo->keywords = $page->meta_keywords ?? '';
+
+        return view('page.' . $page->template)->with(compact('page', 'seo'));
     }
 }

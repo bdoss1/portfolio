@@ -17,9 +17,21 @@ class PortfolioHtmlService
     {
         if (empty($dir)) return false;
 
-        $path = \Storage::disk('portfolio_html')->path($dir);
+        $dir = str_replace('storage/', '', $dir);
 
-        if (!is_dir($path)) return false; // Dir is not exist
+        $path = \Storage::disk('public')->path($dir);
+
+        if (!is_dir($path)) {
+            $pathArray = explode('/', $path);
+            unset($pathArray[count($pathArray) - 1]);
+            $path = implode('/', $pathArray);
+
+            if (!is_dir($path)) return false;
+
+            $dirArray = explode('/', $dir);
+            unset($dirArray[count($dirArray) - 1]);
+            $dir = implode('/', $dirArray);
+        } // Dir is not exist
 
         $items = scandir($path);
 
@@ -31,7 +43,7 @@ class PortfolioHtmlService
             if ($extension === 'html') {
                 $htmlItem = new PortfolioHtmlItem();
                 $htmlItem->title = $item;
-                $htmlItem->url = \Storage::disk('portfolio_html')->url($dir . '/' . $item);
+                $htmlItem->url = \Storage::disk('public')->url($dir . '/' . $item);
                 $htmlItems[] = $htmlItem;
             }
         }

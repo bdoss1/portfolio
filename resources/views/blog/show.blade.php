@@ -5,10 +5,8 @@
         <section class="news-article top_90">
             <article>
                 <figure class="article-image bottom_30">
-                    @if($item->getFirstMedia('preview'))
-                        <img src="{{ $item->getFirstMedia('preview')->getFullUrl('big') }}"
-                             alt="{{ $item->title}}">
-                    @endif
+                    <img src="{{ \App\Services\ThumbService::resize($item->image, 1200, 'auto', 90) }}"
+                         alt="{{ $item->title}}">
                 </figure>
                 <div class="breadcrumbs top_15 bottom_15">
                     {{ Breadcrumbs::render('blog.show', $item) }}

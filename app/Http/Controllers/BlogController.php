@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Seo;
 use App\UseCases\BlogUseCase;
 use Illuminate\Http\Request;
@@ -17,11 +18,13 @@ class BlogController extends Controller
         $this->blogUseCase = $blogUseCase;
     }
 
-    public function index(Seo $seo)
+    public function index()
     {
         $items = $this->blogUseCase->itemsQuery()->get();
 
-        $seo->title = __('custom.blog');
+        $page = $this->blogUseCase->getPage();
+
+        $seo = $this->blogUseCase->getSeo();
 
         $moreCountItems = ($items->count() === $this->blogUseCase::ITEM_LIMIT)
             ? ($this->blogUseCase->moreCountItemsQuery(1)->get())->count()
@@ -31,12 +34,12 @@ class BlogController extends Controller
 
         $categories = Category::whereHas('blogs')->get(['title', 'slug']);
 
-        return view('blog.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo'));
+        return view('blog.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo', 'page'));
     }
 
     public function show($slug)
     {
-        $item = Blog::whereSlug($slug)->with(['media', 'categories', 'seo', 'user'])->firstOrFail();
+        $item = Blog::whereSlug($slug)->with(['categories', 'seo', 'user'])->firstOrFail();
 
         $seo = $item->seo;
 
@@ -53,7 +56,7 @@ class BlogController extends Controller
 
         if (!empty($items)) {
             foreach ($items as $item) {
-                $renderedItems .= view()->make('portfolio._item', ['item' => $item])->render();
+                $renderedItems .= view()->make('blog._item', ['item' => $item])->render();
             }
         }
 

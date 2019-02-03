@@ -36,19 +36,7 @@
             </div>
 
             <div class="col-md-12 portfolio-images top_90">
-                @foreach($item->getMedia('images') as $image)
-                    <figure><img src="{{ $image->getFullUrl('big') }}" alt="{{ $image->getCustomProperty('alt')}}">
-                    </figure>
-                    @php
-                        $description = null;
-                        if($image->hasCustomProperty('description')) {
-                            $description = ($image->hasCustomProperty('description.' . app()->getLocale())) ? $image->getCustomProperty('description.' . app()->getLocale()) : $image->getCustomProperty('description.' . config('app.locale'));
-                        }
-                    @endphp
-                    @if($description)
-                        <p style="text-align: center;" class="bottom_30">{{ $description }}</p>
-                    @endif
-                @endforeach
+
             </div>
 
             <div class="col-md-12 portfolio-nav text-center top_90">

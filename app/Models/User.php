@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Backpack\Base\app\Notifications\ResetPasswordNotification;
+use Backpack\CRUD\CrudTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Tightenco\Parental\HasParentModel;
 use Yarmat\Comment\Traits\CommenterTrait;
 
 /**
@@ -43,6 +46,8 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
     use CommenterTrait;
+    use HasParentModel;
+    use CrudTrait;
 
     const ROLE_ADMIN = 'admin';
 
@@ -63,4 +68,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
+
+
+    public function getEmailForPasswordReset()
+    {
+        return $this->email;
+    }
+
 }

@@ -9,21 +9,25 @@
 namespace App\UseCases;
 
 
+use App\Entities\Seo;
 use App\Models\Blog;
+use App\Models\Page;
 
 class BlogUseCase
 {
     const ITEM_LIMIT = 9;
 
+    protected $page;
+
     public function itemsQuery($page = 1)
     {
         $skip = ($page - 1) * self::ITEM_LIMIT;
-        $query = Blog::with(['media', 'categories' => function ($query) {
+        $query = Blog::with(['categories' => function ($query) {
             $query->select(['title', 'slug']);
         }, 'user' => function ($query) {
             $query->select(['name', 'id']);
         }])->orderBy('published_at', 'desc')
-            ->select(['id', 'title', 'description', 'slug', 'user_id'])
+            ->select(['id', 'title', 'image', 'description', 'slug', 'user_id'])
             ->take(self::ITEM_LIMIT)
             ->skip($skip);
 
@@ -51,5 +55,26 @@ class BlogUseCase
             ->whereHas('categories', function ($query) use ($categoryId) {
                 $query->whereId($categoryId);
             });
+    }
+
+    public function getPage()
+    {
+        if ($this->page === null) {
+            $this->page = Page::whereSlug('blog')->first()->withFakes();
+        }
+        return $this->page;
+    }
+
+    public function getSeo()
+    {
+        $page = $this->getPage();
+
+        $seo = new Seo();
+
+        $seo->title = $page->meta_title ?? '';
+        $seo->description = $page->meta_description ?? '';
+        $seo->keywords = $page->meta_keywords ?? '';
+
+        return $seo;
     }
 }

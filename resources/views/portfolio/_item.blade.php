@@ -1,10 +1,8 @@
 <div class="cbp-item">
     <a href="{{ route('portfolio.show', $item->slug) }}">
         <figure class="fig">
-            @if($item->getFirstMedia('preview'))
-            <img src="{{ $item->getFirstMedia('preview')->getFullUrl('small')}}"
+            <img src="{{ \App\Services\ThumbService::resize($item->image, 450, 'auto', 90) }}"
                  alt="{{ $item->title}}">
-            @endif
             <figcaption>
                 <h3>{{ $item->title}}</h3>
                 <p>

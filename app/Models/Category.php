@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\CrudTrait;
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Translatable\HasTranslations;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Yarmat\Seo\Traits\HasSeoTrait;
 use Yarmat\Seo\Contracts\SeoContract;
@@ -40,8 +41,11 @@ class Category extends Model implements SeoContract
     use HasSlug;
     use LadaCacheTrait;
     use HasSeoTrait;
+    use CrudTrait;
 
     public $translatable = ['title'];
+
+    public $fillable = ['title', 'slug'];
 
     public $timestamps = false;
 

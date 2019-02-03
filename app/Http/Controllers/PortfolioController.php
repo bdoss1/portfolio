@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\Seo;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Portfolio;
 use App\UseCases\PortfolioUseCase;
 use App\Services\PortfolioHtmlService;
@@ -19,11 +20,13 @@ class PortfolioController extends Controller
         $this->portfolioUseCase = $portfolioUseCase;
     }
 
-    public function index(Seo $seo)
+    public function index()
     {
         $items = $this->portfolioUseCase->itemsQuery()->get();
 
-        $seo->title = __('custom.portfolio');
+        $page = $this->portfolioUseCase->getPage();
+
+        $seo = $this->portfolioUseCase->getSeo();
 
         $moreCountItems = ($items->count() === $this->portfolioUseCase::ITEM_LIMIT)
             ? ($this->portfolioUseCase->moreCountItemsQuery(1)->get())->count()
@@ -33,12 +36,12 @@ class PortfolioController extends Controller
 
         $categories = Category::whereHas('portfolios')->get(['title', 'slug']);
 
-        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo'));
+        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo', 'page'));
     }
 
     public function show($slug, PortfolioHtmlService $htmlService)
     {
-        $item = Portfolio::whereSlug($slug)->with(['media', 'categories', 'seo'])->firstOrFail();
+        $item = Portfolio::whereSlug($slug)->with(['categories', 'seo'])->firstOrFail();
 
         $next = Portfolio::where('id', '>', $item->id)->first(['slug', 'title']);
 

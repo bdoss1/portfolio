@@ -1,15 +1,12 @@
 <?php
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/about', 'PageController@about')->name('about');
-Route::get('/blog', function() {})->name('blog.index');
-Route::get('/contact', 'PageController@contact')->name('contact');
 
 // Auth::routes(); disabled, because i use only 3 routes [login(get|post), logout(post)] for my Portfolio
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+//Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+//Route::post('login', 'Auth\LoginController@login');
+//Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
 Route::get('portfolio/item/{slug}', 'PortfolioController@show')->name('portfolio.show');
@@ -26,3 +23,6 @@ Route::post('blog/load/{slug}', 'Category\BlogController@load')->name('blog.cate
 Route::post('form/contact', 'FormController@contact')
     ->name('form.contact')
     ->middleware('throttle:3');
+
+Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    ->where(['page' => '^((?!admin).)*$', 'subs' => '.*'])->name('page');

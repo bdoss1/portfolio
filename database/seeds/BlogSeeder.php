@@ -11,7 +11,7 @@ class BlogSeeder extends Seeder
     {
         if (\App\Models\Blog::count() >= self::ITEMS_LIMIT) return false;
 
-        $items = factory(\App\Models\Blog::class, self::ITEMS_LIMIT)->create()->each(function ($item) {
+        factory(\App\Models\Blog::class, self::ITEMS_LIMIT)->create()->each(function ($item) {
             $categories = array_pluck(\App\Models\Category::inRandomOrder()->take(rand(1, 4))->get(['id'])->toArray(), 'id');
             $item->categories()->attach($categories);
 
@@ -31,17 +31,6 @@ class BlogSeeder extends Seeder
             ]);
 
         });
-
-        if (config('app.env') === 'testing') return false;
-
-        foreach ($items as $item) {
-            $item->addMedia(database_path('seeds/images/') . rand(1, 9) . '.jpg')
-                ->preservingOriginal()
-                ->withCustomProperties([
-                    'alt' => 'Alt'
-                ])
-                ->toMediaCollection('preview');
-        }
 
     }
 }

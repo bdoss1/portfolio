@@ -59,10 +59,10 @@
                 {{
                     \Menu::new()
                         ->route('index', __('custom.home'))
-                        ->route('about', __('custom.about'))
+                        ->route('page', __('custom.about'), 'about')
                         ->route('portfolio.index', __('custom.portfolio'))
                         ->route('blog.index', __('custom.blog'))
-                        ->route('contact', __('custom.contact'))
+                        ->route('page', __('custom.contact'), 'contact')
                         ->setActiveFromRequest()
                  }}
             </nav>

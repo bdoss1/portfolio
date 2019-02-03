@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Translatable\HasTranslations;
 use Spatie\Sluggable\SlugOptions;
@@ -47,20 +45,24 @@ use Yarmat\Seo\Contracts\SeoContract;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio disableCache()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio withCacheCooldownSeconds($seconds)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property array $content
+ * @property string $image
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereImage($value)
  */
-class Portfolio extends Model implements HasMedia, SeoContract
+class Portfolio extends Model implements SeoContract
 {
     use HasTranslations;
     use HasSlug;
-    use HasMediaTrait;
     use HasSeoTrait;
     use LadaCacheTrait;
+    use CrudTrait;
 
-    public $translatable = ['title', 'description'];
+    public $translatable = ['title', 'description', 'content'];
 
     protected $dates = ['published_at', 'updated_at', 'created_at'];
 
-    protected $fillable = ['title', 'description', 'link', 'user_id', 'dir_path', 'published_at'];
+    protected $fillable = ['title', 'description', 'content', 'link', 'user_id', 'dir_path', 'published_at'];
 
     public function getSlugOptions(): SlugOptions
     {
@@ -68,24 +70,6 @@ class Portfolio extends Model implements HasMedia, SeoContract
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
-
-    public function registerMediaCollections()
-    {
-        $this->addMediaCollection('preview')->singleFile()->useDisk('portfolio_images');
-        $this->addMediaCollection('images')->useDisk('portfolio_images');
-    }
-
-    public function registerMediaConversions(Media $media = null)
-    {
-        $this->addMediaConversion('small')
-            ->width(400)
-            ->quality(85);
-
-        $this->addMediaConversion('big')
-            ->width(1400)
-            ->quality(90);
-    }
-
 
     public function getRouteKeyName()
     {
