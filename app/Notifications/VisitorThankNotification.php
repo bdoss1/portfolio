@@ -38,13 +38,15 @@ class VisitorThankNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $name = $this->form->user->name ?? $this->form->name;
+
         return (new MailMessage)
             ->salutation(__('notifications.regards') . ", \n" . config('app.name'))
-            ->greeting(__('notifications.hello') . ', ' . $this->form->user->name ?? $this->form->name)
+            ->greeting(__('notifications.hello') . ', ' . $name)
             ->line(__('notifications.message_sent_success'))
             ->line(__('notifications.thank_using_app'))
             ->from('no-reply@' . parse_url(config('app.url'), PHP_URL_HOST), 'Not Reply (Robot)')
-            ->subject(__('notifications.subjects.thank_for_your_message') . ', ' . $this->form->user->name ?? $this->form->name);
+            ->subject(__('notifications.subjects.thank_for_your_message') . ', ' . $name);
     }
 
     /**

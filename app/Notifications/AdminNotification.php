@@ -39,11 +39,14 @@ class AdminNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $name = $this->form->user->name ?? $this->form->name;
+        $email = $this->form->user->email ?? $this->form->email;
+
         return (new MailMessage)
             ->line('Application from the site - "' . config('app.name') . '".')
             ->from('no-reply@' . parse_url(config('app.url'), PHP_URL_HOST), 'Not Reply (Robot)')
-            ->line('Author Name:' . $this->form->user->name ?? $this->form->name)
-            ->line('Author E-mail:' . $this->form->user->email ?? $this->form->email)
+            ->line('Author Name: ' . $name)
+            ->line('Author E-mail: ' . $email)
             ->line('Author Message:' . $this->form->message)
             ->subject('Form from the ' . config('app.url'))
             ->action('Form Sent From', $this->form->url);
