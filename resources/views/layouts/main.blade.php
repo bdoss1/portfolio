@@ -83,55 +83,55 @@
             </div>
         </div>
     </div>
+    <div class="container-area">
+        <!-- SITE CONTENT -->
+        <div class="wrapper">
 
-    <!-- SITE CONTENT -->
-    <div class="wrapper">
+            @yield('content')
 
-        @yield('content')
+        </div> <!-- wrapper end -->
 
-    </div> <!-- wrapper end -->
-
-    <footer>
-        <div class="cont">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12 copyright">
-                    @if(config('settings.logo'))
-                        @if(is_home())
-                            <img src="{{ asset(config('settings.logo')) }}" alt="{{ config('app.name')}}">
-                        @else
-                            <a href="{{ route('index') }}">
-                                <img src="{{ asset(config('settings.logo')) }}"
-                                     alt="{{ config('app.name')}}">
-                            </a>
+        <footer>
+            <div class="cont">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12 copyright">
+                        @if(config('settings.logo'))
+                            @if(is_home())
+                                <img src="{{ asset(config('settings.logo')) }}" alt="{{ config('app.name')}}">
+                            @else
+                                <a href="{{ route('index') }}">
+                                    <img src="{{ asset(config('settings.logo')) }}"
+                                         alt="{{ config('app.name')}}">
+                                </a>
+                            @endif
                         @endif
-                    @endif
-                    <p>{{ config('settings.copy') }}</p>
-                </div>
-                <div class="col-md-4 d-sm-none d-md-block">
-                    @if(config('settings.socials'))
-                        <div class="social">
-                            @include('partials.social')
-                        </div>
-                    @endif
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 d-none d-sm-block getintouch">
-                    <div>
-                        @if(app()->getLocale() == 'ru')
-                            <a href="{{ config('app.url') }}/en">English</a>
-                        @endif
-                        @if(app()->getLocale() == 'en')
-                            <a href="{{ config('app.url') }}">Русский</a>
+                        <p>{{ config('settings.copy') }}</p>
+                    </div>
+                    <div class="col-md-4 d-sm-none d-md-block">
+                        @if(config('settings.socials'))
+                            <div class="social">
+                                @include('partials.social')
+                            </div>
                         @endif
                     </div>
-                    <a href="mailto:{{ config('settings.email') }}">
-                        <strong>@lang('custom.get_in_touch')</strong><br>
-                        <p>{{ config('settings.email') }}</p>
-                    </a>
+                    <div class="col-md-4 col-sm-6 col-xs-12 d-none d-sm-block getintouch">
+                        <div>
+                            @if(app()->getLocale() == 'ru')
+                                <a href="{{ config('app.url') }}/en">English</a>
+                            @endif
+                            @if(app()->getLocale() == 'en')
+                                <a href="{{ config('app.url') }}">Русский</a>
+                            @endif
+                        </div>
+                        <a href="mailto:{{ config('settings.email') }}">
+                            <strong>@lang('custom.get_in_touch')</strong><br>
+                            <p>{{ config('settings.email') }}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
+        </footer>
+    </div>
 </div>
 
 @yield('before.script')

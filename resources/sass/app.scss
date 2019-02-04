@@ -176,3 +176,26 @@
         -webkit-transition: all ease 0.3s;
     }
 }
+
+
+html,
+body,
+#app {
+    height: 100vh;
+}
+
+.container-area {
+    width: 100%;
+    flex-direction: column;
+    min-height: 100%;
+    display: flex;
+}
+
+.container-area .wrapper {
+    flex: 1 0 auto;
+}
+
+.container-area footer {
+    flex: 0 0 auto;
+    position: static;
+}

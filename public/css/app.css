@@ -2234,23 +2234,45 @@ textarea.form-message {
 }
 
 .about .clients .client figure img {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
 }
 
 .about .clients .client:hover figure img {
-    -webkit-filter: grayscale(0);
-    filter: grayscale(0);
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
 }
 
 .portfolio-images img {
-    max-width: 100% !important;
-    height: auto !important;
-    border-radius: 12px;
-    -webkit-border-radius: 12px;
-    box-shadow: 0px 0px 48px 0px rgba(4, 6, 4, 0.15);
-    -webkit-box-shadow: 0px 0px 48px 0px rgba(4, 6, 4, 0.15);
-    transition: all ease 0.3s;
-    -webkit-transition: all ease 0.3s;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  box-shadow: 0px 0px 48px 0px rgba(4, 6, 4, 0.15);
+  -webkit-box-shadow: 0px 0px 48px 0px rgba(4, 6, 4, 0.15);
+  transition: all ease 0.3s;
+  -webkit-transition: all ease 0.3s;
+}
+
+html,
+body,
+#app {
+  height: 100vh;
+}
+
+.container-area {
+  width: 100%;
+  flex-direction: column;
+  min-height: 100%;
+  display: flex;
+}
+
+.container-area .wrapper {
+  flex: 1 0 auto;
+}
+
+.container-area footer {
+  flex: 0 0 auto;
+  position: static;
 }
 
