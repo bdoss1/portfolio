@@ -10,6 +10,6 @@ class HideLinkController extends Controller
     {
         $link = decrypt($link);
 
-        return redirect()->to($link);
+        return redirect()->away($link);
     }
 }
