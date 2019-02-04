@@ -15,8 +15,12 @@ class PageSeeder extends Seeder
         if (Page::whereSlug('main')->count() < 1) {
             $page = new Page();
             $page->title = [
-                'ru' => 'Главная',
-                'en' => 'Main'
+                'ru' => 'Больше <br><span>чем агенство</span>',
+                'en' => 'More of <br><span>an agency</span>'
+            ];
+            $page->content = [
+                'ru' => '<p class="top_45">Мы дизайнерское агентство в Лос-Анджелесе. Мы<br> роектируем <span class="element" data-text1="web interface." data-text2="branding identity." data-text3="logo." data-loop="true" data-backdelay="1500">logo.</span><span class="typed-cursor">|</span></p>',
+                'en' => '<p class="top_45">We are a design agency in Los Angeles. We are<br> designing <span class="element" data-text1="web interface." data-text2="branding identity." data-text3="logo." data-loop="true" data-backdelay="1500">logo.</span><span class="typed-cursor">|</span></p>'
             ];
             $page->template = 'main';
             $page->name = 'Main';

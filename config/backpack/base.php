@@ -110,11 +110,11 @@ return [
 
     // The guard that protects the Backpack admin panel.
     // If null, the config.auth.defaults.guard value will be used.
-    'guard' => 'backpack',
+    'guard' => null,
 
     // The password reset configuration for Backpack.
     // If null, the config.auth.defaults.passwords value will be used.
-    'passwords' => 'backpack',
+    'passwords' => null,
 
     // What kind of avatar will you like to show to the user?
     // Default: gravatar (automatically use the gravatar for his email)
@@ -134,7 +134,7 @@ return [
     // of your project and it's used throughout all Backpack packages.
     //
     // You can rename this disk here. Default: root
-    'root_disk_name' => 'root',
+    'root_disk_name' => 'public',
 
     /*
     |--------------------------------------------------------------------------

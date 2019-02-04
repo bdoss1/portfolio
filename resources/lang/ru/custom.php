@@ -16,5 +16,8 @@ return [
     'send' => 'Отправить',
     'error' => 'Ошибка!',
     'attention' => 'Внимание!',
-    'success' => 'Успешно!'
+    'success' => 'Успешно!',
+    'review_photo' => 'Фото отзыва',
+    'review_url' => 'Ссылка на отзыв',
+    'get_in_touch' => 'Связаться'
 ];

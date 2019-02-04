@@ -4,21 +4,18 @@
     <section class="home">
         <div id="particles-js"></div>
         <div class="home-content">
-            <h1 class="hero-title">Создание<br><span>сайтов</span></h1>
-            <p class="top_45">Меня зовут Ярослав. В области веб-разработки я уже более 6-ти лет. <br/>За это время я
-                накопил не малый опыт. <br/>И если Вам нужен <span class="element" data-text1="качественный"
-                                                                   data-text2="интересный" data-text3="уникальный"
-                                                                   data-loop="true" data-backdelay="1500"></span>
-                сайт - вы по адресу! </p>
-            <div class="social">
-                <a class="text">social links</a>
-                <div class="line"></div>
-                <a href="#"><i class="fab fa-facebook"></i> </a>
-                <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i> </a>
-                <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i> </a>
-                <a href="#"><i class="fab fa-behance" aria-hidden="true"></i> </a>
-                <a href="#"><i class="fab fa-dribbble" aria-hidden="true"></i> </a>
-            </div>
+            <h1 class="hero-title">{!! $page->title !!}</h1>
+            {!! $page->content !!}
+            @if(config('settings.socials'))
+                <div class="social">
+                    <a class="text">social links</a>
+                    <div class="line"></div>
+
+
+                    @include('layouts._social')
+                </div>
+            @endif
+
         </div>
     </section>
 
@@ -41,17 +38,12 @@
 
         <hr class="top_90 bottom_90 col-md-8">
 
-        <section class="widget-twitter top_60">
-            <div class="widget-title">
-                <h2 class="classic-title">Latest Tweets</h2>
-            </div>
-            <div class="tweet">
-                <ul>
-                    <li class="item">12312</li>
-                </ul>
-            </div>
-            <a href="https://twitter.com/envato" target="_blank" class="twitter-account">@envato</a>
-        </section>
+        @widget('lastReviews')
+
+        <hr class="top_90 bottom_90 col-md-8">
+        <div class="about">
+            @include('partials.skills')
+        </div>
     </div> <!-- cont end -->
 @endsection
 

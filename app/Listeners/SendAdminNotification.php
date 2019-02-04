@@ -27,7 +27,7 @@ class SendAdminNotification
      */
     public function handle(FormContactStored $event)
     {
-        \Notification::route('mail', config('admin.user_email'))
+        \Notification::route('mail', config('settings.email_feedback'))
             ->notify(new AdminNotification($event->form));
     }
 }

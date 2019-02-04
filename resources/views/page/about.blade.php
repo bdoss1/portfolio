@@ -18,6 +18,11 @@
             <div class="about-text text-center ">
                 {!! $page->content !!}
             </div>
+
+            @widget('lastReviews')
+
+            @include('partials.skills')
+
         </section>
     </div>
 @endsection

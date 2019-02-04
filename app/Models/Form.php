@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -37,6 +38,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Form extends Model
 {
+    use CrudTrait;
+
     protected $fillable = ['title', 'url', 'name', 'email', 'message', 'custom', 'user_id', 'status'];
 
     protected $casts = [

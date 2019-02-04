@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-md-12 portfolio-images top_90">
-
+                {!! $item->content !!}
             </div>
 
             <div class="col-md-12 portfolio-nav text-center top_90">

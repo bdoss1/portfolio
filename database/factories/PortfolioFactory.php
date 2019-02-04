@@ -13,8 +13,8 @@ $factory->define(App\Models\Portfolio::class, function (Faker $faker) {
             'en' => 'EN ' . $faker->realText(150),
         ],
         'content' => [
-            'ru' => 'RU ' . $faker->realText(1000),
-            'en' => 'EN ' . $faker->realText(1000),
+            'ru' => '<p>RU ' . $faker->realText(1000) . '</p>',
+            'en' => '<p>EN ' . $faker->realText(1000) . '</p>',
         ],
         'link' => $faker->url,
         'dir_path' => rand(1, 3) === 2 ? 'storage/html/template' : null,

@@ -35,9 +35,13 @@
         <section id="portfolio" class="portfolio">
             <div id="grid-container" class="portfolio-items-js">
 
-                @foreach($items as $item)
+                @forelse($items as $item)
                     @include('portfolio._item', ['item' => $item])
-                @endforeach
+                @empty
+                    <div class="col-md">
+                        <div class="col-md">@lang('messages.its_empty')</div>
+                    </div>
+                @endforelse
 
             </div>
         @if($isButtonVisible)

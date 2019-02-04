@@ -1,2 +1,4 @@
-*
-!.gitignore
+.tmb
+.quarantine
+thumbnails
+logo

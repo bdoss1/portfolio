@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Backpack\CRUD\CrudTrait;
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
-use Spatie\Translatable\HasTranslations;
 use Spatie\Sluggable\SlugOptions;
 use Spiritix\LadaCache\Database\LadaCacheTrait;
 use Yarmat\Seo\Traits\HasSeoTrait;

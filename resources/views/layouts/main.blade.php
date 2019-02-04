@@ -37,12 +37,14 @@
 
     <!-- HEADER -->
     <header>
-        @if(is_home())
-            <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
-        @else
-            <a href="{{ route('index') }}">
-                <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
-            </a>
+        @if(config('settings.logo'))
+            @if(is_home())
+                <img src="{{ config('settings.logo') }}" alt="{{ config('app.name')}}">
+            @else
+                <a href="{{ route('index') }}">
+                    <img src="{{ config('settings.logo') }}" alt="{{ config('app.name')}}">
+                </a>
+            @endif
         @endif
         <div class="nav-icon">
             <span></span>
@@ -68,16 +70,22 @@
             </nav>
             <div class="col-md-4 full-contact">
                 <ul>
-                    <li class="title">Связаться</li>
-                    <li><a href="mailto:yarmatsu@gmail.com">yarmatsu@gmail.com</a></li>
+                    <li class="title">@lang('custom.get_in_touch')</li>
+                    <li><a href="mailto:{{ config('settings.email') }}">{{ config('settings.email') }}</a></li>
                     <li>
+                        @if(config('settings.socials'))
                         <div class="social">
-                            <a href="#"><i class="fab fa-facebook"></i> </a>
-                            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i> </a>
-                            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i> </a>
-                            <a href="#"><i class="fab fa-behance" aria-hidden="true"></i> </a>
-                            <a href="#"><i class="fab fa-dribbble" aria-hidden="true"></i> </a>
+                            @include('layouts._social')
                         </div>
+                        @endif
+                    </li>
+                    <li style="opacity: 1">
+                        @if(app()->getLocale() == 'ru')
+                            <a href="{{ config('app.url') }}/en">EN</a>
+                        @endif
+                        @if(app()->getLocale() == 'en')
+                            <a href="{{ config('app.url') }}">RU</a>
+                        @endif
                     </li>
                 </ul>
             </div>
@@ -95,29 +103,29 @@
         <div class="cont">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12 copyright">
-                    @if(is_home())
-                        <img src="{{ asset('images/logo2.png') }}" alt="Профессиональная разработка сайтов - yarmat.su">
-                    @else
-                        <a href="{{ route('index') }}">
-                            <img src="{{ asset('images/logo2.png') }}"
-                                 alt="Профессиональная разработка сайтов - yarmat.su">
-                        </a>
+                    @if(config('settings.logo'))
+                        @if(is_home())
+                            <img src="{{ config('settings.logo') }}" alt="{{ config('app.name')}}">
+                        @else
+                            <a href="{{ route('index') }}">
+                                <img src="{{ config('settings.logo') }}"
+                                     alt="{{ config('app.name')}}">
+                            </a>
+                        @endif
                     @endif
-                    <p>© 2018 Gorge Creative Agency</p>
+                    <p>{{ config('settings.copy') }}</p>
                 </div>
                 <div class="col-md-4 d-sm-none d-md-block">
-                    <div class="social">
-                        <a href="#"><i class="fab fa-facebook"></i> </a>
-                        <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i> </a>
-                        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i> </a>
-                        <a href="#"><i class="fab fa-behance" aria-hidden="true"></i> </a>
-                        <a href="#"><i class="fab fa-dribbble" aria-hidden="true"></i> </a>
-                    </div>
+                    @if(config('settings.socials'))
+                        <div class="social">
+                            @include('layouts._social')
+                        </div>
+                    @endif
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12 d-none d-sm-block getintouch">
-                    <a href="#">
-                        <strong>Get In Touch</strong><br>
-                        <p>hi@gergedigital.co</p>
+                    <a href="mailto:{{ config('settings.email') }}">
+                        <strong>@lang('custom.get_in_touch')</strong><br>
+                        <p>{{ config('settings.email') }}</p>
                     </a>
                 </div>
             </div>

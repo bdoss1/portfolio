@@ -13,8 +13,8 @@ $factory->define(App\Models\Blog::class, function (Faker $faker) {
             'en' => 'EN ' . $faker->realText(400),
         ],
         'content' => [
-            'ru' => 'RU ' . $faker->realText(1000),
-            'en' => 'EN ' . $faker->realText(1000),
+            'ru' => '<p>RU ' . $faker->realText(1000) . '</p>',
+            'en' => '<p>EN ' . $faker->realText(1000) . '</p>',
         ],
         'link' => $faker->url,
         'image' => 'storage/fake-images/' . rand(1, 8) . '.jpg',

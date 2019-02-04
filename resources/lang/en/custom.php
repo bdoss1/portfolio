@@ -16,5 +16,8 @@ return [
     'send' => 'Send',
     'error' => 'Error!',
     'attention' => 'Attention!',
-    'success' => 'Success!'
+    'success' => 'Success!',
+    'review_photo' => 'Photo review',
+    'review_url' => 'Link to review',
+    'get_in_touch' => 'Get In Touch'
 ];

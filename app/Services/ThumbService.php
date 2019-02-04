@@ -17,6 +17,7 @@ class ThumbService
 {
 
     protected static $folder = 'thumbnails';
+    protected static $public_folder = 'public';
 
     public static function resize($image, $width = null, $height = null, $quality = 90)
     {
@@ -31,12 +32,17 @@ class ThumbService
     private static function run($type = 'resize', $image, $width = null, $height = null, $quality = 90)
     {
         try {
-            $image = str_replace('storage/', '', $image);
+            if (!\Storage::exists(self::$public_folder . '/' . self::$folder)) {
+                \Storage::makeDirectory(self::$public_folder . '/' . self::$folder, 777, true);
+            }
 
-            $imagePath = \Storage::disk('public')->path($image);
+            $image = self::$public_folder . '/' . str_replace('storage/', '', $image);
+
+            $imagePath = \Storage::path($image);
+
             $imageExtension = pathinfo($imagePath)['extension'];
-            $imageResized = self::$folder . '/' . md5($imagePath) . $width . 'x' . $height . '&type=' . $type . '&q=' . $quality . '.' . $imageExtension;
-            $imageResizedPath = \Storage::disk('public')->path($imageResized);
+            $imageResized = self::$public_folder . '/' . self::$folder . '/' . md5($imagePath) . $width . 'x' . $height . '&type=' . $type . '&q=' . $quality . '.' . $imageExtension;
+            $imageResizedPath = \Storage::path($imageResized);
 
             if (!file_exists($imageResizedPath)) {
                 ini_set('memory_limit', '256M');

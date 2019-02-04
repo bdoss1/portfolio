@@ -55,10 +55,9 @@ class CommentCrudController extends CrudController
         $this->crud->addColumns(['name', 'email', 'created_at']);
 
         $this->crud->addColumn([
-            'name' => 'approved',
+            'name' => 'is_approved',
             'label' => 'Approved', // Table column heading
-            'type' => 'model_function',
-            'function_name' => 'isApproved'
+            'type' => 'approved'
         ]);
 
         $this->crud->addField([
@@ -80,7 +79,7 @@ class CommentCrudController extends CrudController
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
 //        $this->crud->addButtonFromModelFunction('line', 'Approve', 'approve', 'beginning');
-        $this->crud->addButtonFromView('line', 'Approve', 'approve_comment', 'beginning');
+        $this->crud->addButtonFromView('line', 'Approve', 'approved', 'beginning');
 
     }
 
@@ -106,22 +105,67 @@ class CommentCrudController extends CrudController
     {
         $ids = [];
 
-        if (!is_array($request->comments)) {
-            $ids[] = $request->comments;
+        if (!is_array($request->get('comments'))) {
+            $ids[] = $request->get('comments');
+        } else {
+            $ids = $request->get('comments');
+        }
+
+        try {
+            \DB::beginTransaction();
+
+            foreach ($ids as $id) {
+                $comment = Comment::whereId($id)->firstOrFail();
+                $comment->approve();
+            }
+
+            \DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Comment(s) is(are) approved'
+            ]);
+        } catch (\Exception $e) {
+            \DB::rollBack();
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Comment(s) is(are) not approved'
+        ]);
+    }
+
+    public function unApprove(Request $request)
+    {
+        $ids = [];
+
+        if (!is_array($request->get('comments'))) {
+            $ids[] = $request->get('comments');
+        } else {
+            $ids = $request->get('comments');
         }
 
         try {
             \DB::beginTransaction();
             foreach ($ids as $id) {
                 $comment = Comment::whereId($id)->firstOrFail();
-                $comment->approve();
+                $comment->unApprove();
             }
 
-
             \DB::commit();
+
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Comment(s) is(are) un approved'
+            ]);
         } catch (\Exception $e) {
             \DB::rollBack();
         }
 
+        return response()->json([
+            'success' => false,
+            'message' => 'Comment(s) is(are) not un approved'
+        ]);
     }
 }
