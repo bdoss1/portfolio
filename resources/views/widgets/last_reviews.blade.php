@@ -1,4 +1,7 @@
 @if(count($items) > 0)
+
+    <hr class="top_90 bottom_90 col-md-8">
+
     <div class="owl-carousel work-areas text-center top_90 bottom_90 col-md-10 offset-md-1"
          data-pagination="true" data-autoplay="3000" data-items-desktop="1" data-items-desktop-small="1"
          data-items-tablet="1" data-items-tablet-small="1">

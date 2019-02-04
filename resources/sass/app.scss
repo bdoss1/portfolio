@@ -155,3 +155,11 @@
 .link-style:hover {
     text-decoration: underline;
 }
+
+.about .clients .client figure img {
+    filter: grayscale(100%);
+}
+
+.about .clients .client:hover figure img {
+    filter: grayscale(0);
+}

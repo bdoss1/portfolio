@@ -36,11 +36,9 @@
             </div>
         </section>
 
-        <hr class="top_90 bottom_90 col-md-8">
 
         @widget('lastReviews')
 
-        <hr class="top_90 bottom_90 col-md-8">
         <div class="about">
             @include('partials.skills')
         </div>
