@@ -39,10 +39,10 @@
     <header>
         @if(config('settings.logo'))
             @if(is_home())
-                <img src="{{ config('settings.logo') }}" alt="{{ config('app.name')}}">
+                <img src="{{ asset(config('settings.logo')) }}" alt="{{ config('app.name')}}">
             @else
                 <a href="{{ route('index') }}">
-                    <img src="{{ config('settings.logo') }}" alt="{{ config('app.name')}}">
+                    <img src="{{ asset(config('settings.logo')) }}" alt="{{ config('app.name')}}">
                 </a>
             @endif
         @endif
@@ -97,10 +97,10 @@
                 <div class="col-md-4 col-sm-6 col-xs-12 copyright">
                     @if(config('settings.logo'))
                         @if(is_home())
-                            <img src="{{ config('settings.logo') }}" alt="{{ config('app.name')}}">
+                            <img src="{{ asset(config('settings.logo')) }}" alt="{{ config('app.name')}}">
                         @else
                             <a href="{{ route('index') }}">
-                                <img src="{{ config('settings.logo') }}"
+                                <img src="{{ asset(config('settings.logo')) }}"
                                      alt="{{ config('app.name')}}">
                             </a>
                         @endif
