@@ -42,7 +42,7 @@ class AdminNotification extends Notification implements ShouldQueue
         return (new MailMessage)
             ->line('Application from the site - "' . config('app.name') . '".')
             ->from('no-reply@' . parse_url(config('app.url'), PHP_URL_HOST), 'Not Reply (Robot)')
-            ->line('Author Name:' . $this->form->user->name ?? $this->form->name)
+            ->line('Author Name:' . is_null($this->form->user->name) ? $this->form->name : $this->form->user->name)
             ->line('Author E-mail:' . $this->form->user->email ?? $this->form->email)
             ->line('Author Message:' . $this->form->message)
             ->subject('Form from the ' . config('app.url'))
