@@ -1,7 +1,5 @@
-@isset($field['value'])
-
     @php
-        $seo = $field['value'];
+        $seo = $field['value'] ?? new \App\Models\Seo();
         $locale = request()->get('locale') ?? config('app.locale');
     @endphp
 
@@ -29,7 +27,6 @@
         >{{ $seo->getTranslation('keywords', $locale) }}</textarea>
     </div>
 
-@endisset
 
 
 @if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))
