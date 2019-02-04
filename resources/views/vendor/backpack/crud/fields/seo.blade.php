@@ -1,32 +1,35 @@
-@php
-    $seo = $field['value'];
-    $locale = request()->get('locale') ?? config('app.locale');
-@endphp
+@isset($field['value'])
 
-<div @include('crud::inc.field_wrapper_attributes') >
-    <label>Title</label>
-    <input
-        type="text"
-        name="seo[title]"
-        value="{{ $seo->getTranslation('title', $locale) }}"
-        @include('crud::inc.field_attributes')
-    >
-</div>
+    @php
+        $seo = $field['value'];
+        $locale = request()->get('locale') ?? config('app.locale');
+    @endphp
 
-<div @include('crud::inc.field_wrapper_attributes') >
-    <label>Description</label>
-    <textarea name="seo[description]"
-        @include('crud::inc.field_attributes')
-    >{{ $seo->getTranslation('description', $locale) }}</textarea>
-</div>
+    <div @include('crud::inc.field_wrapper_attributes') >
+        <label>Title</label>
+        <input
+            type="text"
+            name="seo[title]"
+            value="{{ $seo->getTranslation('title', $locale) }}"
+            @include('crud::inc.field_attributes')
+        >
+    </div>
 
-<div @include('crud::inc.field_wrapper_attributes') >
-    <label>Keywords</label>
-    <textarea name="seo[keywords]"
-        @include('crud::inc.field_attributes')
-    >{{ $seo->getTranslation('keywords', $locale) }}</textarea>
-</div>
+    <div @include('crud::inc.field_wrapper_attributes') >
+        <label>Description</label>
+        <textarea name="seo[description]"
+            @include('crud::inc.field_attributes')
+        >{{ $seo->getTranslation('description', $locale) }}</textarea>
+    </div>
 
+    <div @include('crud::inc.field_wrapper_attributes') >
+        <label>Keywords</label>
+        <textarea name="seo[keywords]"
+            @include('crud::inc.field_attributes')
+        >{{ $seo->getTranslation('keywords', $locale) }}</textarea>
+    </div>
+
+@endisset
 
 
 @if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))
