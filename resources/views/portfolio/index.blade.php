@@ -33,17 +33,16 @@
         </div>
 
         <section id="portfolio" class="portfolio">
+            @if(count($items) > 0)
             <div id="grid-container" class="portfolio-items-js">
-
-                @forelse($items as $item)
+                @foreach($items as $item)
                     @include('portfolio._item', ['item' => $item])
-                @empty
-                    <div class="col-md">
-                        <div class="col-md">@lang('messages.its_empty')</div>
-                    </div>
-                @endforelse
+                @endforeach
 
             </div>
+            @else
+                @lang('messages.its_empty')
+            @endif
         @if($isButtonVisible)
             <!-- load more button -->
                 @isset($category)
