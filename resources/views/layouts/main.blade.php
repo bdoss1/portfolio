@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
     <!-- Google Web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
-
 </head>
 <body>
 <div id="app">
