@@ -19,5 +19,6 @@ return [
     'success' => 'Success!',
     'review_photo' => 'Photo review',
     'review_url' => 'Link to review',
-    'get_in_touch' => 'Get In Touch'
+    'get_in_touch' => 'Get In Touch',
+    'skills' => 'Skills'
 ];

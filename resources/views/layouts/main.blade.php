@@ -75,16 +75,8 @@
                     <li>
                         @if(config('settings.socials'))
                         <div class="social">
-                            @include('layouts._social')
+                            @include('partials.social')
                         </div>
-                        @endif
-                    </li>
-                    <li style="opacity: 1">
-                        @if(app()->getLocale() == 'ru')
-                            <a href="{{ config('app.url') }}/en">EN</a>
-                        @endif
-                        @if(app()->getLocale() == 'en')
-                            <a href="{{ config('app.url') }}">RU</a>
                         @endif
                     </li>
                 </ul>
@@ -118,11 +110,19 @@
                 <div class="col-md-4 d-sm-none d-md-block">
                     @if(config('settings.socials'))
                         <div class="social">
-                            @include('layouts._social')
+                            @include('partials.social')
                         </div>
                     @endif
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12 d-none d-sm-block getintouch">
+                    <div>
+                        @if(app()->getLocale() == 'ru')
+                            <a href="{{ config('app.url') }}/en">English</a>
+                        @endif
+                        @if(app()->getLocale() == 'en')
+                            <a href="{{ config('app.url') }}">Русский</a>
+                        @endif
+                    </div>
                     <a href="mailto:{{ config('settings.email') }}">
                         <strong>@lang('custom.get_in_touch')</strong><br>
                         <p>{{ config('settings.email') }}</p>

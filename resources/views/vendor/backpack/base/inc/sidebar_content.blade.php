@@ -11,7 +11,7 @@
 </li>
 <li><a href="{{ backpack_url('page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
 <li><a href="{{ backpack_url('form') }}"><i class="fa fa-envelope"></i> <span>Forms</span></a></li>
-<li><a href="{{ backpack_url('review') }}"><i class="fa fa-envelope"></i> <span>Reviews</span></a></li>
+<li><a href="{{ backpack_url('review') }}"><i class="fa fa-th"></i> <span>Reviews</span></a></li>
 
 <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i>
         <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>

@@ -1,5 +1,5 @@
 <hr class="top_90 bottom_90 col-md-8">
-<h2 style="text-align: center;" class="bottom_60">Skills</h2>
+<h2 style="text-align: center;" class="bottom_60">@lang('custom.skills')</h2>
 <!-- WORK AREAS -->
 <div class="clients">
     <div class="row">

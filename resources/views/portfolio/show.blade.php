@@ -12,8 +12,13 @@
                 <ul style="text-align: left; margin-bottom: 30px;" class="information">
                     <li><span>@lang('custom.date'):</span> {{ \Date::parse($item->published_at)->format('j F Y') }}</li>
                     @if( $item->link )
-                        <li><span>@lang('custom.link'):</span> <a target="_blank"
-                                                                  href="{{ $item->link }}">{{ $item->link }}</a></li>
+                        <li>
+                            <span>@lang('custom.link'): </span>
+                            <form target="_blank" style="display: inline;" action="{{ hide_redirect($item->link) }}"
+                                  method="post">
+                                @csrf
+                                <button class="link-style" type="submit">открыть</button>
+                            </form>
                     @endif
                     <li><span>@lang('custom.categories'):</span>
                         @foreach($item->categories as $category)
@@ -22,13 +27,16 @@
                         @endforeach
                     </li>
                 </ul>
-
                 @if($htmlItems)
                     <ul style="text-align: left; display: block;" class="information">
                         <li>
                             <span>@lang('custom.html'): </span>
                             @foreach($htmlItems as $html)
-                                <a target="_blank" href="{{ $html->url }}">{{ $html->title }}</a>
+                                <form target="_blank" style="display: inline;" action="{{ hide_redirect($html->url) }}"
+                                      method="post">
+                                    @csrf
+                                    <button class="link-style" type="submit">{{ $html->title }}</button>
+                                </form>
                             @endforeach
                         </li>
                     </ul>

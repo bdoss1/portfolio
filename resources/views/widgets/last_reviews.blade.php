@@ -16,8 +16,8 @@
                         @if(!empty($item->author_url)) </span> @endif
                 </h3>
                 @if(!empty($item->author_url))
-                    <form id="comment_author_{{$item->id}}" style="display: none;"
-                          action="{{ route('redirect', encrypt($item->author_url)) }}" method="POST">
+                    <form id="comment_author_{{$item->id}}" target="_blank" style="display: none;"
+                          action="{{ hide_redirect($item->author_url) }}" method="POST">
                         @csrf
                     </form>
                 @endif
@@ -28,8 +28,8 @@
                             class="link-style">[@lang('custom.review_url')]</span> @endif
                 </p>
                 @if($item->review_url)
-                    <form id="comment_review_{{$item->id}}" style="display: none;"
-                          action="{{ route('redirect', encrypt($item->review_url)) }}" method="POST">
+                    <form id="comment_review_{{$item->id}}" target="_blank" style="display: none;"
+                          action="{{ hide_redirect($item->review_url) }}" method="POST">
                         @csrf
                     </form>
                 @endif

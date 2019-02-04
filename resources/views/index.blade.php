@@ -12,7 +12,7 @@
                     <div class="line"></div>
 
 
-                    @include('layouts._social')
+                    @include('partials.social')
                 </div>
             @endif
 
