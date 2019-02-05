@@ -17,4 +17,12 @@ mix.scripts([
     'public/js/custom.js'
 ], 'public/js/combine.js');
 
+mix.options({
+    cssNano: {
+        discardComments: {
+            removeAll: true
+        }
+    }
+});
+
 mix.version();
