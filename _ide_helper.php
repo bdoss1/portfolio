@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.22 on 2019-01-28 12:05:50.
+ * Generated for Laravel 5.7.24 on 2019-02-05 07:51:55.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -107,13 +107,25 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the path to the application "app" directory.
          *
-         * @param string $path Optionally, a path to append to the app path
+         * @param string $path
          * @return string 
          * @static 
          */ 
         public static function path($path = '')
         {
             return \Illuminate\Foundation\Application::path($path);
+        }
+
+        /**
+         * Set the application directory.
+         *
+         * @param string $path
+         * @return $this
+         * @static
+         */
+        public static function useAppPath($path)
+        {
+            return \Illuminate\Foundation\Application::useAppPath($path);
         }
         
         /**
@@ -6317,7 +6329,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Queue a new e-mail message for sending.
          *
-         * @param string|array|\Illuminate\Contracts\Mail\Mailable $view
+         * @param \Illuminate\Contracts\Mail\Mailable $view
          * @param string|null $queue
          * @return mixed 
          * @throws \InvalidArgumentException
@@ -6332,7 +6344,7 @@ namespace Illuminate\Support\Facades {
          * Queue a new e-mail message for sending on the given queue.
          *
          * @param string $queue
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable $view
          * @return mixed 
          * @static 
          */ 
@@ -6347,7 +6359,7 @@ namespace Illuminate\Support\Facades {
          * This method didn't match rest of framework's "onQueue" phrasing. Added "onQueue".
          *
          * @param string $queue
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable $view
          * @return mixed 
          * @static 
          */ 
@@ -6360,7 +6372,7 @@ namespace Illuminate\Support\Facades {
          * Queue a new e-mail message for sending after (n) seconds.
          *
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string|array|\Illuminate\Contracts\Mail\Mailable $view
+         * @param \Illuminate\Contracts\Mail\Mailable $view
          * @param string|null $queue
          * @return mixed 
          * @throws \InvalidArgumentException
@@ -6376,7 +6388,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $queue
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable $view
          * @return mixed 
          * @static 
          */ 
@@ -7297,7 +7309,7 @@ namespace Illuminate\Support\Facades {
          * @param string $from
          * @param string $to
          * @return array
-         * @static
+         * @static 
          */ 
         public static function migrateExpiredJobs($from, $to)
         {
@@ -7310,7 +7322,7 @@ namespace Illuminate\Support\Facades {
          * @param string $queue
          * @param \Illuminate\Queue\Jobs\RedisJob $job
          * @return void
-         * @static
+         * @static 
          */ 
         public static function deleteReserved($queue, $job)
         {
@@ -7324,7 +7336,7 @@ namespace Illuminate\Support\Facades {
          * @param \Illuminate\Queue\Jobs\RedisJob $job
          * @param int $delay
          * @return void
-         * @static
+         * @static 
          */ 
         public static function deleteAndRelease($queue, $job, $delay)
         {
@@ -7336,7 +7348,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string|null $queue
          * @return string
-         * @static
+         * @static 
          */ 
         public static function getQueue($queue)
         {
@@ -7347,7 +7359,7 @@ namespace Illuminate\Support\Facades {
          * Get the underlying Redis instance.
          *
          * @return \Illuminate\Contracts\Redis\Factory
-         * @static
+         * @static 
          */ 
         public static function getRedis()
         {
@@ -13610,23 +13622,23 @@ namespace App\Facades {
 
 }
 
-namespace Collective\Html {
+namespace Collective\Html { 
 
     /**
-     *
+     * 
      *
      * @see \Collective\Html\FormBuilder
      */
     class FormFacade
     {
-
+        
         /**
          * Open up a new HTML form.
          *
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function open($options = array())
         {
             return \Collective\Html\FormBuilder::open($options);
@@ -13639,7 +13651,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function model($model, $options = array())
         {
             return \Collective\Html\FormBuilder::model($model, $options);
@@ -13651,7 +13663,7 @@ namespace Collective\Html {
          * @param mixed $model
          * @return void
          * @static
-         */
+         */ 
         public static function setModel($model)
         {
             \Collective\Html\FormBuilder::setModel($model);
@@ -13662,7 +13674,7 @@ namespace Collective\Html {
          *
          * @return mixed $model
          * @static
-         */
+         */ 
         public static function getModel()
         {
             return \Collective\Html\FormBuilder::getModel();
@@ -13673,7 +13685,7 @@ namespace Collective\Html {
          *
          * @return string
          * @static
-         */
+         */ 
         public static function close()
         {
             return \Collective\Html\FormBuilder::close();
@@ -13684,7 +13696,7 @@ namespace Collective\Html {
          *
          * @return string
          * @static
-         */
+         */ 
         public static function token()
         {
             return \Collective\Html\FormBuilder::token();
@@ -13699,7 +13711,7 @@ namespace Collective\Html {
          * @param bool $escape_html
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function label($name, $value = null, $options = array(), $escape_html = true)
         {
             return \Collective\Html\FormBuilder::label($name, $value, $options, $escape_html);
@@ -13714,7 +13726,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function input($type, $name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::input($type, $name, $value, $options);
@@ -13728,7 +13740,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function text($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::text($name, $value, $options);
@@ -13741,7 +13753,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function password($name, $options = array())
         {
             return \Collective\Html\FormBuilder::password($name, $options);
@@ -13755,7 +13767,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function range($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::range($name, $value, $options);
@@ -13769,7 +13781,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function hidden($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::hidden($name, $value, $options);
@@ -13783,7 +13795,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function search($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::search($name, $value, $options);
@@ -13797,7 +13809,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function email($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::email($name, $value, $options);
@@ -13811,7 +13823,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function tel($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::tel($name, $value, $options);
@@ -13825,7 +13837,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function number($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::number($name, $value, $options);
@@ -13839,7 +13851,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function date($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::date($name, $value, $options);
@@ -13853,7 +13865,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function datetime($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::datetime($name, $value, $options);
@@ -13867,7 +13879,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function datetimeLocal($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::datetimeLocal($name, $value, $options);
@@ -13881,7 +13893,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function time($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::time($name, $value, $options);
@@ -13895,7 +13907,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function url($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::url($name, $value, $options);
@@ -13909,7 +13921,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function week($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::week($name, $value, $options);
@@ -13922,7 +13934,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function file($name, $options = array())
         {
             return \Collective\Html\FormBuilder::file($name, $options);
@@ -13936,7 +13948,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function textarea($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::textarea($name, $value, $options);
@@ -13953,7 +13965,7 @@ namespace Collective\Html {
          * @param array $optgroupsAttributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function select($name, $list = array(), $selected = null, $selectAttributes = array(), $optionsAttributes = array(), $optgroupsAttributes = array())
         {
             return \Collective\Html\FormBuilder::select($name, $list, $selected, $selectAttributes, $optionsAttributes, $optgroupsAttributes);
@@ -13969,7 +13981,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function selectRange($name, $begin, $end, $selected = null, $options = array())
         {
             return \Collective\Html\FormBuilder::selectRange($name, $begin, $end, $selected, $options);
@@ -13985,7 +13997,7 @@ namespace Collective\Html {
          * @param array $options
          * @return mixed
          * @static
-         */
+         */ 
         public static function selectYear()
         {
             return \Collective\Html\FormBuilder::selectYear();
@@ -14000,7 +14012,7 @@ namespace Collective\Html {
          * @param string $format
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function selectMonth($name, $selected = null, $options = array(), $format = '%B')
         {
             return \Collective\Html\FormBuilder::selectMonth($name, $selected, $options, $format);
@@ -14016,7 +14028,7 @@ namespace Collective\Html {
          * @param array $optgroupAttributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function getSelectOption($display, $value, $selected, $attributes = array(), $optgroupAttributes = array())
         {
             return \Collective\Html\FormBuilder::getSelectOption($display, $value, $selected, $attributes, $optgroupAttributes);
@@ -14031,7 +14043,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function checkbox($name, $value = 1, $checked = null, $options = array())
         {
             return \Collective\Html\FormBuilder::checkbox($name, $value, $checked, $options);
@@ -14046,7 +14058,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function radio($name, $value = null, $checked = null, $options = array())
         {
             return \Collective\Html\FormBuilder::radio($name, $value, $checked, $options);
@@ -14059,7 +14071,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function reset($value, $attributes = array())
         {
             return \Collective\Html\FormBuilder::reset($value, $attributes);
@@ -14073,7 +14085,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function image($url, $name = null, $attributes = array())
         {
             return \Collective\Html\FormBuilder::image($url, $name, $attributes);
@@ -14087,7 +14099,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function month($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::month($name, $value, $options);
@@ -14101,7 +14113,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function color($name, $value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::color($name, $value, $options);
@@ -14114,7 +14126,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function submit($value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::submit($value, $options);
@@ -14127,7 +14139,7 @@ namespace Collective\Html {
          * @param array $options
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function button($value = null, $options = array())
         {
             return \Collective\Html\FormBuilder::button($value, $options);
@@ -14140,7 +14152,7 @@ namespace Collective\Html {
          * @param array $list
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function datalist($id, $list = array())
         {
             return \Collective\Html\FormBuilder::datalist($id, $list);
@@ -14153,7 +14165,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return string
          * @static
-         */
+         */ 
         public static function getIdAttribute($name, $attributes)
         {
             return \Collective\Html\FormBuilder::getIdAttribute($name, $attributes);
@@ -14166,7 +14178,7 @@ namespace Collective\Html {
          * @param string $value
          * @return mixed
          * @static
-         */
+         */ 
         public static function getValueAttribute($name, $value = null)
         {
             return \Collective\Html\FormBuilder::getValueAttribute($name, $value);
@@ -14177,7 +14189,7 @@ namespace Collective\Html {
          *
          * @param bool $consider
          * @static
-         */
+         */ 
         public static function considerRequest($consider = true)
         {
             return \Collective\Html\FormBuilder::considerRequest($consider);
@@ -14189,7 +14201,7 @@ namespace Collective\Html {
          * @param string $name
          * @return mixed
          * @static
-         */
+         */ 
         public static function old($name)
         {
             return \Collective\Html\FormBuilder::old($name);
@@ -14200,7 +14212,7 @@ namespace Collective\Html {
          *
          * @return bool
          * @static
-         */
+         */ 
         public static function oldInputIsEmpty()
         {
             return \Collective\Html\FormBuilder::oldInputIsEmpty();
@@ -14211,7 +14223,7 @@ namespace Collective\Html {
          *
          * @return \Illuminate\Contracts\Session\Session $session
          * @static
-         */
+         */ 
         public static function getSessionStore()
         {
             return \Collective\Html\FormBuilder::getSessionStore();
@@ -14223,7 +14235,7 @@ namespace Collective\Html {
          * @param \Illuminate\Contracts\Session\Session $session
          * @return $this
          * @static
-         */
+         */ 
         public static function setSessionStore($session)
         {
             return \Collective\Html\FormBuilder::setSessionStore($session);
@@ -14236,7 +14248,7 @@ namespace Collective\Html {
          * @param object|callable $macro
          * @return void
          * @static
-         */
+         */ 
         public static function macro($name, $macro)
         {
             \Collective\Html\FormBuilder::macro($name, $macro);
@@ -14246,10 +14258,10 @@ namespace Collective\Html {
          * Mix another object into the class.
          *
          * @param object $mixin
-         * @return void
+         * @return void 
          * @throws \ReflectionException
          * @static
-         */
+         */ 
         public static function mixin($mixin)
         {
             \Collective\Html\FormBuilder::mixin($mixin);
@@ -14261,7 +14273,7 @@ namespace Collective\Html {
          * @param string $name
          * @return bool
          * @static
-         */
+         */ 
         public static function hasMacro($name)
         {
             return \Collective\Html\FormBuilder::hasMacro($name);
@@ -14272,10 +14284,10 @@ namespace Collective\Html {
          *
          * @param string $method
          * @param array $parameters
-         * @return mixed
+         * @return mixed 
          * @throws \BadMethodCallException
          * @static
-         */
+         */ 
         public static function macroCall($method, $parameters)
         {
             return \Collective\Html\FormBuilder::macroCall($method, $parameters);
@@ -14289,7 +14301,7 @@ namespace Collective\Html {
          * @param array $signature
          * @return void
          * @static
-         */
+         */ 
         public static function component($name, $view, $signature)
         {
             \Collective\Html\FormBuilder::component($name, $view, $signature);
@@ -14301,7 +14313,7 @@ namespace Collective\Html {
          * @param $name
          * @return bool
          * @static
-         */
+         */ 
         public static function hasComponent($name)
         {
             return \Collective\Html\FormBuilder::hasComponent($name);
@@ -14312,20 +14324,20 @@ namespace Collective\Html {
          *
          * @param string $method
          * @param array $parameters
-         * @return \Illuminate\Contracts\View\View|mixed
+         * @return \Illuminate\Contracts\View\View|mixed 
          * @throws \BadMethodCallException
          * @static
-         */
+         */ 
         public static function componentCall($method, $parameters)
         {
             return \Collective\Html\FormBuilder::componentCall($method, $parameters);
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function captcha($attributes = array())
         {
             return \Collective\Html\FormBuilder::captcha($attributes);
@@ -14334,20 +14346,20 @@ namespace Collective\Html {
     }
 
     /**
-     *
+     * 
      *
      * @see \Collective\Html\HtmlBuilder
      */
     class HtmlFacade
     {
-
+        
         /**
          * Convert an HTML string to entities.
          *
          * @param string $value
          * @return string
          * @static
-         */
+         */ 
         public static function entities($value)
         {
             return \Collective\Html\HtmlBuilder::entities($value);
@@ -14359,7 +14371,7 @@ namespace Collective\Html {
          * @param string $value
          * @return string
          * @static
-         */
+         */ 
         public static function decode($value)
         {
             return \Collective\Html\HtmlBuilder::decode($value);
@@ -14373,7 +14385,7 @@ namespace Collective\Html {
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function script($url, $attributes = array(), $secure = null)
         {
             return \Collective\Html\HtmlBuilder::script($url, $attributes, $secure);
@@ -14387,7 +14399,7 @@ namespace Collective\Html {
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function style($url, $attributes = array(), $secure = null)
         {
             return \Collective\Html\HtmlBuilder::style($url, $attributes, $secure);
@@ -14402,7 +14414,7 @@ namespace Collective\Html {
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function image($url, $alt = null, $attributes = array(), $secure = null)
         {
             return \Collective\Html\HtmlBuilder::image($url, $alt, $attributes, $secure);
@@ -14416,7 +14428,7 @@ namespace Collective\Html {
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function favicon($url, $attributes = array(), $secure = null)
         {
             return \Collective\Html\HtmlBuilder::favicon($url, $attributes, $secure);
@@ -14432,7 +14444,7 @@ namespace Collective\Html {
          * @param bool $escape
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function link($url, $title = null, $attributes = array(), $secure = null, $escape = true)
         {
             return \Collective\Html\HtmlBuilder::link($url, $title, $attributes, $secure, $escape);
@@ -14446,7 +14458,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function secureLink($url, $title = null, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::secureLink($url, $title, $attributes);
@@ -14461,7 +14473,7 @@ namespace Collective\Html {
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function linkAsset($url, $title = null, $attributes = array(), $secure = null)
         {
             return \Collective\Html\HtmlBuilder::linkAsset($url, $title, $attributes, $secure);
@@ -14475,7 +14487,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function linkSecureAsset($url, $title = null, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::linkSecureAsset($url, $title, $attributes);
@@ -14490,7 +14502,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function linkRoute($name, $title = null, $parameters = array(), $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::linkRoute($name, $title, $parameters, $attributes);
@@ -14505,7 +14517,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function linkAction($action, $title = null, $parameters = array(), $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::linkAction($action, $title, $parameters, $attributes);
@@ -14520,7 +14532,7 @@ namespace Collective\Html {
          * @param bool $escape
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function mailto($email, $title = null, $attributes = array(), $escape = true)
         {
             return \Collective\Html\HtmlBuilder::mailto($email, $title, $attributes, $escape);
@@ -14532,7 +14544,7 @@ namespace Collective\Html {
          * @param string $email
          * @return string
          * @static
-         */
+         */ 
         public static function email($email)
         {
             return \Collective\Html\HtmlBuilder::email($email);
@@ -14544,7 +14556,7 @@ namespace Collective\Html {
          * @param int $num
          * @return string
          * @static
-         */
+         */ 
         public static function nbsp($num = 1)
         {
             return \Collective\Html\HtmlBuilder::nbsp($num);
@@ -14557,7 +14569,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString|string
          * @static
-         */
+         */ 
         public static function ol($list, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::ol($list, $attributes);
@@ -14570,7 +14582,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString|string
          * @static
-         */
+         */ 
         public static function ul($list, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::ul($list, $attributes);
@@ -14583,7 +14595,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function dl($list, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::dl($list, $attributes);
@@ -14595,7 +14607,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return string
          * @static
-         */
+         */ 
         public static function attributes($attributes)
         {
             return \Collective\Html\HtmlBuilder::attributes($attributes);
@@ -14607,7 +14619,7 @@ namespace Collective\Html {
          * @param string $value
          * @return string
          * @static
-         */
+         */ 
         public static function obfuscate($value)
         {
             return \Collective\Html\HtmlBuilder::obfuscate($value);
@@ -14621,7 +14633,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function meta($name, $content, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::meta($name, $content, $attributes);
@@ -14635,7 +14647,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
          * @static
-         */
+         */ 
         public static function tag($tag, $content, $attributes = array())
         {
             return \Collective\Html\HtmlBuilder::tag($tag, $content, $attributes);
@@ -14648,7 +14660,7 @@ namespace Collective\Html {
          * @param object|callable $macro
          * @return void
          * @static
-         */
+         */ 
         public static function macro($name, $macro)
         {
             \Collective\Html\HtmlBuilder::macro($name, $macro);
@@ -14658,10 +14670,10 @@ namespace Collective\Html {
          * Mix another object into the class.
          *
          * @param object $mixin
-         * @return void
+         * @return void 
          * @throws \ReflectionException
          * @static
-         */
+         */ 
         public static function mixin($mixin)
         {
             \Collective\Html\HtmlBuilder::mixin($mixin);
@@ -14673,7 +14685,7 @@ namespace Collective\Html {
          * @param string $name
          * @return bool
          * @static
-         */
+         */ 
         public static function hasMacro($name)
         {
             return \Collective\Html\HtmlBuilder::hasMacro($name);
@@ -14684,10 +14696,10 @@ namespace Collective\Html {
          *
          * @param string $method
          * @param array $parameters
-         * @return mixed
+         * @return mixed 
          * @throws \BadMethodCallException
          * @static
-         */
+         */ 
         public static function macroCall($method, $parameters)
         {
             return \Collective\Html\HtmlBuilder::macroCall($method, $parameters);
@@ -14701,7 +14713,7 @@ namespace Collective\Html {
          * @param array $signature
          * @return void
          * @static
-         */
+         */ 
         public static function component($name, $view, $signature)
         {
             \Collective\Html\HtmlBuilder::component($name, $view, $signature);
@@ -14713,7 +14725,7 @@ namespace Collective\Html {
          * @param $name
          * @return bool
          * @static
-         */
+         */ 
         public static function hasComponent($name)
         {
             return \Collective\Html\HtmlBuilder::hasComponent($name);
@@ -14724,14 +14736,123 @@ namespace Collective\Html {
          *
          * @param string $method
          * @param array $parameters
-         * @return \Illuminate\Contracts\View\View|mixed
+         * @return \Illuminate\Contracts\View\View|mixed 
          * @throws \BadMethodCallException
          * @static
-         */
+         */ 
         public static function componentCall($method, $parameters)
         {
             return \Collective\Html\HtmlBuilder::componentCall($method, $parameters);
         }
+
+    }
+
+}
+
+namespace Arrilot\Widgets {
+
+    /**
+     *
+     *
+     */
+    class Facade
+    {
+
+        /**
+         * Run widget without magic method.
+         *
+         * @return mixed
+         * @static
+         */
+        public static function run()
+        {
+            return \Arrilot\Widgets\Factories\WidgetFactory::run();
+        }
+
+        /**
+         * Encrypt widget params to be transported via HTTP.
+         *
+         * @param string $params
+         * @return string
+         * @static
+         */
+        public static function encryptWidgetParams($params)
+        {
+            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
+            return \Arrilot\Widgets\Factories\WidgetFactory::encryptWidgetParams($params);
+        }
+
+        /**
+         * Decrypt widget params that were transported via HTTP.
+         *
+         * @param string $params
+         * @return string
+         * @static
+         */
+        public static function decryptWidgetParams($params)
+        {
+            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
+            return \Arrilot\Widgets\Factories\WidgetFactory::decryptWidgetParams($params);
+        }
+
+    }
+
+    /**
+     *
+     *
+     */
+    class AsyncFacade
+    {
+
+        /**
+         * Run widget without magic method.
+         *
+         * @return mixed
+         * @static
+         */
+        public static function run()
+        {
+            return \Arrilot\Widgets\Factories\AsyncWidgetFactory::run();
+        }
+
+        /**
+         * Encrypt widget params to be transported via HTTP.
+         *
+         * @param string $params
+         * @return string
+         * @static
+         */
+        public static function encryptWidgetParams($params)
+        {
+            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
+            return \Arrilot\Widgets\Factories\AsyncWidgetFactory::encryptWidgetParams($params);
+        }
+
+        /**
+         * Decrypt widget params that were transported via HTTP.
+         *
+         * @param string $params
+         * @return string
+         * @static
+         */
+        public static function decryptWidgetParams($params)
+        {
+            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
+            return \Arrilot\Widgets\Factories\AsyncWidgetFactory::decryptWidgetParams($params);
+        }
+
+    }
+
+}
+
+namespace Backpack\CRUD {
+
+    /**
+     *
+     *
+     */
+    class CrudServiceProvider
+    {
 
     }
 
@@ -15303,7 +15424,7 @@ namespace Buzz\LaravelGoogleCaptcha {
          *
          * @param array $attributes
          * @param array $options
-         * @return string
+         * @return string 
          * @static 
          */ 
         public static function display($attributes = array(), $options = array())
@@ -15315,7 +15436,7 @@ namespace Buzz\LaravelGoogleCaptcha {
          * Create javascript api link with language
          *
          * @param array $options
-         * @return string
+         * @return string 
          * @static 
          */ 
         public static function getJsLink($options = array())
@@ -15327,7 +15448,7 @@ namespace Buzz\LaravelGoogleCaptcha {
          * Display multiple captcha on page
          *
          * @param array $options
-         * @return string
+         * @return string 
          * @static 
          */ 
         public static function displayMultiple($options = array())
@@ -15376,12 +15497,67 @@ namespace Buzz\LaravelGoogleCaptcha {
          *
          * @param string $response
          * @param string $clientIp
-         * @return bool
+         * @return bool 
          * @static 
          */ 
         public static function verify($response, $clientIp = null)
         {
             return \Buzz\LaravelGoogleCaptcha\Captcha::verify($response, $clientIp);
+        }
+
+    }
+
+}
+
+namespace Creativeorange\Gravatar\Facades {
+
+    /**
+     *
+     *
+     */
+    class Gravatar
+    {
+
+        /**
+         * Override the default image fallback set in the config.
+         *
+         * Can either be a public URL to an image or a valid themed image.
+         * For more info, visit http://en.gravatar.com/site/implement/images/#default-image
+         *
+         * @param string $fallback
+         * @return $this
+         * @static
+         */
+        public static function fallback($fallback)
+        {
+            return \Creativeorange\Gravatar\Gravatar::fallback($fallback);
+        }
+
+        /**
+         * Check if Gravatar has an avatar for the given email address
+         *
+         * @param $email
+         * @return bool
+         * @throws InvalidEmailException
+         * @static
+         */
+        public static function exists($email)
+        {
+            return \Creativeorange\Gravatar\Gravatar::exists($email);
+        }
+
+        /**
+         * Get the gravatar url
+         *
+         * @param $email
+         * @param string $configGroup
+         * @return string
+         * @throws InvalidEmailException
+         * @static
+         */
+        public static function get($email, $configGroup = 'default')
+        {
+            return \Creativeorange\Gravatar\Gravatar::get($email, $configGroup);
         }
 
     }
@@ -15682,6 +15858,417 @@ namespace Jenssegers\Date {
      */
     class Date
     {
+
+    }
+
+}
+
+namespace Prologue\Alerts\Facades {
+
+    /**
+     *
+     *
+     * @method static \Prologue\Alerts\AlertsMessageBag success(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag error(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag warning(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag info(string $text)
+     */
+    class Alert
+    {
+
+        /**
+         * Store the messages in the current session.
+         *
+         * @return \Prologue\Alerts\AlertsMessageBag
+         * @static
+         */
+        public static function flash()
+        {
+            return \Prologue\Alerts\AlertsMessageBag::flash();
+        }
+
+        /**
+         * Deletes all messages.
+         *
+         * @param bool $withSession
+         * @return \Prologue\Alerts\AlertsMessageBag
+         * @static
+         */
+        public static function flush($withSession = true)
+        {
+            return \Prologue\Alerts\AlertsMessageBag::flush($withSession);
+        }
+
+        /**
+         * Returns the alert levels from the config.
+         *
+         * @return array
+         * @static
+         */
+        public static function getLevels()
+        {
+            return \Prologue\Alerts\AlertsMessageBag::getLevels();
+        }
+
+        /**
+         * Returns the Illuminate Session Store.
+         *
+         * @return \Illuminate\Session\Store
+         * @static
+         */
+        public static function getSession()
+        {
+            return \Prologue\Alerts\AlertsMessageBag::getSession();
+        }
+
+        /**
+         * Returns the Illuminate Config Repository.
+         *
+         * @return \Illuminate\Config\Repository
+         * @static
+         */
+        public static function getConfig()
+        {
+            return \Prologue\Alerts\AlertsMessageBag::getConfig();
+        }
+
+        /**
+         * Get the keys present in the message bag.
+         *
+         * @return array
+         * @static
+         */
+        public static function keys()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::keys();
+        }
+
+        /**
+         * Add a message to the message bag.
+         *
+         * @param string $key
+         * @param string $message
+         * @return $this
+         * @static
+         */
+        public static function add($key, $message)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::add($key, $message);
+        }
+
+        /**
+         * Merge a new array of messages into the message bag.
+         *
+         * @param \Illuminate\Contracts\Support\MessageProvider|array $messages
+         * @return $this
+         * @static
+         */
+        public static function merge($messages)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::merge($messages);
+        }
+
+        /**
+         * Determine if messages exist for all of the given keys.
+         *
+         * @param array|string $key
+         * @return bool
+         * @static
+         */
+        public static function has($key)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::has($key);
+        }
+
+        /**
+         * Determine if messages exist for any of the given keys.
+         *
+         * @param array|string $keys
+         * @return bool
+         * @static
+         */
+        public static function hasAny($keys = array())
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::hasAny($keys);
+        }
+
+        /**
+         * Get the first message from the message bag for a given key.
+         *
+         * @param string $key
+         * @param string $format
+         * @return string
+         * @static
+         */
+        public static function first($key = null, $format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::first($key, $format);
+        }
+
+        /**
+         * Get all of the messages from the message bag for a given key.
+         *
+         * @param string $key
+         * @param string $format
+         * @return array
+         * @static
+         */
+        public static function get($key, $format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::get($key, $format);
+        }
+
+        /**
+         * Get all of the messages for every key in the message bag.
+         *
+         * @param string $format
+         * @return array
+         * @static
+         */
+        public static function all($format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::all($format);
+        }
+
+        /**
+         * Get all of the unique messages for every key in the message bag.
+         *
+         * @param string $format
+         * @return array
+         * @static
+         */
+        public static function unique($format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::unique($format);
+        }
+
+        /**
+         * Get the raw messages in the message bag.
+         *
+         * @return array
+         * @static
+         */
+        public static function messages()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::messages();
+        }
+
+        /**
+         * Get the raw messages in the message bag.
+         *
+         * @return array
+         * @static
+         */
+        public static function getMessages()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::getMessages();
+        }
+
+        /**
+         * Get the messages for the instance.
+         *
+         * @return \Illuminate\Support\MessageBag
+         * @static
+         */
+        public static function getMessageBag()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::getMessageBag();
+        }
+
+        /**
+         * Get the default message format.
+         *
+         * @return string
+         * @static
+         */
+        public static function getFormat()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::getFormat();
+        }
+
+        /**
+         * Set the default message format.
+         *
+         * @param string $format
+         * @return \Illuminate\Support\MessageBag
+         * @static
+         */
+        public static function setFormat($format = ':message')
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::setFormat($format);
+        }
+
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool
+         * @static
+         */
+        public static function isEmpty()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::isEmpty();
+        }
+
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool
+         * @static
+         */
+        public static function isNotEmpty()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::isNotEmpty();
+        }
+
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool
+         * @static
+         */
+        public static function any()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::any();
+        }
+
+        /**
+         * Get the number of messages in the message bag.
+         *
+         * @return int
+         * @static
+         */
+        public static function count()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::count();
+        }
+
+        /**
+         * Get the instance as an array.
+         *
+         * @return array
+         * @static
+         */
+        public static function toArray()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::toArray();
+        }
+
+        /**
+         * Convert the object into something JSON serializable.
+         *
+         * @return array
+         * @static
+         */
+        public static function jsonSerialize()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::jsonSerialize();
+        }
+
+        /**
+         * Convert the object to its JSON representation.
+         *
+         * @param int $options
+         * @return string
+         * @static
+         */
+        public static function toJson($options = 0)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+            return \Prologue\Alerts\AlertsMessageBag::toJson($options);
+        }
+
+    }
+
+}
+
+namespace Spatie\LaravelImageOptimizer\Facades {
+
+    /**
+     *
+     *
+     */
+    class ImageOptimizer
+    {
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function getOptimizers()
+        {
+            return \Spatie\ImageOptimizer\OptimizerChain::getOptimizers();
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function addOptimizer($optimizer)
+        {
+            return \Spatie\ImageOptimizer\OptimizerChain::addOptimizer($optimizer);
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function setOptimizers($optimizers)
+        {
+            return \Spatie\ImageOptimizer\OptimizerChain::setOptimizers($optimizers);
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function setTimeout($timeoutInSeconds)
+        {
+            return \Spatie\ImageOptimizer\OptimizerChain::setTimeout($timeoutInSeconds);
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function useLogger($log)
+        {
+            return \Spatie\ImageOptimizer\OptimizerChain::useLogger($log);
+        }
+
+        /**
+         *
+         *
+         * @static
+         */
+        public static function optimize($pathToImage, $pathToOutput = null)
+        {
+            return \Spatie\ImageOptimizer\OptimizerChain::optimize($pathToImage, $pathToOutput);
+        }
          
     }
 
@@ -16713,6 +17300,19 @@ namespace Yarmat\Comment\Facades {
 
 }
 
+namespace Backpack\Settings\app\Models {
+
+    /**
+     *
+     *
+     */
+    class Setting
+    {
+
+    }
+
+}
+
 
 namespace  { 
 
@@ -17177,7 +17777,7 @@ namespace  {
              * Call the given local model scopes.
              *
              * @param array $scopes
-             * @return mixed 
+             * @return static|mixed 
              * @static 
              */ 
             public static function scopes($scopes)
@@ -17188,7 +17788,7 @@ namespace  {
             /**
              * Apply the scopes to the Eloquent builder instance and return it.
              *
-             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @return static 
              * @static 
              */ 
             public static function applyScopes()
@@ -17367,7 +17967,7 @@ namespace  {
             /**
              * Pass the query to a given callback.
              *
-             * @param \Closure $callback
+             * @param callable $callback
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -19159,9 +19759,25 @@ namespace  {
     {
     }
 
+    class Widget extends \Arrilot\Widgets\Facade
+    {
+    }
+
+    class AsyncWidget extends \Arrilot\Widgets\AsyncFacade
+    {
+    }
+
+    class CRUD extends \Backpack\CRUD\CrudServiceProvider
+    {
+    }
+
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Captcha extends \Buzz\LaravelGoogleCaptcha\CaptchaFacade
+    {
+    }
+
+    class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar
     {
     }
 
@@ -19177,11 +19793,23 @@ namespace  {
     {
     }
 
+    class Alert extends \Prologue\Alerts\Facades\Alert
+    {
+    }
+
+    class ImageOptimizer extends \Spatie\LaravelImageOptimizer\Facades\ImageOptimizer
+    {
+    }
+
     class Menu extends \Spatie\Menu\Laravel\Facades\Menu
     {
     }
 
     class Comment extends \Yarmat\Comment\Facades\Comment
+    {
+    }
+
+    class Setting extends \Backpack\Settings\app\Models\Setting
     {
     }
  

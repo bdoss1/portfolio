@@ -50,6 +50,7 @@ class ThumbService
                     $constraint->aspectRatio();
                 });
                 $image->save($imageResizedPath, $quality);
+                \ImageOptimizer::optimize($imageResizedPath);
             }
 
             return \Storage::disk('public')->url($imageResized);
