@@ -62,8 +62,10 @@
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.svg') }}" as="font" type="image/svg+xml"--}}
     {{--crossorigin="anonymous">--}}
 
-    <link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+    {{--<link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>--}}
+    {{--<link rel="stylesheet" href="{{ asset('css/style.css') }}"/>   --}}
+    <link rel="preload" as="style" href="{{ asset('css/app.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 </head>
 <body>
 <div id="app">
