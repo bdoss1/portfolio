@@ -31,39 +31,6 @@
     <meta name="msapplication-config" content="{{ asset('favicons/browserconfig.xml') }}">
     <meta name="theme-color" content="#ffffff">
 
-    {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.eot') }}" as="font" type="application/vnd.ms-fontobject"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.woff2') }}" as="font" type="font/woff2"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.woff') }}" as="font" type="font/woff"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.ttf') }}" as="font" type="font/ttf" crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.svg') }}" as="font" type="image/svg+xml"--}}
-    {{--crossorigin="anonymous">--}}
-
-    {{--<link rel="preload" href="{{ asset('fonts/fa-regular-400.eot') }}" as="font" type="application/vnd.ms-fontobject"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-regular-400.woff2') }}" as="font" type="font/woff2"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-regular-400.woff') }}" as="font" type="font/woff"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-regular-400.ttf') }}" as="font" type="font/ttf"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-regular-400.svg') }}" as="font" type="image/svg+xml"--}}
-    {{--crossorigin="anonymous">--}}
-
-    {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.eot') }}" as="font" type="application/vnd.ms-fontobject"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.woff2') }}" as="font" type="font/woff2"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.woff') }}" as="font" type="font/woff"--}}
-    {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.ttf') }}" as="font" type="font/ttf" crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.svg') }}" as="font" type="image/svg+xml"--}}
-    {{--crossorigin="anonymous">--}}
-
-    {{--<link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>--}}
-    {{--<link rel="stylesheet" href="{{ asset('css/style.css') }}"/>   --}}
     <link rel="preload" as="style" href="{{ asset('css/app.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 </head>
@@ -191,8 +158,8 @@
         }
     };
 </script>
-<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
-<script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>--}}
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 @yield('after.script')
 </body>
 </html>
