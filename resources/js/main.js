@@ -1,3 +1,7 @@
+require('./../template/cubeportfolio/js/jquery.cubeportfolio.min');
+require('./../template/js/typed');
+require('./../template/js/jquery.hover3d');
+
 $(document).ready(function () {
     function fullhome() {
         var hometext = $('.home, .portfolio-hero');

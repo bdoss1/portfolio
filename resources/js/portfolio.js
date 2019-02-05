@@ -1,3 +1,15 @@
+require('./../template/cubeportfolio/js/jquery.cubeportfolio.min');
+require('./../template/js/jquery.hover3d');
+
+
+// PORTFOLIO EFFECT
+$(".cbp-item").hover3d({
+    selector: "figure",
+    perspective: 3000,
+    shine: true
+});
+
+
 $('#grid-container').cubeportfolio({
     layoutMode: 'grid',
     gridAdjustment: 'responsive',
@@ -36,10 +48,16 @@ $(document).on('click', '.load-more-js', function (e) {
     axios.post(url, {
         page: page
     }).then(response => {
-        console.log(response);
+
         if (response.data.success) {
             item.attr('data-page', page + 1);
             $("#grid-container").cubeportfolio('appendItems', response.data.items);
+            // PORTFOLIO EFFECT
+            $(".cbp-item").hover3d({
+                selector: "figure",
+                perspective: 3000,
+                shine: true
+            });
             if (!response.data.more_btn.is_visible) $('.is-visible-js').remove();
             $('.count-items-js').text(response.data.more_btn.count_items);
         }

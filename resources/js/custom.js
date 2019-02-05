@@ -8,7 +8,6 @@ $(document).ready(function () {
         $(".preloader").delay(1000).fadeOut("slow");
     });
 
-
     // RESPONSIVE MENU
     $('.nav-icon').click(function () {
         $('body').toggleClass('full-open');
