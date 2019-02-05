@@ -227,7 +227,7 @@ header {
 }
 
 .site-btn.arrow:after {
-    font-family: 'Font Awesome 5 Free';
+    font-family: 'Font Awesome 5 Free', sans-serif;
     content: "\f30b";
     font-weight: 900;
     float: right;

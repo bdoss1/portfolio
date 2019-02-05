@@ -19,8 +19,6 @@
         <title>{{ config('app.name', 'Portfolio') }}</title>
     @endisset
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
-    <!-- Google Web fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -133,6 +131,8 @@
     </div>
 </div>
 
+<!-- Google Web fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
 @yield('before.script')
 <script>
     window.Portfolio = {
