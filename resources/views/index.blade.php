@@ -47,5 +47,5 @@
 
 
 @section('after.script')
-    <script src="{{ asset('js/main.js') }}" async></script>
+    <script src="{{ asset('js/main.js') }}" async defer></script>
 @endsection

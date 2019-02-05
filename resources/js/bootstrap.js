@@ -15,6 +15,7 @@ try {
     require('../template/js/particles.js');
     require('../template/js/jquery.hover3d.js');
     require('../template/js/owl.carousel.min.js');
+    window.LazyLoad = require('../template/js/lazyload.min');
     // require('bootstrap');
 } catch (e) {}
 
