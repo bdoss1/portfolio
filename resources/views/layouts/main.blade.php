@@ -18,7 +18,21 @@
     @else
         <title>{{ config('app.name', 'Portfolio') }}</title>
     @endisset
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicons/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('favicons/safari-pinned-tab.svg') }}" color="#000000">
+    <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}">
+    <meta name="apple-mobile-web-app-title" content="YarmaT - WebDev">
+    <meta name="application-name" content="YarmaT - WebDev">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="{{ asset('favicons/browserconfig.xml') }}">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="preload" as="style" href="{{ mix('css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ mix('css/style.css') }}"/>
 </head>
 <body>
 <div id="app">
@@ -130,9 +144,7 @@
         </footer>
     </div>
 </div>
-
-<!-- Google Web fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+<link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
 @yield('before.script')
 <script>
     window.Portfolio = {

@@ -7,6 +7,7 @@ mix.js('resources/js/app.js', 'js')
     .js('resources/js/portfolio.js', 'js')
     .js('resources/js/blog.js', 'js')
     .js('resources/js/main.js', 'js')
-    .sass('resources/sass/app.scss', 'css');
+    .sass('resources/sass/app.scss', 'css')
+    .sass('resources/sass/style.scss', 'css');
 
 mix.version();
