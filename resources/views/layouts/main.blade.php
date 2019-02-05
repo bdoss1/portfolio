@@ -61,8 +61,9 @@
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.ttf') }}" as="font" type="font/ttf" crossorigin="anonymous">--}}
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.svg') }}" as="font" type="image/svg+xml"--}}
     {{--crossorigin="anonymous">--}}
-
+    <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>
     <link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
 <body>
