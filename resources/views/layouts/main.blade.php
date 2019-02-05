@@ -62,8 +62,9 @@
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.svg') }}" as="font" type="image/svg+xml"--}}
     {{--crossorigin="anonymous">--}}
     <link rel="preload" as="font" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>
-    <link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+    <link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
 <body>
@@ -191,7 +192,7 @@
     };
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
-<script src="{{ asset('js/app.js') }}" async defer></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @yield('after.script')
 </body>
 </html>
