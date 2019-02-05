@@ -31,9 +31,9 @@
     <meta name="msapplication-config" content="{{ asset('favicons/browserconfig.xml') }}">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>
+    {{--<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
     <link rel="preload" as="style" href="{{ asset('css/app.css') }}"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>
+    {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 </head>
 <body>
