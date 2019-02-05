@@ -11,6 +11,7 @@ mix.js('resources/js/app.js', 'js')
     .sass('resources/sass/app.scss', 'css');
 
 mix.scripts([
+    'public/js/app.js',
     'public/js/tpl/js/particles.js',
     'public/js/tpl/js/owl.carousel.min.js',
     'public/js/tpl/js/lazyload.min.js',

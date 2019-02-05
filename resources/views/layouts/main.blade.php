@@ -32,9 +32,9 @@
     <meta name="theme-color" content="#ffffff">
 
     {{--<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
-    <link rel="preload" as="style" href="{{ asset('css/app.css') }}"/>
+    <link rel="preload" as="style" href="{{ mix('css/app.css') }}"/>
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
 </head>
 <body>
 <div id="app">
@@ -161,8 +161,7 @@
     };
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" defer></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ asset('js/combine.js') }}" defer></script>
+<script src="{{ mix('js/combine.js') }}" defer></script>
 @yield('after.script')
 </body>
 </html>
