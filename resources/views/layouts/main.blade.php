@@ -175,7 +175,7 @@
         </footer>
     </div>
 </div>
-<link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
+
 @yield('before.script')
 <script>
     window.Portfolio = {
