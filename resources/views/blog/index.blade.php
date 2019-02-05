@@ -59,5 +59,5 @@
 @endsection
 
 @section('after.script')
-    <script src="{{ mix('js/blog.js') }}"></script>
+    <script src="{{ mix('js/blog.js') }}" defer></script>
 @endsection
