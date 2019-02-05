@@ -10,12 +10,12 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-    require('../template/cubeportfolio/js/jquery.cubeportfolio.min.js');
-    require('../template/js/typed.js');
-    require('../template/js/particles.js');
-    require('../template/js/jquery.hover3d.js');
-    require('../template/js/owl.carousel.min.js');
-    window.LazyLoad = require('../template/js/lazyload.min');
+    // require('../template/cubeportfolio/js/jquery.cubeportfolio.min.js');
+    // require('../template/js/typed.js');
+    // require('../template/js/particles.js');
+    // require('../template/js/jquery.hover3d.js');
+    // require('../template/js/owl.carousel.min.js');
+    // window.LazyLoad = require('../template/js/lazyload.min');
     // require('bootstrap');
 } catch (e) {}
 
