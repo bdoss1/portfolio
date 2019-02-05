@@ -33,7 +33,7 @@
 
     {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.eot') }}" as="font" type="application/vnd.ms-fontobject"--}}
     {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.woff2') }}" as="font" type="font/woff2"--}}
+    <link rel="preload" href="{{ asset('fonts/fa-brands-400.woff2') }}" as="font" type="font/woff2"
     {{--crossorigin="anonymous">--}}
     {{--<link rel="preload" href="{{ asset('fonts/fa-brands-400.woff') }}" as="font" type="font/woff"--}}
     {{--crossorigin="anonymous">--}}
@@ -54,7 +54,7 @@
 
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.eot') }}" as="font" type="application/vnd.ms-fontobject"--}}
     {{--crossorigin="anonymous">--}}
-    {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.woff2') }}" as="font" type="font/woff2"--}}
+    <link rel="preload" href="{{ asset('fonts/fa-solid-900.woff2') }}" as="font" type="font/woff2"
     {{--crossorigin="anonymous">--}}
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.woff') }}" as="font" type="font/woff"--}}
     {{--crossorigin="anonymous">--}}
