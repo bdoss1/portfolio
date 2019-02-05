@@ -62,8 +62,8 @@
     {{--<link rel="preload" href="{{ asset('fonts/fa-solid-900.svg') }}" as="font" type="image/svg+xml"--}}
     {{--crossorigin="anonymous">--}}
 
-    <link rel="preload" as="style" href="{{ mix('css/style.css') }}"/>
-    <link rel="stylesheet" href="{{ mix('css/style.css') }}"/>
+    <link rel="preload" as="style" href="{{ asset('css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
 <body>
 <div id="app">
@@ -190,7 +190,7 @@
     };
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @yield('after.script')
 </body>
 </html>
