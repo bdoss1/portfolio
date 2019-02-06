@@ -1364,10 +1364,10 @@ footer .getintouch strong {
 }
 
 .contact .contact-info a {
-    color: #5f5e5f;
+    /*color: #5f5e5f;*/
     font-weight: 500;
     margin-bottom: 15px;
-    display: block;
+    /*display: block;*/
     text-decoration: none;
 }
 
