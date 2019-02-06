@@ -141,6 +141,7 @@
 
         fadeOutEffect(document.getElementsByClassName('loader')[0], 10);
         fadeOutEffect(document.getElementsByClassName('preloader')[0], 10);
+        document.getElementsByClassName('preloader')[0].remove();
     });
 </script>
 
