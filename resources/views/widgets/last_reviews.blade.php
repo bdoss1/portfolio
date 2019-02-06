@@ -29,7 +29,8 @@
                 </p>
                 @if($item->review_url)
                     <form id="comment_review_{{$item->id}}" target="_blank" style="display: none;"
-                          action="{{ hide_redirect($item->review_url) }}" method="POST">
+                          action="{{ route('redirect') }}" method="POST">
+                        <input type="hidden" name="value" value="{{ encrypt($item->review_url) }}">
                         @csrf
                     </form>
                 @endif

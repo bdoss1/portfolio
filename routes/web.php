@@ -27,4 +27,4 @@ Route::post('form/contact', 'FormController@contact')
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
     ->where(['page' => '^((?!admin).)*$', 'subs' => '.*'])->name('page');
 
-Route::post('{link}', 'HideLinkController@redirect')->name('redirect');
+Route::post('show', 'RedirectController@to')->name('redirect');

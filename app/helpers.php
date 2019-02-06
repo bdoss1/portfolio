@@ -10,6 +10,6 @@ if (!function_exists('is_home')) {
 if (!function_exists('hide_redirect')) {
     function hide_redirect($link)
     {
-        return route('redirect', encrypt($link));
+        return route('redirect');
     }
 }
