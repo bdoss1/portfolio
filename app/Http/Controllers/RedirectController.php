@@ -8,7 +8,11 @@ class RedirectController extends Controller
 {
     public function to(Request $request)
     {
-        $link = decrypt($request->get('value'));
+        $cryptLink = $request->get('value');
+
+        if (empty($cryptLink)) abort(404);
+
+        $link = decrypt($cryptLink);
 
         return redirect()->away($link);
     }
