@@ -20,5 +20,6 @@ return [
     'review_photo' => 'Photo review',
     'review_url' => 'Link to review',
     'get_in_touch' => 'Get In Touch',
-    'skills' => 'Skills'
+    'skills' => 'Skills',
+    'open' => 'Open'
 ];

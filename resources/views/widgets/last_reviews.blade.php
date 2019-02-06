@@ -17,8 +17,9 @@
                 </h3>
                 @if(!empty($item->author_url))
                     <form id="comment_author_{{$item->id}}" target="_blank" style="display: none;"
-                          action="{{ hide_redirect($item->author_url) }}" method="POST">
+                          action="{{ route('redirect') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="value" value="{{ encrypt($item->author_url) }}">
                     </form>
                 @endif
                 <div class="line"></div>

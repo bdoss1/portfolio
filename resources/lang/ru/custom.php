@@ -20,5 +20,6 @@ return [
     'review_photo' => 'Фото отзыва',
     'review_url' => 'Ссылка на отзыв',
     'get_in_touch' => 'Связаться',
-    'skills' => 'Навыки'
+    'skills' => 'Навыки',
+    'open' => 'Открыть'
 ];

@@ -14,10 +14,11 @@
                     @if( $item->link )
                         <li>
                             <span>@lang('custom.link'): </span>
-                            <form target="_blank" style="display: inline;" action="{{ hide_redirect($item->link) }}"
+                            <form target="_blank" style="display: inline;" action="{{ route('redirect') }}"
                                   method="post">
                                 @csrf
-                                <button class="link-style" type="submit">открыть</button>
+                                <input type="hidden" name="value" value="{{ encrypt($item->link) }}">
+                                <button class="link-style" type="submit">@lang('custom.open')</button>
                             </form>
                     @endif
                     <li><span>@lang('custom.categories'):</span>
@@ -32,9 +33,10 @@
                         <li>
                             <span>@lang('custom.html'): </span>
                             @foreach($htmlItems as $html)
-                                <form target="_blank" style="display: inline;" action="{{ hide_redirect($html->url) }}"
+                                <form target="_blank" style="display: inline;" action="{{ route('redirect') }}"
                                       method="post">
                                     @csrf
+                                    <input type="hidden" name="value" value="{{ encrypt($item->link) }}">
                                     <button class="link-style" type="submit">{{ $html->title }}</button>
                                 </form>
                             @endforeach
