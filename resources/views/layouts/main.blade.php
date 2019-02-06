@@ -125,7 +125,7 @@
 <body>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        function fadeOutEffect(element, delay = 200) {
+        function fadeOutEffect(element, callback) {
             var fadeTarget = element;
             var fadeEffect = setInterval(function () {
                 if (!fadeTarget.style.opacity) {
@@ -135,13 +135,16 @@
                     fadeTarget.style.opacity -= 0.1;
                 } else {
                     clearInterval(fadeEffect);
+                    if (callback) callback();
                 }
-            }, delay);
+            }, 1);
         }
 
-        fadeOutEffect(document.getElementsByClassName('loader')[0], 10);
-        fadeOutEffect(document.getElementsByClassName('preloader')[0], 10);
-        document.getElementsByClassName('preloader')[0].remove();
+        fadeOutEffect(document.getElementsByClassName('loader')[0]);
+        fadeOutEffect(document.getElementsByClassName('preloader')[0], function () {
+            document.getElementsByClassName('preloader')[0].remove();
+        });
+
     });
 </script>
 

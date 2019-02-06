@@ -52,6 +52,8 @@ $(document).on('click', '.load-more-js', function (e) {
         if (response.data.success) {
             item.attr('data-page', page + 1);
             $("#grid-container").cubeportfolio('appendItems', response.data.items);
+
+            sitelazyLoad.update();
             // PORTFOLIO EFFECT
             $(".cbp-item").hover3d({
                 selector: "figure",

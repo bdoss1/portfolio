@@ -32,7 +32,7 @@
             {{ $categoryMenu }}
         </div>
 
-        <section id="portfolio" class="portfolio">
+        <section id="portfolio" class="portfolio lazy-container">
             @if(count($items) > 0)
             <div id="grid-container" class="portfolio-items-js">
                 @foreach($items as $item)

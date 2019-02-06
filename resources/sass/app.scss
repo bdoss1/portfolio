@@ -198,3 +198,27 @@ body,
     flex: 0 0 auto;
     position: static;
 }
+
+.lazy-wrap {
+    position: relative;
+    min-height: 100px;
+}
+
+.lazy-wrap:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff url('../template/images/preload.gif') center no-repeat;
+    background-size: 100px;
+    opacity: 0;
+    z-index: 1;
+    transition: .3s;
+}
+
+.lazy-wrap.lazy-wrap_loading:before {
+    opacity: 1;
+    transition: .3s;
+}
