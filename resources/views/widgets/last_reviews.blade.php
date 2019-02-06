@@ -36,7 +36,8 @@
                     </form>
                 @endif
 
-                @if($item->image) <a href="{{ $item->image }}">@lang('custom.review_photo')</a> @endif
+                @if($item->image) <a data-fancybox="reviews" data-caption="{{ $item->content }}"
+                                     href="{{ $item->image }}">@lang('custom.review_photo')</a> @endif
             </div>
         @endforeach
     </div>

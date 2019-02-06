@@ -10,6 +10,7 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+    require('@fancyapps/fancybox');
     // require('../template/cubeportfolio/js/jquery.cubeportfolio.min.js');
     // require('../template/js/typed.js');
     // require('../template/js/particles.js');
