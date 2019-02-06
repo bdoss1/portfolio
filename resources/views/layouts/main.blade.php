@@ -32,21 +32,21 @@
     <meta name="theme-color" content="#ffffff">
 
     {{--<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
-    <link rel="preload" as="style" href="{{ mix('css/app.css') }}"/>
+    <link rel="preload" as="style" href="{{ mix('css/combine.css') }}"/>
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
+    <link rel="stylesheet" href="{{ mix('css/combine.css') }}"/>
 </head>
 <body>
 <div id="app">
     <notifications classes="portfolio_notifications" group="foo" animation-type="velocity"
                    position="top right"></notifications>
 
-    <!-- PRELOADER -->
-    <div class="preloader">
-        <div class="loader">
-            <div class="loader-inner"></div>
-        </div>
-    </div>
+{{--<!-- PRELOADER -->--}}
+{{--<div class="preloader">--}}
+{{--<div class="loader">--}}
+{{--<div class="loader-inner"></div>--}}
+{{--</div>--}}
+{{--</div>--}}
 
     <!-- HEADER -->
     <header>
