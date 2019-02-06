@@ -30,23 +30,132 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-config" content="{{ asset('favicons/browserconfig.xml') }}">
     <meta name="theme-color" content="#ffffff">
+    <style>
+        /* Preloader */
+        body {
+            margin: 0;
+            padding: 0;
+        }
 
-    {{--<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
-    <link rel="preload" as="style" href="{{ mix('css/combine.css') }}"/>
-    {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800"/>--}}
-    <link rel="stylesheet" href="{{ mix('css/combine.css') }}"/>
+        .preloader {
+            position: fixed;
+            display: block;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            z-index: 99999;
+        }
+
+        .preloader .loader {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 4px solid #000;
+            -o-animation: loader 2s infinite ease;
+            -ms-animation: loader 2s infinite ease;
+            -moz-animation: loader 2s infinite ease;
+            -webkit-animation: loader 2s infinite ease;
+            animation: loader 2s infinite ease;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .preloader .loader .loader-inner {
+            display: inline-block;
+            width: 100%;
+            vertical-align: top;
+            background-color: #000;
+            -o-animation: loader-inner 2s infinite ease-in;
+            -ms-animation: loader-inner 2s infinite ease-in;
+            -moz-animation: loader-inner 2s infinite ease-in;
+            -webkit-animation: loader-inner 2s infinite ease-in;
+            animation: loader-inner 2s infinite ease-in;
+        }
+
+        @keyframes loader {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(180deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            75% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loader-inner {
+            0% {
+                height: 0%;
+            }
+
+            25% {
+                height: 0%;
+            }
+
+            50% {
+                height: 100%;
+            }
+
+            75% {
+                height: 100%;
+            }
+
+            100% {
+                height: 0%;
+            }
+        }
+    </style>
 </head>
 <body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function fadeOutEffect(element, delay = 200) {
+            var fadeTarget = element;
+            var fadeEffect = setInterval(function () {
+                if (!fadeTarget.style.opacity) {
+                    fadeTarget.style.opacity = 1;
+                }
+                if (fadeTarget.style.opacity > 0) {
+                    fadeTarget.style.opacity -= 0.1;
+                } else {
+                    clearInterval(fadeEffect);
+                }
+            }, delay);
+        }
+
+        fadeOutEffect(document.getElementsByClassName('loader')[0], 10);
+        fadeOutEffect(document.getElementsByClassName('preloader')[0], 10);
+    });
+</script>
+
+<!-- PRELOADER -->
+<div class="preloader">
+    <div class="loader">
+        <div class="loader-inner"></div>
+    </div>
+</div>
+
 <div id="app">
     <notifications classes="portfolio_notifications" group="foo" animation-type="velocity"
                    position="top right"></notifications>
 
-{{--<!-- PRELOADER -->--}}
-{{--<div class="preloader">--}}
-{{--<div class="loader">--}}
-{{--<div class="loader-inner"></div>--}}
-{{--</div>--}}
-{{--</div>--}}
+
 
     <!-- HEADER -->
     <header>
@@ -160,6 +269,7 @@
         }
     };
 </script>
+<link rel="stylesheet" href="{{ mix('css/combine.css') }}"/>
 <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" defer></script>
 <script src="{{ mix('js/combine.js') }}" defer></script>
 @yield('after.script')
