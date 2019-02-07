@@ -167,6 +167,7 @@ return [
          */
         Spiritix\LadaCache\LadaCacheServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Application Service Providers...
          */

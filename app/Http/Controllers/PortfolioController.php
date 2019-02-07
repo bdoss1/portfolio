@@ -26,7 +26,15 @@ class PortfolioController extends Controller
 
         $page = $this->portfolioUseCase->getPage();
 
-        $seo = $this->portfolioUseCase->getSeo();
+        $this->seo()->metatags()->setTitle($page->meta_title ?? '');
+        $this->seo()->metatags()->setDescription($page->meta_description ?? '');
+        $this->seo()->metatags()->setKeywords($page->meta_keywords ?? '');
+
+        $this->seo()->opengraph()->setTitle($page->meta_title ?? '');
+        $this->seo()->opengraph()->setDescription($page->meta_description ?? '');
+
+        $this->seo()->opengraph()->addProperty('locale', app()->getLocale());
+        if (config('settings.logo')) $this->seo()->opengraph()->addImage(asset(config('settings.logo')));
 
         $moreCountItems = ($items->count() === $this->portfolioUseCase::ITEM_LIMIT)
             ? ($this->portfolioUseCase->moreCountItemsQuery(1)->get())->count()
@@ -36,7 +44,7 @@ class PortfolioController extends Controller
 
         $categories = Category::whereHas('portfolios')->get(['title', 'slug']);
 
-        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'seo', 'page'));
+        return view('portfolio.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'page'));
     }
 
     public function show($slug, PortfolioHtmlService $htmlService)
@@ -45,7 +53,13 @@ class PortfolioController extends Controller
 
         $next = Portfolio::where('id', '>', $item->id)->first(['slug', 'title']);
 
-        $seo = $item->seo;
+        $this->seo()->metatags()->setTitle($item->seo->title ?? '');
+        $this->seo()->metatags()->setDescription($item->seo->description ?? '');
+        $this->seo()->metatags()->setKeywords($item->seo->keywords ?? '');
+
+        $this->seo()->opengraph()->setTitle($item->seo->title ?? '');
+        $this->seo()->opengraph()->setDescription($item->seo->description ?? '');
+        $this->seo()->opengraph()->addImage(asset($item->image));
 
         $htmlItems = $htmlService->get($item->dir_path);
 

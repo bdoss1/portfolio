@@ -65,16 +65,4 @@ class BlogUseCase
         return $this->page;
     }
 
-    public function getSeo()
-    {
-        $page = $this->getPage();
-
-        $seo = new Seo();
-
-        $seo->title = $page->meta_title ?? '';
-        $seo->description = $page->meta_description ?? '';
-        $seo->keywords = $page->meta_keywords ?? '';
-
-        return $seo;
-    }
 }

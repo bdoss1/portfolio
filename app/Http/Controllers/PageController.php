@@ -8,16 +8,22 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index($slug, Seo $seo)
+    public function index($slug)
     {
         $page = Page::whereSlug($slug)->firstOrFail()->withFakes();
 
         if (in_array($page->template, ['main', 'service'])) abort(404);
 
-        $seo->title = $page->meta_title ?? '';
-        $seo->description = $page->meta_description ?? '';
-        $seo->keywords = $page->meta_keywords ?? '';
+        $this->seo()->metatags()->setTitle($page->meta_title ?? '');
+        $this->seo()->metatags()->setDescription($page->meta_description ?? '');
+        $this->seo()->metatags()->setKeywords($page->meta_keywords ?? '');
 
-        return view('page.' . $page->template)->with(compact('page', 'seo'));
+        $this->seo()->opengraph()->setTitle($page->meta_title ?? '');
+        $this->seo()->opengraph()->setDescription($page->meta_description ?? '');
+
+        $this->seo()->opengraph()->addProperty('locale', app()->getLocale());
+        if (config('settings.logo')) $this->seo()->opengraph()->addImage(asset(config('settings.logo')));
+
+        return view('page.' . $page->template)->with(compact('page'));
     }
 }

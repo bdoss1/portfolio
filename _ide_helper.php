@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.24 on 2019-02-05 07:51:55.
+ * Generated for Laravel 5.7.24 on 2019-02-07 13:26:25.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -122,7 +122,7 @@ namespace Illuminate\Support\Facades {
          * @param string $path
          * @return $this
          * @static
-         */
+         */ 
         public static function useAppPath($path)
         {
             return \Illuminate\Foundation\Application::useAppPath($path);
@@ -7308,7 +7308,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $from
          * @param string $to
-         * @return array
+         * @return array 
          * @static 
          */ 
         public static function migrateExpiredJobs($from, $to)
@@ -7321,7 +7321,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $queue
          * @param \Illuminate\Queue\Jobs\RedisJob $job
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function deleteReserved($queue, $job)
@@ -7335,7 +7335,7 @@ namespace Illuminate\Support\Facades {
          * @param string $queue
          * @param \Illuminate\Queue\Jobs\RedisJob $job
          * @param int $delay
-         * @return void
+         * @return void 
          * @static 
          */ 
         public static function deleteAndRelease($queue, $job, $delay)
@@ -7347,7 +7347,7 @@ namespace Illuminate\Support\Facades {
          * Get the queue or return the default.
          *
          * @param string|null $queue
-         * @return string
+         * @return string 
          * @static 
          */ 
         public static function getQueue($queue)
@@ -7358,7 +7358,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the underlying Redis instance.
          *
-         * @return \Illuminate\Contracts\Redis\Factory
+         * @return \Illuminate\Contracts\Redis\Factory 
          * @static 
          */ 
         public static function getRedis()
@@ -13637,7 +13637,7 @@ namespace Collective\Html {
          *
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function open($options = array())
         {
@@ -13650,7 +13650,7 @@ namespace Collective\Html {
          * @param mixed $model
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function model($model, $options = array())
         {
@@ -13662,7 +13662,7 @@ namespace Collective\Html {
          *
          * @param mixed $model
          * @return void
-         * @static
+         * @static 
          */ 
         public static function setModel($model)
         {
@@ -13673,7 +13673,7 @@ namespace Collective\Html {
          * Get the current model instance on the form builder.
          *
          * @return mixed $model
-         * @static
+         * @static 
          */ 
         public static function getModel()
         {
@@ -13684,7 +13684,7 @@ namespace Collective\Html {
          * Close the current form.
          *
          * @return string
-         * @static
+         * @static 
          */ 
         public static function close()
         {
@@ -13695,7 +13695,7 @@ namespace Collective\Html {
          * Generate a hidden field with the current CSRF token.
          *
          * @return string
-         * @static
+         * @static 
          */ 
         public static function token()
         {
@@ -13710,7 +13710,7 @@ namespace Collective\Html {
          * @param array $options
          * @param bool $escape_html
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function label($name, $value = null, $options = array(), $escape_html = true)
         {
@@ -13725,7 +13725,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function input($type, $name, $value = null, $options = array())
         {
@@ -13739,7 +13739,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function text($name, $value = null, $options = array())
         {
@@ -13752,7 +13752,7 @@ namespace Collective\Html {
          * @param string $name
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function password($name, $options = array())
         {
@@ -13766,7 +13766,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function range($name, $value = null, $options = array())
         {
@@ -13780,7 +13780,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function hidden($name, $value = null, $options = array())
         {
@@ -13794,7 +13794,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function search($name, $value = null, $options = array())
         {
@@ -13808,7 +13808,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function email($name, $value = null, $options = array())
         {
@@ -13822,7 +13822,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function tel($name, $value = null, $options = array())
         {
@@ -13836,7 +13836,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function number($name, $value = null, $options = array())
         {
@@ -13850,7 +13850,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function date($name, $value = null, $options = array())
         {
@@ -13864,7 +13864,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function datetime($name, $value = null, $options = array())
         {
@@ -13878,7 +13878,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function datetimeLocal($name, $value = null, $options = array())
         {
@@ -13892,7 +13892,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function time($name, $value = null, $options = array())
         {
@@ -13906,7 +13906,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function url($name, $value = null, $options = array())
         {
@@ -13920,7 +13920,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function week($name, $value = null, $options = array())
         {
@@ -13933,7 +13933,7 @@ namespace Collective\Html {
          * @param string $name
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function file($name, $options = array())
         {
@@ -13947,7 +13947,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function textarea($name, $value = null, $options = array())
         {
@@ -13964,7 +13964,7 @@ namespace Collective\Html {
          * @param array $optionsAttributes
          * @param array $optgroupsAttributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function select($name, $list = array(), $selected = null, $selectAttributes = array(), $optionsAttributes = array(), $optgroupsAttributes = array())
         {
@@ -13980,7 +13980,7 @@ namespace Collective\Html {
          * @param string $selected
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function selectRange($name, $begin, $end, $selected = null, $options = array())
         {
@@ -13996,7 +13996,7 @@ namespace Collective\Html {
          * @param string $selected
          * @param array $options
          * @return mixed
-         * @static
+         * @static 
          */ 
         public static function selectYear()
         {
@@ -14011,7 +14011,7 @@ namespace Collective\Html {
          * @param array $options
          * @param string $format
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function selectMonth($name, $selected = null, $options = array(), $format = '%B')
         {
@@ -14027,7 +14027,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param array $optgroupAttributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function getSelectOption($display, $value, $selected, $attributes = array(), $optgroupAttributes = array())
         {
@@ -14042,7 +14042,7 @@ namespace Collective\Html {
          * @param bool $checked
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function checkbox($name, $value = 1, $checked = null, $options = array())
         {
@@ -14057,7 +14057,7 @@ namespace Collective\Html {
          * @param bool $checked
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function radio($name, $value = null, $checked = null, $options = array())
         {
@@ -14070,7 +14070,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function reset($value, $attributes = array())
         {
@@ -14084,7 +14084,7 @@ namespace Collective\Html {
          * @param string $name
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function image($url, $name = null, $attributes = array())
         {
@@ -14098,7 +14098,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function month($name, $value = null, $options = array())
         {
@@ -14112,7 +14112,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function color($name, $value = null, $options = array())
         {
@@ -14125,7 +14125,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function submit($value = null, $options = array())
         {
@@ -14138,7 +14138,7 @@ namespace Collective\Html {
          * @param string $value
          * @param array $options
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function button($value = null, $options = array())
         {
@@ -14151,7 +14151,7 @@ namespace Collective\Html {
          * @param string $id
          * @param array $list
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function datalist($id, $list = array())
         {
@@ -14164,7 +14164,7 @@ namespace Collective\Html {
          * @param string $name
          * @param array $attributes
          * @return string
-         * @static
+         * @static 
          */ 
         public static function getIdAttribute($name, $attributes)
         {
@@ -14177,7 +14177,7 @@ namespace Collective\Html {
          * @param string $name
          * @param string $value
          * @return mixed
-         * @static
+         * @static 
          */ 
         public static function getValueAttribute($name, $value = null)
         {
@@ -14188,7 +14188,7 @@ namespace Collective\Html {
          * Take Request in fill process
          *
          * @param bool $consider
-         * @static
+         * @static 
          */ 
         public static function considerRequest($consider = true)
         {
@@ -14200,7 +14200,7 @@ namespace Collective\Html {
          *
          * @param string $name
          * @return mixed
-         * @static
+         * @static 
          */ 
         public static function old($name)
         {
@@ -14211,7 +14211,7 @@ namespace Collective\Html {
          * Determine if the old input is empty.
          *
          * @return bool
-         * @static
+         * @static 
          */ 
         public static function oldInputIsEmpty()
         {
@@ -14222,7 +14222,7 @@ namespace Collective\Html {
          * Get the session store implementation.
          *
          * @return \Illuminate\Contracts\Session\Session $session
-         * @static
+         * @static 
          */ 
         public static function getSessionStore()
         {
@@ -14234,7 +14234,7 @@ namespace Collective\Html {
          *
          * @param \Illuminate\Contracts\Session\Session $session
          * @return $this
-         * @static
+         * @static 
          */ 
         public static function setSessionStore($session)
         {
@@ -14247,7 +14247,7 @@ namespace Collective\Html {
          * @param string $name
          * @param object|callable $macro
          * @return void
-         * @static
+         * @static 
          */ 
         public static function macro($name, $macro)
         {
@@ -14260,7 +14260,7 @@ namespace Collective\Html {
          * @param object $mixin
          * @return void 
          * @throws \ReflectionException
-         * @static
+         * @static 
          */ 
         public static function mixin($mixin)
         {
@@ -14272,7 +14272,7 @@ namespace Collective\Html {
          *
          * @param string $name
          * @return bool
-         * @static
+         * @static 
          */ 
         public static function hasMacro($name)
         {
@@ -14286,7 +14286,7 @@ namespace Collective\Html {
          * @param array $parameters
          * @return mixed 
          * @throws \BadMethodCallException
-         * @static
+         * @static 
          */ 
         public static function macroCall($method, $parameters)
         {
@@ -14300,7 +14300,7 @@ namespace Collective\Html {
          * @param $view
          * @param array $signature
          * @return void
-         * @static
+         * @static 
          */ 
         public static function component($name, $view, $signature)
         {
@@ -14312,7 +14312,7 @@ namespace Collective\Html {
          *
          * @param $name
          * @return bool
-         * @static
+         * @static 
          */ 
         public static function hasComponent($name)
         {
@@ -14326,7 +14326,7 @@ namespace Collective\Html {
          * @param array $parameters
          * @return \Illuminate\Contracts\View\View|mixed 
          * @throws \BadMethodCallException
-         * @static
+         * @static 
          */ 
         public static function componentCall($method, $parameters)
         {
@@ -14336,7 +14336,7 @@ namespace Collective\Html {
         /**
          * 
          *
-         * @static
+         * @static 
          */ 
         public static function captcha($attributes = array())
         {
@@ -14358,7 +14358,7 @@ namespace Collective\Html {
          *
          * @param string $value
          * @return string
-         * @static
+         * @static 
          */ 
         public static function entities($value)
         {
@@ -14370,7 +14370,7 @@ namespace Collective\Html {
          *
          * @param string $value
          * @return string
-         * @static
+         * @static 
          */ 
         public static function decode($value)
         {
@@ -14384,7 +14384,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function script($url, $attributes = array(), $secure = null)
         {
@@ -14398,7 +14398,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function style($url, $attributes = array(), $secure = null)
         {
@@ -14413,7 +14413,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function image($url, $alt = null, $attributes = array(), $secure = null)
         {
@@ -14427,7 +14427,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function favicon($url, $attributes = array(), $secure = null)
         {
@@ -14443,7 +14443,7 @@ namespace Collective\Html {
          * @param bool $secure
          * @param bool $escape
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function link($url, $title = null, $attributes = array(), $secure = null, $escape = true)
         {
@@ -14457,7 +14457,7 @@ namespace Collective\Html {
          * @param string $title
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function secureLink($url, $title = null, $attributes = array())
         {
@@ -14472,7 +14472,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param bool $secure
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function linkAsset($url, $title = null, $attributes = array(), $secure = null)
         {
@@ -14486,7 +14486,7 @@ namespace Collective\Html {
          * @param string $title
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function linkSecureAsset($url, $title = null, $attributes = array())
         {
@@ -14501,7 +14501,7 @@ namespace Collective\Html {
          * @param array $parameters
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function linkRoute($name, $title = null, $parameters = array(), $attributes = array())
         {
@@ -14516,7 +14516,7 @@ namespace Collective\Html {
          * @param array $parameters
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function linkAction($action, $title = null, $parameters = array(), $attributes = array())
         {
@@ -14531,7 +14531,7 @@ namespace Collective\Html {
          * @param array $attributes
          * @param bool $escape
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function mailto($email, $title = null, $attributes = array(), $escape = true)
         {
@@ -14543,7 +14543,7 @@ namespace Collective\Html {
          *
          * @param string $email
          * @return string
-         * @static
+         * @static 
          */ 
         public static function email($email)
         {
@@ -14555,7 +14555,7 @@ namespace Collective\Html {
          *
          * @param int $num
          * @return string
-         * @static
+         * @static 
          */ 
         public static function nbsp($num = 1)
         {
@@ -14568,7 +14568,7 @@ namespace Collective\Html {
          * @param array $list
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString|string
-         * @static
+         * @static 
          */ 
         public static function ol($list, $attributes = array())
         {
@@ -14581,7 +14581,7 @@ namespace Collective\Html {
          * @param array $list
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString|string
-         * @static
+         * @static 
          */ 
         public static function ul($list, $attributes = array())
         {
@@ -14594,7 +14594,7 @@ namespace Collective\Html {
          * @param array $list
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function dl($list, $attributes = array())
         {
@@ -14606,7 +14606,7 @@ namespace Collective\Html {
          *
          * @param array $attributes
          * @return string
-         * @static
+         * @static 
          */ 
         public static function attributes($attributes)
         {
@@ -14618,7 +14618,7 @@ namespace Collective\Html {
          *
          * @param string $value
          * @return string
-         * @static
+         * @static 
          */ 
         public static function obfuscate($value)
         {
@@ -14632,7 +14632,7 @@ namespace Collective\Html {
          * @param string $content
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function meta($name, $content, $attributes = array())
         {
@@ -14646,7 +14646,7 @@ namespace Collective\Html {
          * @param mixed $content
          * @param array $attributes
          * @return \Illuminate\Support\HtmlString
-         * @static
+         * @static 
          */ 
         public static function tag($tag, $content, $attributes = array())
         {
@@ -14659,7 +14659,7 @@ namespace Collective\Html {
          * @param string $name
          * @param object|callable $macro
          * @return void
-         * @static
+         * @static 
          */ 
         public static function macro($name, $macro)
         {
@@ -14672,7 +14672,7 @@ namespace Collective\Html {
          * @param object $mixin
          * @return void 
          * @throws \ReflectionException
-         * @static
+         * @static 
          */ 
         public static function mixin($mixin)
         {
@@ -14684,7 +14684,7 @@ namespace Collective\Html {
          *
          * @param string $name
          * @return bool
-         * @static
+         * @static 
          */ 
         public static function hasMacro($name)
         {
@@ -14698,7 +14698,7 @@ namespace Collective\Html {
          * @param array $parameters
          * @return mixed 
          * @throws \BadMethodCallException
-         * @static
+         * @static 
          */ 
         public static function macroCall($method, $parameters)
         {
@@ -14712,7 +14712,7 @@ namespace Collective\Html {
          * @param $view
          * @param array $signature
          * @return void
-         * @static
+         * @static 
          */ 
         public static function component($name, $view, $signature)
         {
@@ -14724,7 +14724,7 @@ namespace Collective\Html {
          *
          * @param $name
          * @return bool
-         * @static
+         * @static 
          */ 
         public static function hasComponent($name)
         {
@@ -14738,7 +14738,7 @@ namespace Collective\Html {
          * @param array $parameters
          * @return \Illuminate\Contracts\View\View|mixed 
          * @throws \BadMethodCallException
-         * @static
+         * @static 
          */ 
         public static function componentCall($method, $parameters)
         {
@@ -14749,21 +14749,21 @@ namespace Collective\Html {
 
 }
 
-namespace Arrilot\Widgets {
+namespace Arrilot\Widgets { 
 
     /**
-     *
+     * 
      *
      */
     class Facade
     {
-
+        
         /**
          * Run widget without magic method.
          *
          * @return mixed
          * @static
-         */
+         */ 
         public static function run()
         {
             return \Arrilot\Widgets\Factories\WidgetFactory::run();
@@ -14775,7 +14775,7 @@ namespace Arrilot\Widgets {
          * @param string $params
          * @return string
          * @static
-         */
+         */ 
         public static function encryptWidgetParams($params)
         {
             //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
@@ -14788,7 +14788,7 @@ namespace Arrilot\Widgets {
          * @param string $params
          * @return string
          * @static
-         */
+         */ 
         public static function decryptWidgetParams($params)
         {
             //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
@@ -14798,18 +14798,18 @@ namespace Arrilot\Widgets {
     }
 
     /**
-     *
+     * 
      *
      */
     class AsyncFacade
     {
-
+        
         /**
          * Run widget without magic method.
          *
          * @return mixed
          * @static
-         */
+         */ 
         public static function run()
         {
             return \Arrilot\Widgets\Factories\AsyncWidgetFactory::run();
@@ -14821,7 +14821,7 @@ namespace Arrilot\Widgets {
          * @param string $params
          * @return string
          * @static
-         */
+         */ 
         public static function encryptWidgetParams($params)
         {
             //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
@@ -14834,7 +14834,7 @@ namespace Arrilot\Widgets {
          * @param string $params
          * @return string
          * @static
-         */
+         */ 
         public static function decryptWidgetParams($params)
         {
             //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory            
@@ -14845,15 +14845,916 @@ namespace Arrilot\Widgets {
 
 }
 
-namespace Backpack\CRUD {
+namespace Artesaos\SEOTools\Facades {
 
     /**
      *
      *
      */
-    class CrudServiceProvider
+    class SEOMeta
     {
 
+        /**
+         * Generates meta tags.
+         *
+         * @param bool $minify
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            return \Artesaos\SEOTools\SEOMeta::generate($minify);
+        }
+
+        /**
+         * Sets the title.
+         *
+         * @param string $title
+         * @param bool $appendDefault
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setTitle($title, $appendDefault = true)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setTitle($title, $appendDefault);
+        }
+
+        /**
+         * Sets the default title tag.
+         *
+         * @param string $default
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setTitleDefault($default)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setTitleDefault($default);
+        }
+
+        /**
+         * Sets the separator for the title tag.
+         *
+         * @param string $separator
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setTitleSeparator($separator)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setTitleSeparator($separator);
+        }
+
+        /**
+         *
+         *
+         * @param string $description
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setDescription($description)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setDescription($description);
+        }
+
+        /**
+         * Sets the list of keywords, you can send an array or string separated with commas
+         * also clears the previously set keywords.
+         *
+         * @param string|array $keywords
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setKeywords($keywords)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setKeywords($keywords);
+        }
+
+        /**
+         * Add a keyword.
+         *
+         * @param string|array $keyword
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addKeyword($keyword)
+        {
+            return \Artesaos\SEOTools\SEOMeta::addKeyword($keyword);
+        }
+
+        /**
+         * Remove a metatag.
+         *
+         * @param string $key
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function removeMeta($key)
+        {
+            return \Artesaos\SEOTools\SEOMeta::removeMeta($key);
+        }
+
+        /**
+         * Add a custom meta tag.
+         *
+         * @param string|array $meta
+         * @param string $value
+         * @param string $name
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addMeta($meta, $value = null, $name = 'name')
+        {
+            return \Artesaos\SEOTools\SEOMeta::addMeta($meta, $value, $name);
+        }
+
+        /**
+         * Sets the canonical URL.
+         *
+         * @param string $url
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setCanonical($url)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setCanonical($url);
+        }
+
+        /**
+         * Sets the AMP html URL.
+         *
+         * @param string $url
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setAmpHtml($url)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setAmpHtml($url);
+        }
+
+        /**
+         * Sets the prev URL.
+         *
+         * @param string $url
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setPrev($url)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setPrev($url);
+        }
+
+        /**
+         * Sets the next URL.
+         *
+         * @param string $url
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setNext($url)
+        {
+            return \Artesaos\SEOTools\SEOMeta::setNext($url);
+        }
+
+        /**
+         * Add an alternate language.
+         *
+         * @param string $lang language code in ISO 639-1 format
+         * @param string $url
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addAlternateLanguage($lang, $url)
+        {
+            return \Artesaos\SEOTools\SEOMeta::addAlternateLanguage($lang, $url);
+        }
+
+        /**
+         * Add alternate languages.
+         *
+         * @param array $languages
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addAlternateLanguages($languages)
+        {
+            return \Artesaos\SEOTools\SEOMeta::addAlternateLanguages($languages);
+        }
+
+        /**
+         * Takes the title formatted for display.
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitle()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getTitle();
+        }
+
+        /**
+         * Takes the default title.
+         *
+         * @return string
+         * @static
+         */
+        public static function getDefaultTitle()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getDefaultTitle();
+        }
+
+        /**
+         * takes the title that was set.
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitleSession()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getTitleSession();
+        }
+
+        /**
+         * takes the title that was set.
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitleSeparator()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getTitleSeparator();
+        }
+
+        /**
+         * Get the Meta keywords.
+         *
+         * @return array
+         * @static
+         */
+        public static function getKeywords()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getKeywords();
+        }
+
+        /**
+         * Get all metatags.
+         *
+         * @return array
+         * @static
+         */
+        public static function getMetatags()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getMetatags();
+        }
+
+        /**
+         * Get the Meta description.
+         *
+         * @return string|null
+         * @static
+         */
+        public static function getDescription()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getDescription();
+        }
+
+        /**
+         * Get the canonical URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getCanonical()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getCanonical();
+        }
+
+        /**
+         * Get the AMP html URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getAmpHtml()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getAmpHtml();
+        }
+
+        /**
+         * Get the prev URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getPrev()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getPrev();
+        }
+
+        /**
+         * Get the next URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getNext()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getNext();
+        }
+
+        /**
+         * Get alternate languages.
+         *
+         * @return array
+         * @static
+         */
+        public static function getAlternateLanguages()
+        {
+            return \Artesaos\SEOTools\SEOMeta::getAlternateLanguages();
+        }
+
+        /**
+         * Reset all data.
+         *
+         * @return void
+         * @static
+         */
+        public static function reset()
+        {
+            \Artesaos\SEOTools\SEOMeta::reset();
+        }
+
+    }
+
+    /**
+     *
+     *
+     */
+    class OpenGraph
+    {
+
+        /**
+         * Generates open graph tags.
+         *
+         * @param bool $minify
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            return \Artesaos\SEOTools\OpenGraph::generate($minify);
+        }
+
+        /**
+         * Add or update property.
+         *
+         * @param string $key key of property
+         * @param string|array $value value of property
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addProperty($key, $value)
+        {
+            return \Artesaos\SEOTools\OpenGraph::addProperty($key, $value);
+        }
+
+        /**
+         * Set article properties.
+         *
+         * @param array $attributes opengraph article attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setArticle($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setArticle($attributes);
+        }
+
+        /**
+         * Set profile properties.
+         *
+         * @param array $attributes opengraph profile attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setProfile($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setProfile($attributes);
+        }
+
+        /**
+         * Set book properties.
+         *
+         * @param array $attributes opengraph book attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setBook($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setBook($attributes);
+        }
+
+        /**
+         * Set music song properties.
+         *
+         * @param array $attributes opengraph music.song attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicSong($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setMusicSong($attributes);
+        }
+
+        /**
+         * Set music album properties.
+         *
+         * @param array $attributes opengraph music.album attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicAlbum($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setMusicAlbum($attributes);
+        }
+
+        /**
+         * Set music playlist properties.
+         *
+         * @param array $attributes opengraph music.playlist attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicPlaylist($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setMusicPlaylist($attributes);
+        }
+
+        /**
+         * Set music radio station properties.
+         *
+         * @param array $attributes opengraph music.radio_station attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicRadioStation($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setMusicRadioStation($attributes);
+        }
+
+        /**
+         * Set video movie properties.
+         *
+         * @param array $attributes opengraph video.movie attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoMovie($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setVideoMovie($attributes);
+        }
+
+        /**
+         * Set video episode properties.
+         *
+         * @param array $attributes opengraph video.episode attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoEpisode($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setVideoEpisode($attributes);
+        }
+
+        /**
+         * Set video episode properties.
+         *
+         * @param array $attributes opengraph video.other attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoOther($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setVideoOther($attributes);
+        }
+
+        /**
+         * Set video episode properties.
+         *
+         * @param array $attributes opengraph video.tv_show attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoTVShow($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setVideoTVShow($attributes);
+        }
+
+        /**
+         * Add video properties.
+         *
+         * @param string $source url of video source
+         * @param array $attributes opengraph video attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addVideo($source = null, $attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::addVideo($source, $attributes);
+        }
+
+        /**
+         * Add audio properties.
+         *
+         * @param string $source url for audio source
+         * @param array $attributes opengraph audio attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addAudio($source = null, $attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::addAudio($source, $attributes);
+        }
+
+        /**
+         * Set place properties.
+         *
+         * @param array $attributes opengraph place attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setPlace($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setPlace($attributes);
+        }
+
+        /**
+         * Set product properties.
+         *
+         * @param array $attributes opengraph product attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setProduct($attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::setProduct($attributes);
+        }
+
+        /**
+         * Remove property.
+         *
+         * @param string $key key
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function removeProperty($key)
+        {
+            return \Artesaos\SEOTools\OpenGraph::removeProperty($key);
+        }
+
+        /**
+         * Add image to properties.
+         *
+         * @param mixed $source URL of image source
+         * @param array $attributes Object type attributes
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addImage($source = null, $attributes = array())
+        {
+            return \Artesaos\SEOTools\OpenGraph::addImage($source, $attributes);
+        }
+
+        /**
+         * Add images to properties.
+         *
+         * @param array $urls array of image urls
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addImages($urls)
+        {
+            return \Artesaos\SEOTools\OpenGraph::addImages($urls);
+        }
+
+        /**
+         * Define type property.
+         *
+         * @param string $type set the opengraph type
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setType($type = null)
+        {
+            return \Artesaos\SEOTools\OpenGraph::setType($type);
+        }
+
+        /**
+         * Define title property.
+         *
+         * @param string $title set the opengraph title
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setTitle($title = null)
+        {
+            return \Artesaos\SEOTools\OpenGraph::setTitle($title);
+        }
+
+        /**
+         * Define description property.
+         *
+         * @param string $description set the opengraph description
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setDescription($description = null)
+        {
+            return \Artesaos\SEOTools\OpenGraph::setDescription($description);
+        }
+
+        /**
+         * Define url property.
+         *
+         * @param string $url set the opengraph url
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setUrl($url)
+        {
+            return \Artesaos\SEOTools\OpenGraph::setUrl($url);
+        }
+
+        /**
+         * Define site_name property.
+         *
+         * @param string $name set the site_name
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setSiteName($name)
+        {
+            return \Artesaos\SEOTools\OpenGraph::setSiteName($name);
+        }
+
+    }
+
+    /**
+     *
+     *
+     */
+    class TwitterCard
+    {
+
+        /**
+         *
+         *
+         * @param bool $minify
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            return \Artesaos\SEOTools\TwitterCards::generate($minify);
+        }
+
+        /**
+         *
+         *
+         * @param string $key
+         * @param string|array $value
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function addValue($key, $value)
+        {
+            return \Artesaos\SEOTools\TwitterCards::addValue($key, $value);
+        }
+
+        /**
+         *
+         *
+         * @param string $title
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setTitle($title)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setTitle($title);
+        }
+
+        /**
+         *
+         *
+         * @param string $type
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setType($type)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setType($type);
+        }
+
+        /**
+         *
+         *
+         * @param string $site
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setSite($site)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setSite($site);
+        }
+
+        /**
+         *
+         *
+         * @param string $description
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setDescription($description)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setDescription($description);
+        }
+
+        /**
+         *
+         *
+         * @param string $url
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setUrl($url)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setUrl($url);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $image
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @deprecated use setImage($image) instead
+         * @static
+         */
+        public static function addImage($image)
+        {
+            return \Artesaos\SEOTools\TwitterCards::addImage($image);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $images
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @deprecated use setImage($image) instead
+         * @static
+         */
+        public static function setImages($images)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setImages($images);
+        }
+
+        /**
+         *
+         *
+         * @param $image
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setImage($image)
+        {
+            return \Artesaos\SEOTools\TwitterCards::setImage($image);
+        }
+
+    }
+
+    /**
+     *
+     *
+     */
+    class SEOTools
+    {
+
+        /**
+         *
+         *
+         * @return \Artesaos\SEOTools\Contracts\MetaTags
+         * @static
+         */
+        public static function metatags()
+        {
+            return \Artesaos\SEOTools\SEOTools::metatags();
+        }
+
+        /**
+         *
+         *
+         * @return \Artesaos\SEOTools\Contracts\OpenGraph
+         * @static
+         */
+        public static function opengraph()
+        {
+            return \Artesaos\SEOTools\SEOTools::opengraph();
+        }
+
+        /**
+         *
+         *
+         * @return \Artesaos\SEOTools\Contracts\TwitterCards
+         * @static
+         */
+        public static function twitter()
+        {
+            return \Artesaos\SEOTools\SEOTools::twitter();
+        }
+
+        /**
+         * Setup title for all seo providers.
+         *
+         * @param string $title
+         * @param bool $appendDefault
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function setTitle($title, $appendDefault = true)
+        {
+            return \Artesaos\SEOTools\SEOTools::setTitle($title, $appendDefault);
+        }
+
+        /**
+         * Setup description for all seo providers.
+         *
+         * @param $description
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function setDescription($description)
+        {
+            return \Artesaos\SEOTools\SEOTools::setDescription($description);
+        }
+
+        /**
+         * Sets the canonical URL.
+         *
+         * @param string $url
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function setCanonical($url)
+        {
+            return \Artesaos\SEOTools\SEOTools::setCanonical($url);
+        }
+
+        /**
+         *
+         *
+         * @param array|string $urls
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function addImages($urls)
+        {
+            return \Artesaos\SEOTools\SEOTools::addImages($urls);
+        }
+
+        /**
+         * Get current title from metatags.
+         *
+         * @param bool $session
+         * @return string
+         * @static
+         */
+        public static function getTitle($session = false)
+        {
+            return \Artesaos\SEOTools\SEOTools::getTitle($session);
+        }
+
+        /**
+         * Generate from all seo providers.
+         *
+         * @param bool $minify
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            return \Artesaos\SEOTools\SEOTools::generate($minify);
+        }
+
+    }
+
+}
+
+namespace Backpack\CRUD { 
+
+    /**
+     * 
+     *
+     */
+    class CrudServiceProvider
+    {
+         
     }
 
 }
@@ -15509,25 +16410,25 @@ namespace Buzz\LaravelGoogleCaptcha {
 
 }
 
-namespace Creativeorange\Gravatar\Facades {
+namespace Creativeorange\Gravatar\Facades { 
 
     /**
-     *
+     * 
      *
      */
     class Gravatar
     {
-
+        
         /**
          * Override the default image fallback set in the config.
-         *
+         * 
          * Can either be a public URL to an image or a valid themed image.
          * For more info, visit http://en.gravatar.com/site/implement/images/#default-image
          *
          * @param string $fallback
          * @return $this
          * @static
-         */
+         */ 
         public static function fallback($fallback)
         {
             return \Creativeorange\Gravatar\Gravatar::fallback($fallback);
@@ -15537,10 +16438,10 @@ namespace Creativeorange\Gravatar\Facades {
          * Check if Gravatar has an avatar for the given email address
          *
          * @param $email
-         * @return bool
+         * @return bool 
          * @throws InvalidEmailException
          * @static
-         */
+         */ 
         public static function exists($email)
         {
             return \Creativeorange\Gravatar\Gravatar::exists($email);
@@ -15551,10 +16452,10 @@ namespace Creativeorange\Gravatar\Facades {
          *
          * @param $email
          * @param string $configGroup
-         * @return string
+         * @return string 
          * @throws InvalidEmailException
          * @static
-         */
+         */ 
         public static function get($email, $configGroup = 'default')
         {
             return \Creativeorange\Gravatar\Gravatar::get($email, $configGroup);
@@ -15858,15 +16759,15 @@ namespace Jenssegers\Date {
      */
     class Date
     {
-
+         
     }
 
 }
 
-namespace Prologue\Alerts\Facades {
+namespace Prologue\Alerts\Facades { 
 
     /**
-     *
+     * 
      *
      * @method static \Prologue\Alerts\AlertsMessageBag success(string $text)
      * @method static \Prologue\Alerts\AlertsMessageBag error(string $text)
@@ -15875,13 +16776,13 @@ namespace Prologue\Alerts\Facades {
      */
     class Alert
     {
-
+        
         /**
          * Store the messages in the current session.
          *
          * @return \Prologue\Alerts\AlertsMessageBag
          * @static
-         */
+         */ 
         public static function flash()
         {
             return \Prologue\Alerts\AlertsMessageBag::flash();
@@ -15893,7 +16794,7 @@ namespace Prologue\Alerts\Facades {
          * @param bool $withSession
          * @return \Prologue\Alerts\AlertsMessageBag
          * @static
-         */
+         */ 
         public static function flush($withSession = true)
         {
             return \Prologue\Alerts\AlertsMessageBag::flush($withSession);
@@ -15904,7 +16805,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function getLevels()
         {
             return \Prologue\Alerts\AlertsMessageBag::getLevels();
@@ -15915,7 +16816,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return \Illuminate\Session\Store
          * @static
-         */
+         */ 
         public static function getSession()
         {
             return \Prologue\Alerts\AlertsMessageBag::getSession();
@@ -15926,7 +16827,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return \Illuminate\Config\Repository
          * @static
-         */
+         */ 
         public static function getConfig()
         {
             return \Prologue\Alerts\AlertsMessageBag::getConfig();
@@ -15937,7 +16838,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function keys()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -15951,7 +16852,7 @@ namespace Prologue\Alerts\Facades {
          * @param string $message
          * @return $this
          * @static
-         */
+         */ 
         public static function add($key, $message)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -15964,7 +16865,7 @@ namespace Prologue\Alerts\Facades {
          * @param \Illuminate\Contracts\Support\MessageProvider|array $messages
          * @return $this
          * @static
-         */
+         */ 
         public static function merge($messages)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -15977,7 +16878,7 @@ namespace Prologue\Alerts\Facades {
          * @param array|string $key
          * @return bool
          * @static
-         */
+         */ 
         public static function has($key)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -15990,7 +16891,7 @@ namespace Prologue\Alerts\Facades {
          * @param array|string $keys
          * @return bool
          * @static
-         */
+         */ 
         public static function hasAny($keys = array())
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16004,7 +16905,7 @@ namespace Prologue\Alerts\Facades {
          * @param string $format
          * @return string
          * @static
-         */
+         */ 
         public static function first($key = null, $format = null)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16018,7 +16919,7 @@ namespace Prologue\Alerts\Facades {
          * @param string $format
          * @return array
          * @static
-         */
+         */ 
         public static function get($key, $format = null)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16031,7 +16932,7 @@ namespace Prologue\Alerts\Facades {
          * @param string $format
          * @return array
          * @static
-         */
+         */ 
         public static function all($format = null)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16044,7 +16945,7 @@ namespace Prologue\Alerts\Facades {
          * @param string $format
          * @return array
          * @static
-         */
+         */ 
         public static function unique($format = null)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16056,7 +16957,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function messages()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16068,7 +16969,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function getMessages()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16080,7 +16981,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return \Illuminate\Support\MessageBag
          * @static
-         */
+         */ 
         public static function getMessageBag()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16092,7 +16993,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return string
          * @static
-         */
+         */ 
         public static function getFormat()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16105,7 +17006,7 @@ namespace Prologue\Alerts\Facades {
          * @param string $format
          * @return \Illuminate\Support\MessageBag
          * @static
-         */
+         */ 
         public static function setFormat($format = ':message')
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16117,7 +17018,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return bool
          * @static
-         */
+         */ 
         public static function isEmpty()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16129,7 +17030,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return bool
          * @static
-         */
+         */ 
         public static function isNotEmpty()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16141,7 +17042,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return bool
          * @static
-         */
+         */ 
         public static function any()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16153,7 +17054,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return int
          * @static
-         */
+         */ 
         public static function count()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16165,7 +17066,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function toArray()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16177,7 +17078,7 @@ namespace Prologue\Alerts\Facades {
          *
          * @return array
          * @static
-         */
+         */ 
         public static function jsonSerialize()
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16190,7 +17091,7 @@ namespace Prologue\Alerts\Facades {
          * @param int $options
          * @return string
          * @static
-         */
+         */ 
         public static function toJson($options = 0)
         {
             //Method inherited from \Illuminate\Support\MessageBag            
@@ -16201,70 +17102,70 @@ namespace Prologue\Alerts\Facades {
 
 }
 
-namespace Spatie\LaravelImageOptimizer\Facades {
+namespace Spatie\LaravelImageOptimizer\Facades { 
 
     /**
-     *
+     * 
      *
      */
     class ImageOptimizer
     {
-
+        
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function getOptimizers()
         {
             return \Spatie\ImageOptimizer\OptimizerChain::getOptimizers();
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function addOptimizer($optimizer)
         {
             return \Spatie\ImageOptimizer\OptimizerChain::addOptimizer($optimizer);
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function setOptimizers($optimizers)
         {
             return \Spatie\ImageOptimizer\OptimizerChain::setOptimizers($optimizers);
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function setTimeout($timeoutInSeconds)
         {
             return \Spatie\ImageOptimizer\OptimizerChain::setTimeout($timeoutInSeconds);
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function useLogger($log)
         {
             return \Spatie\ImageOptimizer\OptimizerChain::useLogger($log);
         }
 
         /**
-         *
+         * 
          *
          * @static
-         */
+         */ 
         public static function optimize($pathToImage, $pathToOutput = null)
         {
             return \Spatie\ImageOptimizer\OptimizerChain::optimize($pathToImage, $pathToOutput);
@@ -17300,15 +18201,15 @@ namespace Yarmat\Comment\Facades {
 
 }
 
-namespace Backpack\Settings\app\Models {
+namespace Backpack\Settings\app\Models { 
 
     /**
-     *
+     * 
      *
      */
     class Setting
     {
-
+         
     }
 
 }
@@ -19764,6 +20665,22 @@ namespace  {
     }
 
     class AsyncWidget extends \Arrilot\Widgets\AsyncFacade
+    {
+    }
+
+    class SEOMeta extends \Artesaos\SEOTools\Facades\SEOMeta
+    {
+    }
+
+    class OpenGraph extends \Artesaos\SEOTools\Facades\OpenGraph
+    {
+    }
+
+    class Twitter extends \Artesaos\SEOTools\Facades\TwitterCard
+    {
+    }
+
+    class SEO extends \Artesaos\SEOTools\Facades\SEOTools
     {
     }
 

@@ -3,22 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="{{  url()->current(true) }}"/>
-
+{!! \SEO::generate() !!}
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    @isset($seo)
-        <title>{{ $seo->title ?? config('app.name', 'Portfolio') }}</title>
-        @if(!empty($seo->description))
-            <meta name="description" content="{{ $seo->description }}">
-        @endif
-        @if(!empty($seo->keywords))
-            <meta name="keywords" content="{{ $seo->keywords }}">
-        @endif
-    @else
-        <title>{{ config('app.name', 'Portfolio') }}</title>
-    @endisset
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
