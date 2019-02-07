@@ -22,9 +22,20 @@
                             </form>
                     @endif
                     <li><span>@lang('custom.categories'):</span>
-                        @foreach($item->categories as $category)
-                            <a target="_blank"
-                               href="{{ route('portfolio.category.show', $category->slug) }}">{{ $category->title }}</a>
+                        @foreach($item->categories as $key => $category)
+
+
+                            @if((count($item->categories) - 1) != $key)
+                                <a target="_blank" href="{{ route('portfolio.category.show', $category->slug) }}">
+                                    {{ $category->title }}
+                                </a>,
+                            @else
+                                <a target="_blank" href="{{ route('portfolio.category.show', $category->slug) }}">
+                                    {{ $category->title }}
+                                </a>
+                            @endif
+
+
                         @endforeach
                     </li>
                 </ul>
@@ -32,13 +43,14 @@
                     <ul style="text-align: left; display: block;" class="information">
                         <li>
                             <span>@lang('custom.html'): </span>
-                            @foreach($htmlItems as $html)
-                                <form target="_blank" style="display: inline;" action="{{ route('redirect') }}"
-                                      method="post">
-                                    @csrf
-                                    <input type="hidden" name="value" value="{{ encrypt($item->link) }}">
-                                    <button class="link-style" type="submit">{{ $html->title }}</button>
-                                </form>
+                            @foreach($htmlItems as $key => $html)
+
+                                @if((count($htmlItems) - 1) != $key)
+                                    {!! redirect_item($html->url, $html->title) !!},
+                                @else
+                                    {!! redirect_item($html->url, $html->title) !!}
+                                @endif
+
                             @endforeach
                         </li>
                     </ul>

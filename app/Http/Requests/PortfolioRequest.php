@@ -26,6 +26,12 @@ class PortfolioRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => 'required',
+            'user_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'published_at' => 'required'
             // 'name' => 'required|min:5|max:255'
         ];
     }

@@ -26,7 +26,12 @@ class BlogRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'image' => 'required',
+            'user_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'published_at' => 'required'
         ];
     }
 
