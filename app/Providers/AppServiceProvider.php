@@ -13,11 +13,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
-        if (env('HTTPS_PROTOCOL', false)) {
-            $url->forceScheme('https');
-        }
+
     }
 
     /**
