@@ -22,7 +22,12 @@ class BlogController extends Controller
 
         $page = $this->blogUseCase->getPage();
 
-        $seo = $category->seo;
+        $this->seo()->metatags()->setTitle($category->seo->title . ' - ' . __('custom.blog') ?? '');
+        $this->seo()->metatags()->setDescription($category->seo->description ?? '');
+        $this->seo()->metatags()->setKeywords($category->seo->keywords ?? '');
+
+        $this->seo()->opengraph()->setTitle($category->seo->title . ' - ' . __('custom.blog') ?? '');
+        $this->seo()->opengraph()->setDescription($category->seo->description ?? '');
 
         $items = $this->blogUseCase->itemsWhereHasCategoryQuery($category->id)->get();
 
@@ -34,7 +39,7 @@ class BlogController extends Controller
 
         $categories = Category::whereHas('portfolios')->get(['title', 'slug']);
 
-        return view('blog.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'category', 'seo', 'page'));
+        return view('blog.index')->with(compact('items', 'moreCountItems', 'categories', 'isButtonVisible', 'category', 'page'));
     }
 
     public function load(Request $request, $slug)
