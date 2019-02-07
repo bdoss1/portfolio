@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\LocaleService;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,9 +13,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
-        $this->app['request']->server->set('HTTPS', env('HTTPS_PROTOCOL', false));
+        if (env('HTTPS_PROTOCOL', false)) {
+            $url->forceScheme('https');
+        }
     }
 
     /**
