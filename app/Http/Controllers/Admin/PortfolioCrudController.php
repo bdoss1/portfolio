@@ -112,6 +112,15 @@ class PortfolioCrudController extends CrudController
             'tab' => 'Custom'
         ]);
 
+        $this->crud->addField([
+            'name' => 'user_id',
+            'type' => 'select2',
+            'label' => 'User',
+            'entity' => 'user',
+            'attribute' => 'name',
+            'tab' => 'Custom'
+        ]);
+
         //Seo
         $this->crud->addField([
             'type' => 'seo',
