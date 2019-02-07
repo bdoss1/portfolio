@@ -28,7 +28,7 @@
             </div>
             <!-- load more button -->
             <div id="port-loadMore" class="cbp-l-loadMore-button top_120 bottom_90">
-                <a href="{{ route('portfolio.index') }}" class="cbp-l-loadMore-link site-btn" rel="nofollow">
+                <a href="{{ route('portfolio.index') }}" class="cbp-l-loadMore-link site-btn">
                         <span class="cbp-l-loadMore-defaultText">@lang('custom.all_works') (<span
                                     class="cbp-l-loadMore-loadItems">{{ $portfolioItemsCount }}</span>)</span>
 
