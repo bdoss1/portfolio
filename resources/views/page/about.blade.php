@@ -15,7 +15,7 @@
 
         <section class="about">
             <!-- ABOUT TEXT -->
-            <div class="about-text text-center ">
+            <div class="about-text text-justify ">
                 {!! $page->content !!}
             </div>
 
