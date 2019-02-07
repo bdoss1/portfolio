@@ -78,7 +78,7 @@ class Portfolio extends Model implements SeoContract
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function categories()

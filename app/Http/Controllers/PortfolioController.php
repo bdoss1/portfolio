@@ -61,6 +61,13 @@ class PortfolioController extends Controller
         $this->seo()->opengraph()->setDescription($item->seo->description ?? '');
         $this->seo()->opengraph()->addImage(asset($item->image));
 
+        $this->seo()->opengraph()->setType('article');
+        $this->seo()->opengraph()->setArticle([
+            'published_time' => $item->published_at->toW3CString(),
+            'modified_time' => $item->updated_at->toW3CString(),
+            'author' => $item->user->name
+        ]);
+
         $htmlItems = $htmlService->get($item->dir_path);
 
         if (!$next) {

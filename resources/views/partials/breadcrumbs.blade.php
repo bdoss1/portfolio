@@ -1,24 +1,32 @@
 @if (count($breadcrumbs))
 
-    <ul>
-        @foreach ($breadcrumbs as $breadcrumb)
+    <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        @foreach ($breadcrumbs as $key => $breadcrumb)
+            @php
+                $position = $key+1;
+            @endphp
             @if ($loop->last)
 
-                <li class="active">
-                    {{ $breadcrumb->title }}
+                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="active">
+                    <span itemprop="name">{{ $breadcrumb->title }}</span>
+                    <meta itemprop="position" content="{{ $position }}">
                 </li>
 
             @elseif ($breadcrumb->url)
 
-                <li>
-                    <a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a>
+                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                    <a href="{{ $breadcrumb->url }}">
+                        <span itemprop="name">{{ $breadcrumb->title }}</span>
+                    </a>
+                    <meta itemprop="position" content="{{ $position }}">
                 </li>
 
             @else
 
                 {{-- Using .active to give it the right colour (grey by default) --}}
-                <li class="active">
-                    {{ $breadcrumb->title }}
+                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="active">
+                    <span itemprop="name">{{ $breadcrumb->title }}</span>
+                    <meta itemprop="position" content="{{ $position }}">
                 </li>
 
             @endif
