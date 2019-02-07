@@ -24,17 +24,8 @@
                 @endif
                 <div class="line"></div>
                 <p>
-                    {{ $item->content }} @if($item->review_url) <span
-                            onclick="$('#comment_review_{{$item->id}}').submit()"
-                            class="link-style">[@lang('custom.review_url')]</span> @endif
+                    {{ $item->content }} {!! redirect_item($item->review_url, __('custom.review_url')) !!}
                 </p>
-                @if($item->review_url)
-                    <form id="comment_review_{{$item->id}}" target="_blank" style="display: none;"
-                          action="{{ route('redirect') }}" method="POST">
-                        <input type="hidden" name="value" value="{{ encrypt($item->review_url) }}">
-                        @csrf
-                    </form>
-                @endif
 
                 @if($item->image) <a data-fancybox="reviews" data-caption="{{ $item->content }}"
                                      href="{{ asset($item->image) }}">@lang('custom.review_photo')</a> @endif

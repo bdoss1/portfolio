@@ -15,8 +15,8 @@
 
         <section class="about">
             <!-- ABOUT TEXT -->
-            <div class="about-text text-justify ">
-                {!! $page->content !!}
+            <div class="about-text text-justify">
+                {!! \App\Services\CustomBladeCompiler::render($page->content) !!} {{--Compile blade from string--}}
             </div>
 
             @widget('lastReviews')

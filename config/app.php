@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+//        Wpb\String_Blade_Compiler\ViewServiceProvider::class,
         /*
          * Package Service Providers...
          */

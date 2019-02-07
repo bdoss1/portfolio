@@ -13,3 +13,11 @@ if (!function_exists('hide_redirect')) {
         return route('redirect');
     }
 }
+
+if (!function_exists('redirect_item')) {
+    function redirect_item($link, $text = 'link')
+    {
+        return "<span class=\"link-style show-me_js\" data-value=\"" . encrypt($link) . "\">" . $text . "</span>";
+    }
+}
+

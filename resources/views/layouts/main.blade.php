@@ -260,6 +260,31 @@
     </div>
 </div>
 
+<form id="show-me" target="_blank" style="display: none;" action="{{ route('redirect') }}" method="POST">
+    @csrf
+    <input type="hidden" name="value" value=""/>
+</form>
+<script>
+    document.addEventListener('click', function (event) {
+
+        // If the clicked element doesn't have the right selector, bail
+        if (!event.target.matches('.show-me_js')) return;
+
+        // Don't follow the link
+        event.preventDefault();
+
+        var value = event.target.getAttribute('data-value');
+
+        var form = document.getElementById('show-me');
+
+        var input = form.elements['value'];
+
+        input.value = value;
+
+        form.submit();
+    }, false);
+</script>
+
 @yield('before.script')
 <script>
     window.Portfolio = {
