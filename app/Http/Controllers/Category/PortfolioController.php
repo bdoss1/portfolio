@@ -22,11 +22,11 @@ class PortfolioController extends Controller
 
         $page = $this->portfolioUseCase->getPage();
 
-        $this->seo()->metatags()->setTitle($category->seo->title . ' - ' . __('custom.blog') ?? '');
+        $this->seo()->metatags()->setTitle($category->seo->title . ' - ' . __('custom.portfolio') ?? '');
         $this->seo()->metatags()->setDescription($category->seo->description ?? '');
         $this->seo()->metatags()->setKeywords($category->seo->keywords ?? '');
 
-        $this->seo()->opengraph()->setTitle($category->seo->title . ' - ' . __('custom.blog') ?? '');
+        $this->seo()->opengraph()->setTitle($category->seo->title . ' - ' . __('custom.portfolio') ?? '');
         $this->seo()->opengraph()->setDescription($category->seo->description ?? '');
 
         $items = $this->portfolioUseCase->itemsWhereHasCategoryQuery($category->id)->get();
