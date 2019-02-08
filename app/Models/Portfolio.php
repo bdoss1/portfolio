@@ -85,4 +85,9 @@ class Portfolio extends Model implements SeoContract
     {
         return $this->morphToMany(Category::class, 'categoriable');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<=', now());
+    }
 }

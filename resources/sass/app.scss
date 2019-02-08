@@ -1,6 +1,6 @@
 @import "../template/cubeportfolio/css/cubeportfolio.min.css";
-@import '../template/css/owl.theme.css';
-@import '../template/css/owl.carousel.css';
+@import "~owl.carousel/dist/assets/owl.carousel.min.css";
+@import "~owl.carousel/dist/assets/owl.theme.default.min.css";
 @import '../template/fontawesome/css/all.css';
 @import "../template/css/colors/red.css";
 @import '~vue-loading-overlay/dist/vue-loading.css';
@@ -222,4 +222,33 @@ body,
 .lazy-wrap.lazy-wrap_loading:before {
     opacity: 1;
     transition: .3s;
+}
+
+.owl-carousel button.owl-dot span {
+  width: 10px;
+  height: 10px;
+  display: block;
+  margin: 30px 7px 5px 7px;
+  filter: Alpha(Opacity=50);
+  opacity: .3;
+  border-radius: 20px;
+  background: #869791;
+}
+
+.owl-carousel button.owl-dot:hover span {
+  opacity: 1;
+}
+
+.owl-carousel button:active {
+  outline: none;
+  border: none;
+}
+
+.owl-carousel button:focus {
+  outline: 0;
+}
+
+.owl-carousel button.owl-dot.active span {
+  background: #ea0026;
+  opacity: 1;
 }

@@ -27,8 +27,9 @@ class BlogUseCase
         }, 'user' => function ($query) {
             $query->select(['name', 'id']);
         }])->orderBy('published_at', 'desc')
-            ->select(['id', 'title', 'image', 'description', 'slug', 'user_id'])
+            ->select(['id', 'title', 'image', 'description', 'published_at', 'slug', 'user_id'])
             ->take(self::ITEM_LIMIT)
+            ->published()
             ->skip($skip);
 
         return $query;
@@ -45,7 +46,7 @@ class BlogUseCase
     public function moreCountItemsQuery($page = 1)
     {
         $skip = $page * self::ITEM_LIMIT;
-        $query = Blog::skip($skip)->select(['id'])->take(self::ITEM_LIMIT);
+        $query = Blog::skip($skip)->select(['id'])->published()->take(self::ITEM_LIMIT);
         return $query;
     }
 

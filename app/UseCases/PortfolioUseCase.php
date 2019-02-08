@@ -27,6 +27,7 @@ class PortfolioUseCase
         }])->orderBy('published_at', 'desc')
             ->select(['id', 'title', 'image', 'slug'])
             ->take(self::ITEM_LIMIT)
+            ->published()
             ->skip($skip);
 
         return $query;
@@ -43,7 +44,7 @@ class PortfolioUseCase
     public function moreCountItemsQuery($page = 1)
     {
         $skip = $page * self::ITEM_LIMIT;
-        $query = Portfolio::skip($skip)->select(['id'])->take(self::ITEM_LIMIT);
+        $query = Portfolio::skip($skip)->published()->select(['id'])->take(self::ITEM_LIMIT);
         return $query;
     }
 
@@ -63,16 +64,4 @@ class PortfolioUseCase
         return $this->page;
     }
 
-    public function getSeo()
-    {
-        $page = $this->getPage();
-
-        $seo = new Seo();
-
-        $seo->title = $page->meta_title ?? '';
-        $seo->description = $page->meta_description ?? '';
-        $seo->keywords = $page->meta_keywords ?? '';
-
-        return $seo;
-    }
 }

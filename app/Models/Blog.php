@@ -87,4 +87,9 @@ class Blog extends Model implements SeoContract, CommentContract
     {
         return $this->morphToMany(Category::class, 'categoriable');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<=', now());
+    }
 }
