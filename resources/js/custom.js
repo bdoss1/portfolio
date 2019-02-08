@@ -171,7 +171,7 @@ $(document).ready(function () {
 
 });
 
-document.querySelectorAll('code.hljs').forEach((block) => {
+document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightBlock(block);
 });
 

@@ -36,9 +36,24 @@
             display: inline-block;
         }
     </style>
+    <link href="{{ asset('vendor/backpack/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css') }}"
+          rel="stylesheet">
+    <script src="{{ asset('vendor/backpack/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
     <script>
+        // CKEDITOR.extraPlugins = 'codesnippet';
+        //
+        // CKEDITOR.codeSnippet_languages = {
+        //     javascript: 'JavaScript',
+        //     php: 'PHP'
+        // };
+        //
+        // CKEDITOR.codeSnippet_theme = 'school_book';
+        //
+        // hljs.initHighlightingOnLoad();
+    </script>
 
-        CKEDITOR.config.allowedContent = true;
+
+    <script>
 
         $(document).on('click', '.unapprove-comment_js', function (e) {
             e.preventDefault();
