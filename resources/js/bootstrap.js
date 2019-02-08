@@ -12,6 +12,13 @@ try {
     window.$ = window.jQuery = require('jquery');
     require('@fancyapps/fancybox');
     require('owl.carousel');
+    window.hljs = require('highlight.js/lib/highlight');
+    hljs.registerLanguage('php', require('highlight.js/lib/languages/php'));
+    hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
+    hljs.registerLanguage('json', require('highlight.js/lib/languages/json'));
+    hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+    hljs.registerLanguage('css', require('highlight.js/lib/languages/css'));
+
     // require('../template/cubeportfolio/js/jquery.cubeportfolio.min.js');
     // require('../template/js/typed.js');
     // require('../template/js/particles.js');

@@ -171,6 +171,10 @@ $(document).ready(function () {
 
 });
 
+document.querySelectorAll('code.hljs').forEach((block) => {
+    hljs.highlightBlock(block);
+});
+
 window.sitelazyLoad = new LazyLoad({
     elements_selector: ".lazy-load-image",
     callback_load: function (el) {

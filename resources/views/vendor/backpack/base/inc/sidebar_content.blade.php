@@ -37,6 +37,9 @@
         }
     </style>
     <script>
+
+        CKEDITOR.config.allowedContent = true;
+
         $(document).on('click', '.unapprove-comment_js', function (e) {
             e.preventDefault();
             $comment_id = $(this).attr('data-comment-id');
