@@ -21,7 +21,8 @@
                 <h1 class="title">{{ $item->title }}</h1>
                 <div class="information bottom_30">{{ $item->user->name }},
                     <span>{{ \Date::parse($item->published_at)->format('j F Y') }}</span></div>
-                {!! $item->content !!}
+
+                {!! \App\Services\CustomBladeCompiler::render($item->content) !!} {{--Compile blade from string--}}
             </article>
 
             <comment-component></comment-component>
