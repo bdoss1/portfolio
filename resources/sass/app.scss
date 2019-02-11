@@ -201,6 +201,7 @@ body,
     position: static;
 }
 
+
 .lazy-wrap {
     position: relative;
     min-height: 100px;
@@ -252,4 +253,8 @@ body,
 .owl-carousel button.owl-dot.active span {
   background: #ea0026;
   opacity: 1;
+}
+
+.news-article img {
+    max-width: 100%;
 }

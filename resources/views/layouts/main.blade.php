@@ -169,7 +169,7 @@
 
 
     <!-- FULL MENU -->
-    <div class="full-menu">
+    <div style="-webkit-transform: translateX(100%); transform: translateX(100%);" class="full-menu">
         <div class="full-inner row">
             <nav class="col-md-8">
                 {{

@@ -17,7 +17,8 @@ CKEDITOR.editorConfig = function( config ) {
         xml: 'HTML + XML'
     };
 
-    config.codeSnippet_theme  = 'atom-one-dark-reasonable';
+    config.codeSnippet_theme = 'atom-one-dark-reasonable';
 
+    config.disableNativeSpellChecker = false;
 
 };

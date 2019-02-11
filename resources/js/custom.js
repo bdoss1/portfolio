@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.full-menu').removeAttr('style');
 
     // RESPONSIVE MENU
     $('.nav-icon').click(function () {
