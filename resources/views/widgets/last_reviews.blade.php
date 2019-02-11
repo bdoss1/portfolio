@@ -24,7 +24,7 @@
                 @endif
                 <div class="line"></div>
                 <p>
-                    {{ $item->content }} {!! redirect_item($item->review_url, __('custom.review_url')) !!}
+                    {{ $item->content }} @if($item->review_url) {!! redirect_item($item->review_url, __('custom.review_url')) !!} @endif
                 </p>
 
                 @if($item->image) <a data-fancybox="reviews" data-caption="{{ $item->content }}"
