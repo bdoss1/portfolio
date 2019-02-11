@@ -1,16 +1,19 @@
-@extends('errors.layout')
+@extends('layouts.main')
 
-@php
-    $error_number = 404;
-@endphp
+@section('content')
+    <section class="titlebar">
+        <h1 class="page-title"><span>404</span></h1>
+        <div id="particles-js"></div>
+    </section>
 
-@section('title')
-    Page not found.
-@endsection
+    {{--<hr class="col-md-6">--}}
 
-@section('description')
-    @php
-        $default_error_message = "Please <a href='javascript:history.back()''>go back</a> or return to <a href='".url('')."'>our homepage</a>.";
-    @endphp
-    {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():$default_error_message): $default_error_message !!}
+    {{--<div class="cont">--}}
+    {{--<section class="about">--}}
+    {{--<!-- ABOUT TEXT -->--}}
+    {{--<div class="about-text text-justify">--}}
+    {{--<p>=(</p>--}}
+    {{--</div>--}}
+    {{--</section>--}}
+    {{--</div>--}}
 @endsection
