@@ -95,7 +95,7 @@ class Portfolio extends Model implements SeoContract
 
     public function scopeTranslated($query)
     {
-        if(! config('database.default') !== 'mysql') return $query;
+        if (config('database.default') !== 'mysql') return $query;
         return $query->where('title->' . app()->getLocale(), '!=', null);
     }
 }
