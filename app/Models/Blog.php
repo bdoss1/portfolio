@@ -60,11 +60,14 @@ class Blog extends Model implements SeoContract, CommentContract
     use HasCommentTrait;
     use CrudTrait;
 
+    const STATUS_DRAFTED = 0;
+    const STATUS_PUBLISHED = 1;
+
     public $translatable = ['title', 'description', 'content'];
 
     protected $dates = ['published_at', 'updated_at', 'created_at'];
 
-    protected $fillable = ['title', 'description', 'content', 'link', 'image', 'user_id', 'published_at'];
+    protected $fillable = ['title', 'description', 'content', 'link', 'image', 'user_id', 'published_at', 'status'];
 
     public function getSlugOptions(): SlugOptions
     {
@@ -90,6 +93,18 @@ class Blog extends Model implements SeoContract, CommentContract
 
     public function scopePublished($query)
     {
-        return $query->where('published_at', '<=', now());
+        if (\Auth::user() && \Auth::user()->hasRole([User::ROLE_ADMIN])) {
+            return $query;
+        }
+
+        return $query
+            ->where('status', self::STATUS_PUBLISHED)
+            ->where('published_at', '<=', now());
+    }
+
+    public function hasTranslation(string $key, string $locale = null): bool
+    {
+        $locale = $locale ?: $this->getLocale();
+        return isset($this->getTranslations($key)[$locale]);
     }
 }

@@ -47,7 +47,9 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-        $item = Blog::whereSlug($slug)->with(['categories', 'seo', 'user'])->firstOrFail();
+        $item = Blog::whereSlug($slug)->published()->with(['categories', 'seo', 'user'])->firstOrFail();
+
+        if (!$item->hasTranslation('title')) abort(404);
 
         $this->seo()->metatags()->setTitle($item->seo->title ?? '');
         $this->seo()->metatags()->setDescription($item->seo->description ?? '');
