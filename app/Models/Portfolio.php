@@ -49,6 +49,8 @@ use Yarmat\Seo\Contracts\SeoContract;
  * @property string $image
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio published()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio translated()
  */
 class Portfolio extends Model implements SeoContract
 {
@@ -89,5 +91,11 @@ class Portfolio extends Model implements SeoContract
     public function scopePublished($query)
     {
         return $query->where('published_at', '<=', now());
+    }
+
+    public function scopeTranslated($query)
+    {
+        if(! config('database.default') !== 'mysql') return $query;
+        return $query->where('title->' . app()->getLocale(), '!=', null);
     }
 }

@@ -28,6 +28,7 @@ class PortfolioUseCase
             ->select(['id', 'title', 'image', 'slug'])
             ->take(self::ITEM_LIMIT)
             ->published()
+            ->translated()
             ->skip($skip);
 
         return $query;

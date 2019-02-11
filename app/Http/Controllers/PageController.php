@@ -14,11 +14,11 @@ class PageController extends Controller
 
         if (in_array($page->template, ['main', 'service'])) abort(404);
 
-        $this->seo()->metatags()->setTitle($page->meta_title ?? '');
+        $this->seo()->metatags()->setTitle($page->meta_title ?? $page->title);
         $this->seo()->metatags()->setDescription($page->meta_description ?? '');
         $this->seo()->metatags()->setKeywords($page->meta_keywords ?? '');
 
-        $this->seo()->opengraph()->setTitle($page->meta_title ?? '');
+        $this->seo()->opengraph()->setTitle($page->meta_title ?? $page->title);
         $this->seo()->opengraph()->setDescription($page->meta_description ?? '');
 
         $this->seo()->opengraph()->addProperty('locale', app()->getLocale());

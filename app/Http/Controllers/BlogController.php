@@ -24,11 +24,11 @@ class BlogController extends Controller
 
         $page = $this->blogUseCase->getPage();
 
-        $this->seo()->metatags()->setTitle($page->meta_title ?? '');
+        $this->seo()->metatags()->setTitle($page->meta_title ?? $page->title);
         $this->seo()->metatags()->setDescription($page->meta_description ?? '');
         $this->seo()->metatags()->setKeywords($page->meta_keywords ?? '');
 
-        $this->seo()->opengraph()->setTitle($page->meta_title ?? '');
+        $this->seo()->opengraph()->setTitle($page->meta_title ?? $page->title);
         $this->seo()->opengraph()->setDescription($page->meta_description ?? '');
 
         $this->seo()->opengraph()->addProperty('locale', app()->getLocale());
@@ -47,9 +47,7 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-        $item = Blog::whereSlug($slug)->published()->with(['categories', 'seo', 'user'])->firstOrFail();
-
-        if (!$item->hasTranslation('title')) abort(404);
+        $item = Blog::whereSlug($slug)->published()->translated()->with(['categories', 'seo', 'user'])->firstOrFail();
 
         $this->seo()->metatags()->setTitle($item->seo->title ?? '');
         $this->seo()->metatags()->setDescription($item->seo->description ?? '');

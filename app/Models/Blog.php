@@ -50,6 +50,10 @@ use Yarmat\Seo\Contracts\SeoContract;
  * @property-read \Kalnoy\Nestedset\Collection|\App\Models\Comment[] $comments
  * @property string $image
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog whereImage($value)
+ * @property int $status
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog published()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog translated()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog whereStatus($value)
  */
 class Blog extends Model implements SeoContract, CommentContract
 {
@@ -102,9 +106,10 @@ class Blog extends Model implements SeoContract, CommentContract
             ->where('published_at', '<=', now());
     }
 
-    public function hasTranslation(string $key, string $locale = null): bool
+    public function scopeTranslated($query)
     {
-        $locale = $locale ?: $this->getLocale();
-        return isset($this->getTranslations($key)[$locale]);
+        if(! config('database.default') !== 'mysql') return $query;
+        return $query->where('title->' . app()->getLocale(), '!=', null);
     }
+
 }

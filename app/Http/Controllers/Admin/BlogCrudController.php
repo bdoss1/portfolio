@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Blog;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -75,7 +76,7 @@ class BlogCrudController extends CrudController
             'label' => 'Published',
             'type' => 'date_picker',
             'date_picker_options' => [
-                'todayBtn' => true,
+                'todayBtn' => false,
                 'format' => 'yyyy-mm-dd'
             ],
             'tab' => 'Custom'
@@ -101,6 +102,18 @@ class BlogCrudController extends CrudController
         $this->crud->addField([
             'name' => 'slug',
             'label' => 'Slug',
+            'tab' => 'Custom'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'status',
+            'label' => 'Status',
+            'type' => 'select2_from_array',
+            'default' => Blog::STATUS_PUBLISHED,
+            'options' => [
+                Blog::STATUS_PUBLISHED => 'PUBLISHED',
+                Blog::STATUS_DRAFTED => "DRAFTED"
+            ],
             'tab' => 'Custom'
         ]);
 

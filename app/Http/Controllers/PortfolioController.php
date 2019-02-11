@@ -49,15 +49,15 @@ class PortfolioController extends Controller
 
     public function show($slug, PortfolioHtmlService $htmlService)
     {
-        $item = Portfolio::whereSlug($slug)->with(['categories', 'seo'])->firstOrFail();
+        $item = Portfolio::whereSlug($slug)->with(['categories', 'seo'])->translated()->firstOrFail();
 
-        $next = Portfolio::where('id', '>', $item->id)->first(['slug', 'title']);
+        $next = Portfolio::where('id', '>', $item->id)->published()->translated()->first(['slug', 'title']);
 
-        $this->seo()->metatags()->setTitle($item->seo->title ?? '');
+        $this->seo()->metatags()->setTitle($item->seo->title ?? $item->title);
         $this->seo()->metatags()->setDescription($item->seo->description ?? '');
         $this->seo()->metatags()->setKeywords($item->seo->keywords ?? '');
 
-        $this->seo()->opengraph()->setTitle($item->seo->title ?? '');
+        $this->seo()->opengraph()->setTitle($item->seo->title ?? $item->title);
         $this->seo()->opengraph()->setDescription($item->seo->description ?? '');
         $this->seo()->opengraph()->addImage(asset($item->image));
 
