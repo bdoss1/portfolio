@@ -71,12 +71,13 @@ class Blog extends Model implements SeoContract, CommentContract
 
     protected $dates = ['published_at', 'updated_at', 'created_at'];
 
-    protected $fillable = ['title', 'description', 'content', 'link', 'image', 'user_id', 'published_at', 'status'];
+    protected $fillable = ['title', 'description', 'content', 'link', 'image', 'user_id', 'published_at', 'status', 'slug'];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
+            ->doNotGenerateSlugsOnUpdate()
             ->saveSlugsTo('slug');
     }
 

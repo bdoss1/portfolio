@@ -64,12 +64,13 @@ class Portfolio extends Model implements SeoContract
 
     protected $dates = ['published_at', 'updated_at', 'created_at'];
 
-    protected $fillable = ['title', 'description', 'content', 'image', 'link', 'user_id', 'dir_path', 'published_at'];
+    protected $fillable = ['title', 'description', 'content', 'image', 'link', 'user_id', 'dir_path', 'published_at', 'slug'];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
+            ->doNotGenerateSlugsOnUpdate()
             ->saveSlugsTo('slug');
     }
 
