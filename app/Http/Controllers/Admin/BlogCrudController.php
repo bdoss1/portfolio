@@ -74,13 +74,14 @@ class BlogCrudController extends CrudController
         $this->crud->addField([
             'name' => 'published_at',
             'label' => 'Published',
-            'type' => 'date_picker',
-            'date_picker_options' => [
-                'todayBtn' => false,
-                'format' => 'yyyy-mm-dd'
+            'type' => 'datetime_picker',
+            'datetime_picker_options' => [
+                'format' => 'YYYY-MM-DD  HH:mm'
             ],
-            'tab' => 'Custom'
+            'tab' => 'Custom',
+            'default' => now()
         ]);
+
 
         $this->crud->addField([
             'name' => 'categories',
