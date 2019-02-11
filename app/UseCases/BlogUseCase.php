@@ -29,7 +29,7 @@ class BlogUseCase
         }])->orderBy('published_at', 'desc')
             ->select(['id', 'title', 'image', 'description', 'published_at', 'slug', 'user_id'])
             ->take(self::ITEM_LIMIT)
-            ->where('title>' . app()->getLocale(), '!=', null)
+            ->where('title->' . app()->getLocale(), '!=', null)
             ->published()
             ->skip($skip);
 
