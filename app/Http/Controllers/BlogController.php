@@ -49,11 +49,11 @@ class BlogController extends Controller
     {
         $item = Blog::whereSlug($slug)->published()->translated()->with(['categories', 'seo', 'user'])->firstOrFail();
 
-        $this->seo()->metatags()->setTitle($item->seo->title ?? '');
+        $this->seo()->metatags()->setTitle($item->seo->title ?? $item->title);
         $this->seo()->metatags()->setDescription($item->seo->description ?? '');
         $this->seo()->metatags()->setKeywords($item->seo->keywords ?? '');
 
-        $this->seo()->opengraph()->setTitle($item->seo->title ?? '');
+        $this->seo()->opengraph()->setTitle($item->seo->title ?? $item->title);
         $this->seo()->opengraph()->setDescription($item->seo->description ?? '');
         $this->seo()->opengraph()->addImage(asset($item->image));
 
