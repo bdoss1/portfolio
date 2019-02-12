@@ -96,7 +96,11 @@ class Portfolio extends Model implements SeoContract
 
     public function scopeTranslated($query)
     {
-        if (config('database.default') !== 'mysql') return $query;
         return $query->where('title->' . app()->getLocale(), '!=', null);
+    }
+
+    public function setPublishedAtAttribute($value)
+    {
+        $this->attributes['published_at'] = \Date::parse($value);
     }
 }

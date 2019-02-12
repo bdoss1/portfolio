@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\CrudTrait;
 use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -109,8 +110,12 @@ class Blog extends Model implements SeoContract, CommentContract
 
     public function scopeTranslated($query)
     {
-        if (config('database.default') !== 'mysql') return $query;
         return $query->where('title->' . app()->getLocale(), '!=', null);
+    }
+
+    public function setPublishedAtAttribute($value)
+    {
+        $this->attributes['published_at'] = \Date::parse($value);
     }
 
 }
