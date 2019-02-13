@@ -45,7 +45,7 @@ class PortfolioUseCase
     public function moreCountItemsQuery($page = 1)
     {
         $skip = $page * self::ITEM_LIMIT;
-        $query = Portfolio::skip($skip)->published()->select(['id'])->take(self::ITEM_LIMIT);
+        $query = Portfolio::skip($skip)->translated()->published()->select(['id'])->take(self::ITEM_LIMIT);
         return $query;
     }
 

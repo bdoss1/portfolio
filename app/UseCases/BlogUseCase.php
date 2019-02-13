@@ -47,7 +47,7 @@ class BlogUseCase
     public function moreCountItemsQuery($page = 1)
     {
         $skip = $page * self::ITEM_LIMIT;
-        $query = Blog::skip($skip)->select(['id'])->published()->take(self::ITEM_LIMIT);
+        $query = Blog::skip($skip)->select(['id'])->translated()->published()->take(self::ITEM_LIMIT);
         return $query;
     }
 
