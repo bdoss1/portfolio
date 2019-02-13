@@ -1,43 +1,47 @@
 require('./../template/cubeportfolio/js/jquery.cubeportfolio.min');
 require('./../template/js/jquery.hover3d');
 
+$(document).ready(function () {
 
-// PORTFOLIO EFFECT
-$(".cbp-item").hover3d({
-    selector: "figure",
-    perspective: 3000,
-    shine: true
-});
+    setTimeout(() => {
+        // PORTFOLIO EFFECT
+        $(".cbp-item").hover3d({
+            selector: "figure",
+            perspective: 3000,
+            shine: true
+        });
 
-
-$('#grid-container').cubeportfolio({
-    layoutMode: 'grid',
-    gridAdjustment: 'responsive',
-    animationType: 'skew',
-    defaultFilter: '*',
-    gapVertical: 30,
-    gapHorizontal: 30,
-    singlePageAnimation: 'fade',
-    mediaQueries: [{
-        width: 700,
-        cols: 3,
-    }, {
-        width: 480,
-        cols: 2,
-        options: {
-            caption: '',
+        $('#grid-container').cubeportfolio({
+            layoutMode: 'grid',
+            gridAdjustment: 'responsive',
+            animationType: 'skew',
+            gapVertical: 30,
             gapHorizontal: 30,
-            gapVertical: 20,
-        }
-    }, {
-        width: 320,
-        cols: 1,
-        options: {
-            caption: '',
-            gapHorizontal: 50,
-        }
-    }]
+            singlePageAnimation: 'fade',
+            mediaQueries: [{
+                width: 700,
+                cols: 3,
+            }, {
+                width: 480,
+                cols: 2,
+                options: {
+                    caption: '',
+                    gapHorizontal: 30,
+                    gapVertical: 20,
+                }
+            }, {
+                width: 320,
+                cols: 1,
+                options: {
+                    caption: '',
+                    gapHorizontal: 50,
+                }
+            }]
+        });
+    }, 100);
+
 });
+
 
 $(document).on('click', '.load-more-js', function (e) {
     e.preventDefault();

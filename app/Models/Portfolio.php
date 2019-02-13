@@ -99,8 +99,4 @@ class Portfolio extends Model implements SeoContract
         return $query->where('title->' . app()->getLocale(), '!=', null);
     }
 
-    public function setPublishedAtAttribute($value)
-    {
-        $this->attributes['published_at'] = \Date::parse($value);
-    }
 }
