@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $page = Page::whereSlug('main')->firstOrFail()->withFakes();
         $portfolioItems = $portfolioUseCase->itemsQuery()->get();
-        $portfolioItemsCount = Portfolio::count();
+        $portfolioItemsCount = Portfolio::translated()->count();
 
         $this->seo()->metatags()->setTitle($page->meta_title ?? $page->title, false);
         $this->seo()->metatags()->setDescription($page->meta_description ?? '');
