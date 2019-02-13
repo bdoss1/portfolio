@@ -65,6 +65,11 @@
                 @endif
             @endif
         </section>
+
+
+        <section class="news-article top_45 bottom_30">
+            {!! $page->content !!}
+        </section>
     </div>
 @endsection
 
