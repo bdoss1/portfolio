@@ -109,9 +109,9 @@
             }
         }
     </style>
-    <script>
-        {!! config('settings.script_header') !!}
-    </script>
+
+    {!! config('settings.script_header') !!}
+
 </head>
 <body>
 <script>
@@ -290,8 +290,8 @@
 <link rel="stylesheet" href="{{ mix('css/combine.css') }}"/>
 <script src="{{ mix('js/combine.js') }}" defer></script>
 @yield('after.script')
-<script>
-    {!! config('settings.script_header') !!}
-</script>
+
+{!! config('settings.script_footer') !!}
+
 </body>
 </html>
