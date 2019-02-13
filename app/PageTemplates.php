@@ -131,6 +131,14 @@ trait PageTemplates
             'fake' => true,
             'store_in' => 'extras',
         ]);
+
+        $this->crud->addField([
+            'name' => 'content',
+            'label' => trans('backpack::pagemanager.content'),
+            'type' => 'wysiwyg',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+        ]);
+
     }
 
 

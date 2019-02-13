@@ -26,7 +26,7 @@ class PortfolioCrudController extends CrudController
         $this->crud->setModel('App\Models\Portfolio');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/portfolio');
         $this->crud->setEntityNameStrings('portfolio', 'portfolios');
-
+        $this->crud->orderBy('published_at', 'DESC');
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Configuration
