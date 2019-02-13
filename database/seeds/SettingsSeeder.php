@@ -32,6 +32,9 @@ class SettingsSeeder extends Seeder
             ],
             'min' => 1
         ]);
+
+        $this->create('script_header', 'textarea', '', 'Scripts in header');
+        $this->create('script_footer', 'textarea', '', 'Scripts in footer');
     }
 
     private function create($key, $type, $value, $description = null, $field = null)
