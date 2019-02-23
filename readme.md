@@ -14,7 +14,7 @@ This open source site was made specifically for potential customers to get acqua
 * And others that you can discover in the file "composer.json"
 
 #### Example
-[Real example](https://yarmat.su)
+[Real example](https://yarmat.su/en)
 
 #### Installation
 Step 1
