@@ -1,4 +1,4 @@
-# Portfolio + Blog = [yarmat.su](https://yarmat.su)
+# Portfolio + Blog = [yarmat.su](https://yarmat.su/en)
 
 This open source site was made specifically for potential customers to get acquainted with the quality of my code. This project is quite simple, but unfortunately I cannot show the code of more complex projects, because they are with the NDA (Non-disclosure agreement)
 
